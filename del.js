@@ -6,6 +6,8 @@ const obj = {
     },
 };
 
+// Destructuring;
+// const { name, age } = obj;
 const { name, age } = obj;
 
 console.log(name, age);
