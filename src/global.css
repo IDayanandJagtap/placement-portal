@@ -1,6 +1,11 @@
-.hoverIcon {
+.hoverIcon,
+.studentCard {
     transition: transform 0.2s linear;
 }
 .hoverIcon:hover {
     transform: scale(1.1);
+}
+
+.studentCard:hover {
+    transform: scale(1.01);
 }

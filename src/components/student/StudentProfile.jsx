@@ -1,19 +1,30 @@
-import { Button, HStack, Image, Stack, Text, VStack } from "@chakra-ui/react";
+import {
+    Button,
+    ButtonGroup,
+    HStack,
+    Image,
+    Stack,
+    Text,
+    VStack,
+} from "@chakra-ui/react";
 import React from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { FaLink, FaXTwitter } from "react-icons/fa6";
 import {
     IoLogoGithub,
     IoLogoInstagram,
     IoCheckmarkSharp,
+    IoArrowBackOutline,
 } from "react-icons/io5";
+import { IoIosArrowRoundBack } from "react-icons/io";
 import demoImg from "../../assets/react.svg";
 import Skills from "./Skills";
 import Achievements from "./Achievements";
 import Academics from "./Academics";
 import "../../global.css";
 import logo from "../../../public/logo.jpeg";
-const Dashboard = () => {
+const StudentProfile = () => {
+    const navigate = useNavigate();
     const { id } = useParams();
     console.log(id);
 
@@ -33,18 +44,29 @@ const Dashboard = () => {
             ></img> */}
             <VStack
                 pt={10}
-                w={"90%"}
+                w={"80%"}
                 mx={"auto"}
                 my={10}
                 p={5}
-                borderRadius={"lg"}
+                // borderRadius={"md"}
             >
+                <Button
+                    alignSelf={"start"}
+                    onClick={() => {
+                        navigate("/students");
+                    }}
+                    background={"blue.50"}
+                >
+                    <IoIosArrowRoundBack size={40} />
+                </Button>
+
                 <HStack
                     w={"full"}
                     p={5}
                     my={2}
-                    backgroundColor={"teal.50"}
-                    borderRadius={"lg"}
+                    backgroundColor={"blue.50"}
+                    boxShadow={"lg"}
+                    borderRadius={"md"}
                 >
                     {/* Main info */}
                     <VStack
@@ -132,7 +154,7 @@ const Dashboard = () => {
     );
 };
 
-export default Dashboard;
+export default StudentProfile;
 
 // Demo student data:
 

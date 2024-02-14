@@ -3,7 +3,8 @@ import Home from "./components/Home";
 import Header from "./components/Header";
 import Login from "./components/authentication/Login";
 import Signup from "./components/authentication/Signup";
-import Dashboard from "./components/student/Dashboard";
+import StudentProfile from "./components/student/StudentProfile";
+import FetchLayout from "./components/FetchLayout";
 
 function App() {
     return (
@@ -13,7 +14,11 @@ function App() {
                 <Route exact path="/" element={<Home />}></Route>
                 <Route exact path="/login" element={<Login />}></Route>
                 <Route exact path="/signup" element={<Signup />}></Route>
-                <Route path="/student/:id" element={<Dashboard />}></Route>
+                <Route
+                    path="/students"
+                    element={<FetchLayout find={"student"} />}
+                ></Route>
+                <Route path="/student/:id" element={<StudentProfile />}></Route>
             </Routes>
         </BrowserRouter>
     );

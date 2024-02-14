@@ -9,6 +9,7 @@ const Achievements = () => {
             p={8}
             my={2}
             backgroundColor={"teal.50"}
+            boxShadow={"lg"}
             borderRadius={"lg"}
         >
             <Text as={"h3"} fontSize={"32px"}>
