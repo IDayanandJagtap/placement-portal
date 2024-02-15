@@ -5,6 +5,7 @@ import Login from "./components/authentication/Login";
 import Signup from "./components/authentication/Signup";
 import StudentProfile from "./components/student/StudentProfile";
 import FetchLayout from "./components/FetchLayout";
+import Del from "./components/Del";
 
 function App() {
     return (
@@ -19,6 +20,7 @@ function App() {
                     element={<FetchLayout find={"student"} />}
                 ></Route>
                 <Route path="/student/:id" element={<StudentProfile />}></Route>
+                <Route path="/del" element={<Del />}></Route>
             </Routes>
         </BrowserRouter>
     );

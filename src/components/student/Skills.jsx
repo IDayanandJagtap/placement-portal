@@ -2,7 +2,7 @@ import { Button, HStack, Stack, Text, VStack } from "@chakra-ui/react";
 import React from "react";
 import Tag from "../utils/Tag";
 
-const Skills = () => {
+const Skills = ({ data }) => {
     return (
         <Stack
             justifyContent={"start"}
@@ -18,11 +18,9 @@ const Skills = () => {
                 Skills :
             </Text>
             <HStack pl={10} py={2}>
-                <Tag name={"JavaScript"} />
-                <Tag name={"TypeScript"} />
-                <Tag name={"Java"} />
-                <Tag name={"C"} />
-                <Tag name={"Python"} />
+                {data.map((e) => {
+                    return <Tag key={e} name={e} />;
+                })}
             </HStack>
         </Stack>
     );

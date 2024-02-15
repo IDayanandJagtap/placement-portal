@@ -2,7 +2,14 @@ import { Box, Button, HStack, Text } from "@chakra-ui/react";
 import React from "react";
 import LeftSideMenu from "./header/LeftSideMenu";
 import SearchBar from "./header/SearchBar";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+
+const navLinks = [
+    { name: "Job", link: "/" },
+    { name: "Student", link: "/students" },
+    { name: "Company", link: "/companies" },
+    { name: "History", link: "/history" },
+];
 
 const Header = () => {
     const location = useLocation();
@@ -20,26 +27,33 @@ const Header = () => {
             boxShadow={"md"}
         >
             <HStack justifyContent={"space-between"}>
-                <LeftSideMenu />
-                <SearchBar />
-                {currentLocation != "/login" ? (
+                <Text as={"h1"} fontSize={"30px"}>
+                    PLACED
+                </Text>
+                <HStack>
+                    {navLinks.map((e) => {
+                        return (
+                            <Link to={e.link} key={e.link}>
+                                <Text
+                                    mx={"3"}
+                                    fontSize={"18px"}
+                                    _hover={{ color: "#3182ce" }}
+                                >
+                                    {e.name}
+                                </Text>
+                            </Link>
+                        );
+                    })}
                     <Button
                         colorScheme={"blue"}
+                        mx={4}
                         onClick={() => {
                             navigate("/login");
                         }}
                     >
                         Login
                     </Button>
-                ) : (
-                    <Button
-                        disabled
-                        variant={"ghost"}
-                        style={{ visibility: "hidden" }}
-                    >
-                        {" "}
-                    </Button>
-                )}
+                </HStack>
             </HStack>
         </Box>
     );

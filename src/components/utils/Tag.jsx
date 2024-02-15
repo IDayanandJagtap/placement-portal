@@ -9,7 +9,7 @@ const Tag = ({ name }) => {
             mx={1}
             backgroundColor={"blue.100"}
             color={"blue.900"}
-            cursor={"pointer"}
+            // cursor={"pointer"}
             border={"2px solid #3182ce"}
             borderRadius={8}
         >

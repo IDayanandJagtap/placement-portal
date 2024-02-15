@@ -7,7 +7,7 @@ import {
     Text,
     VStack,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { FaLink, FaXTwitter } from "react-icons/fa6";
 import {
@@ -23,10 +23,25 @@ import Achievements from "./Achievements";
 import Academics from "./Academics";
 import "../../global.css";
 import logo from "../../../public/logo.jpeg";
+
 const StudentProfile = () => {
+    const [student, setStudent] = useState({
+        name: "",
+        year: "",
+        degree: "",
+        skills: [],
+    });
     const navigate = useNavigate();
     const { id } = useParams();
-    console.log(id);
+    // console.log(id);
+
+    useEffect(() => {
+        let stud = studentData.filter((e) => {
+            return e.id == id;
+        })[0];
+
+        setStudent(stud);
+    }, []);
 
     return (
         <>
@@ -76,7 +91,7 @@ const StudentProfile = () => {
                         pl={"5"}
                     >
                         <Text as={"h1"} fontSize={"48px"}>
-                            Dayanand Jagtap
+                            {student.name}
                             {/* isVerified */}
                             {/* <IoCheckmarkSharp /> */}
                         </Text>
@@ -87,7 +102,8 @@ const StudentProfile = () => {
                             pl={1}
                             fontSize={"24px"}
                         >
-                            Bsc Comp Science <Text as={"span"}>, 3rd year</Text>
+                            {student.degree}{" "}
+                            <Text as={"span"}>, {student.year} year</Text>
                         </Text>
 
                         {/* Portfolio link */}
@@ -142,7 +158,7 @@ const StudentProfile = () => {
                 </HStack>
 
                 {/* Skills */}
-                <Skills />
+                <Skills data={student.skills} />
 
                 {/* Achievements */}
                 <Achievements />
@@ -157,46 +173,80 @@ const StudentProfile = () => {
 export default StudentProfile;
 
 // Demo student data:
-
-const data = [
+const studentData = [
     {
-        imgUrl: "public/student/id",
-        name: "DJ",
-        clg: "AGC",
-        degree: "BCS",
-        year: 3,
+        id: 1,
+        name: "Dayanand Jagtap",
+        degree: "Bsc computer science",
+        year: "3rd",
         portfolio: "https://dayanandjagtap.vercel.app",
-        tags: ["js", "ts", "c", "react"],
-        bio: "I'm very good person and an excellent programmer!",
+        skills: ["JavaScript", "Java", "C"],
+        achievements: "he kela ani te kela",
+        academics: [9.4, 9.3, 9.45, 9.5, 9.18, 9.9],
+        socials: {
+            github: "github chi link",
+            instagram: "instachi link",
+            twitter: "tw link",
+        },
+        contact: {
+            email: "email tyacha",
+            phoneno: 478390143,
+        },
     },
     {
-        imgUrl: "public/student/id",
-        name: "Anurag",
-        clg: "AGC",
-        degree: "BCS",
-        year: 3,
-        portfolio: "https://dayanandjagtap.vercel.app",
-        tags: ["js", "ts", "c", "react"],
-        bio: "I'm very good person and an excellent programmer!",
+        id: 2,
+        name: "Saba Shaikh",
+        degree: "Bsc computer science",
+        year: "3rd",
+        skills: ["Python", "Java", "C"],
     },
     {
-        imgUrl: "public/student/id",
-        name: "Saba",
-        clg: "AGC",
-        degree: "BCS",
-        year: 3,
-        portfolio: "https://dayanandjagtap.vercel.app",
-        tags: ["js", "ts", "c", "react"],
-        bio: "I'm very good person and an excellent programmer!",
+        id: 3,
+        name: "Anurag Dalali",
+        degree: "Bsc computer science",
+        year: "3rd",
+        skills: ["C", "Java"],
     },
     {
-        imgUrl: "public/student/id",
-        name: "Parshu",
-        clg: "AGC",
-        degree: "BCS",
-        year: 3,
-        portfolio: "https://dayanandjagtap.vercel.app",
-        tags: ["js", "ts", "c", "react"],
-        bio: "I'm very good person and an excellent programmer!",
+        id: 4,
+        name: "Parshuram Kanade",
+        degree: "Bsc computer science",
+        year: "3rd",
+        skills: ["Java", "C"],
+    },
+    {
+        id: 5,
+        name: "Hitesh Sethiya",
+        degree: "Bsc computer science",
+        year: "3rd",
+        skills: ["Java", "C"],
+    },
+    {
+        id: 6,
+        name: "Rahul Girmaji",
+        degree: "Bsc computer science",
+        year: "3rd",
+        skills: ["Java", "C", "Python"],
+    },
+    {
+        id: 7,
+        name: "Pratiksha Dhawale",
+        degree: "Bsc computer science",
+        year: "3rd",
+        skills: ["Java"],
+    },
+    {
+        id: 8,
+        name: "Kiran Akhade",
+        degree: "Bsc computer science",
+        year: "3rd",
+        skills: ["Python", "C", "Java"],
+    },
+    {
+        id: 9,
+        name: "Shireen Tekade",
+        degree: "Bsc computer science",
+        year: "3rd",
+        skills: ["Python", "Java", "C"],
     },
 ];

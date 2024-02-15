@@ -59,7 +59,9 @@ const FetchLayout = ({ find }) => {
 
                         {checkBoxes.map((element, index) => {
                             return (
-                                <Checkbox variant={"ghost"}>{element}</Checkbox>
+                                <Checkbox key={index} variant={"ghost"}>
+                                    {element}
+                                </Checkbox>
                             );
                         })}
                     </Stack>
@@ -90,6 +92,7 @@ const FetchLayout = ({ find }) => {
                     {studentData.map((e) => {
                         return (
                             <StudentCard
+                                key={e.id}
                                 id={e.id}
                                 name={e.name}
                                 degree={e.degree}
@@ -108,123 +111,67 @@ const checkBoxes = ["C", "C++", "Java", "JavaScript", "Python"];
 
 const studentData = [
     {
-        id: "eo0dajfklds",
+        id: 1,
         name: "Dayanand Jagtap",
         degree: "Bsc computer science",
         year: "3rd",
         skills: ["JavaScript", "Java", "C"],
     },
     {
-        id: "eo0dajfklds",
+        id: 2,
         name: "Saba Shaikh",
         degree: "Bsc computer science",
         year: "3rd",
         skills: ["Python", "Java", "C"],
     },
     {
-        id: "eo0dajfklds",
+        id: 3,
         name: "Anurag Dalal",
         degree: "Bsc computer science",
         year: "3rd",
         skills: ["C", "Java"],
     },
     {
-        id: "eo0dajfklds",
+        id: 4,
         name: "Parshuram Kanade",
         degree: "Bsc computer science",
         year: "3rd",
         skills: ["Java", "C"],
     },
     {
-        id: "eo0dajfklds",
-        name: "Parshuram Kanade",
+        id: 5,
+        name: "Hitesh Sethiya",
         degree: "Bsc computer science",
         year: "3rd",
         skills: ["Java", "C"],
     },
     {
-        id: "eo0dajfklds",
-        name: "Parshuram Kanade",
+        id: 6,
+        name: "Rahul Girmaji",
         degree: "Bsc computer science",
         year: "3rd",
-        skills: ["Java", "C"],
+        skills: ["Java", "C", "Python"],
     },
     {
-        id: "eo0dajfklds",
-        name: "Parshuram Kanade",
+        id: 7,
+        name: "Pratiksha Dhawale",
         degree: "Bsc computer science",
         year: "3rd",
-        skills: ["Java", "C"],
+        skills: ["Java"],
     },
     {
-        id: "eo0dajfklds",
-        name: "Parshuram Kanade",
+        id: 8,
+        name: "Kiran Akhade",
         degree: "Bsc computer science",
         year: "3rd",
-        skills: ["Java", "C"],
+        skills: ["Python", "C", "Java"],
     },
     {
-        id: "eo0dajfklds",
-        name: "Parshuram Kanade",
+        id: 9,
+        name: "Shireen Tekade",
         degree: "Bsc computer science",
         year: "3rd",
-        skills: ["Java", "C"],
-    },
-    {
-        id: "eo0dajfklds",
-        name: "Parshuram Kanade",
-        degree: "Bsc computer science",
-        year: "3rd",
-        skills: ["Java", "C"],
-    },
-    {
-        id: "eo0dajfklds",
-        name: "Parshuram Kanade",
-        degree: "Bsc computer science",
-        year: "3rd",
-        skills: ["Java", "C"],
-    },
-    {
-        name: "Parshuram Kanade",
-        degree: "Bsc computer science",
-        year: "3rd",
-        skills: ["Java", "C"],
-    },
-    {
-        name: "Parshuram Kanade",
-        degree: "Bsc computer science",
-        year: "3rd",
-        skills: ["Java", "C"],
-    },
-    {
-        name: "Parshuram Kanade",
-        degree: "Bsc computer science",
-        year: "3rd",
-        skills: ["Java", "C"],
-    },
-    {
-        name: "Parshuram Kanade",
-        degree: "Bsc computer science",
-        year: "3rd",
-        skills: ["Java", "C"],
-    },
-    {
-        name: "Parshuram Kanade",
-        degree: "Bsc computer science",
-        year: "3rd",
-        skills: ["Java", "C"],
-    },
-    {
-        name: "Parshuram Kanade",
-        degree: "Bsc computer science",
-        year: "3rd",
-        skills: ["Java", "C"],
-    },
-    {
-        name: "Parshuram Kanade",
-        degree: "Bsc computer science",
-        year: "3rd",
-        skills: ["Java", "C"],
+        skills: ["Python", "Java", "C"],
     },
 ];
 

@@ -29,8 +29,8 @@ const StudentCard = ({ id, name, degree, year, skills }) => {
             </Text>
 
             <HStack mt={6}>
-                {skills.map((element) => {
-                    return <Tag name={element} />;
+                {skills.map((element, index) => {
+                    return <Tag key={index} name={element} />;
                 })}
             </HStack>
         </VStack>
