@@ -58,19 +58,20 @@ const StudentProfile = () => {
                 }}
             ></img> */}
             <VStack
-                pt={10}
-                w={"80%"}
+                w={"100%"}
                 mx={"auto"}
-                my={10}
-                p={5}
+                py={20}
+                px={"15%"}
+                background={"#f1f1f1"}
                 // borderRadius={"md"}
             >
                 <Button
                     alignSelf={"start"}
+                    background={"white"}
                     onClick={() => {
                         navigate("/students");
                     }}
-                    background={"blue.50"}
+                    // background={"blue.50"}
                 >
                     <IoIosArrowRoundBack size={40} />
                 </Button>
@@ -79,8 +80,8 @@ const StudentProfile = () => {
                     w={"full"}
                     p={5}
                     my={2}
-                    backgroundColor={"blue.50"}
-                    boxShadow={"lg"}
+                    backgroundColor={"white"}
+                    boxShadow={"md"}
                     borderRadius={"md"}
                 >
                     {/* Main info */}
@@ -88,9 +89,9 @@ const StudentProfile = () => {
                         width={"full"}
                         alignItems={"start"}
                         justifyContent={"start"}
-                        pl={"5"}
+                        pl={1}
                     >
-                        <Text as={"h1"} fontSize={"48px"}>
+                        <Text as={"h1"} fontSize={"40px"}>
                             {student.name}
                             {/* isVerified */}
                             {/* <IoCheckmarkSharp /> */}
@@ -100,7 +101,7 @@ const StudentProfile = () => {
                             color={"gray.500"}
                             mt={"-15px"}
                             pl={1}
-                            fontSize={"24px"}
+                            fontSize={"20px"}
                         >
                             {student.degree}{" "}
                             <Text as={"span"}>, {student.year} year</Text>
@@ -108,8 +109,8 @@ const StudentProfile = () => {
 
                         {/* Portfolio link */}
                         <HStack color={"blue.700"} mt={1} mb={2}>
-                            <FaLink size={"22"} />
-                            <Text as={"a"} fontSize={"22px"}>
+                            <FaLink size={"20"} />
+                            <Text as={"a"} fontSize={"20px"}>
                                 <a
                                     target="_blank"
                                     href="https://dayanandjagtap.vercel.app"
@@ -137,8 +138,22 @@ const StudentProfile = () => {
 
                         {/* Buttons */}
                         <HStack mt={12}>
-                            <Button colorScheme="blue">Download CV</Button>
-                            <Button variant={"outline"} colorScheme={"blue"}>
+                            <Button
+                                background={"blue.700"}
+                                border={"1px solid #2C5282"}
+                                color={"white"}
+                                _hover={{
+                                    color: "#2C5282",
+                                    background: "transparent",
+                                }}
+                            >
+                                Download CV
+                            </Button>
+                            <Button
+                                variant={"outline"}
+                                border={"1px solid #2C5282"}
+                                color={"#2c5282"}
+                            >
                                 Contact
                             </Button>
                         </HStack>

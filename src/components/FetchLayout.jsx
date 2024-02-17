@@ -14,7 +14,7 @@ import {
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import StudentCard from "./student/StudentCard";
-import { FaLanguage } from "react-icons/fa6";
+import { IoSearch } from "react-icons/io5";
 
 const FetchLayout = ({ find }) => {
     const [filterBoxValues, setFilterBoxValues] = useState(
@@ -77,7 +77,7 @@ const FetchLayout = ({ find }) => {
     };
 
     return (
-        <Stack p={5}>
+        <Stack p={5} background={"#f1f1f1"} minH={"90vh"}>
             {/* Search bar */}
             <HStack justifyContent={"center"}>
                 <InputGroup w={"50%"} size={"lg"}>
@@ -88,14 +88,8 @@ const FetchLayout = ({ find }) => {
                         border={"2px solid #3182CE"}
                         // w={"50%"}
                     />
-                    <InputRightElement w={"6rem"}>
-                        <Button
-                            size={"sm"}
-                            colorScheme="blue"
-                            // variant={"outline"}
-                        >
-                            Search
-                        </Button>
+                    <InputRightElement w={"4rem"}>
+                        <IoSearch size={"24"} cursor={"pointer"} />
                     </InputRightElement>
                 </InputGroup>
             </HStack>
@@ -108,10 +102,10 @@ const FetchLayout = ({ find }) => {
                     px={5}
                     py={2}
                     boxShadow={"lg"}
-                    backgroundColor={"blue.200"}
+                    backgroundColor={"white"}
                     // borderRight={"3px solid #b4b4b4"}
                 >
-                    <Text as={"h1"} fontSize={"30px"}>
+                    <Text as={"h1"} fontSize={"26px"}>
                         Filters
                     </Text>
                     <Stack>
@@ -134,7 +128,8 @@ const FetchLayout = ({ find }) => {
 
                     <HStack alignSelf={"flex-end"} justifySelf={"flex-end"}>
                         <Button
-                            colorScheme="blue"
+                            border={"1px solid #2C5282"}
+                            color={"#2c5282"}
                             variant={"outline"}
                             size={"sm"}
                             onClick={handleOnClearFilter}
@@ -142,9 +137,13 @@ const FetchLayout = ({ find }) => {
                             Clear
                         </Button>
                         <Button
-                            colorScheme="blue"
+                            // colorScheme="blue"
+                            backgroundColor={"blue.700"}
+                            color={"white"}
                             variant={"solid"}
                             size={"sm"}
+                            border={"1px solid #2C5282"}
+                            _hover={{ background: "white", color: "#2C5282" }}
                             onClick={handleOnApplyFilter}
                         >
                             Apply
@@ -160,7 +159,8 @@ const FetchLayout = ({ find }) => {
                     mx={4}
                     p={5}
                     gap={5}
-                    backgroundColor={"blue.400"}
+                    backgroundColor={"gray.200"}
+                    // backgroundColor={"white"}
                     boxShadow={"lg"}
                     templateColumns={"1fr 1fr"}
                 >

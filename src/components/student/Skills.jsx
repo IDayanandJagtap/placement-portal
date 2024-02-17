@@ -7,17 +7,17 @@ const Skills = ({ data }) => {
         <Stack
             justifyContent={"start"}
             w={"full"}
-            py={8}
-            px={10}
+            py={4}
+            px={6}
             my={2}
-            backgroundColor={"teal.50"}
-            boxShadow={"lg"}
+            backgroundColor={"white"}
+            boxShadow={"md"}
             borderRadius={"lg"}
         >
             <Text as={"h3"} fontSize={"32px"}>
-                Skills :
+                Skills
             </Text>
-            <HStack pl={10} py={2}>
+            <HStack pl={10} py={4}>
                 {data.map((e) => {
                     return <Tag key={e} name={e} />;
                 })}

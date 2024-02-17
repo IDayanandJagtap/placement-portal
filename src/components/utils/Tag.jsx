@@ -7,10 +7,10 @@ const Tag = ({ name }) => {
             px={2}
             py={1}
             mx={1}
-            backgroundColor={"blue.100"}
-            color={"blue.900"}
+            backgroundColor={"blue.700"}
+            color={"#fff"}
             // cursor={"pointer"}
-            border={"2px solid #3182ce"}
+            // border={"2px solid #a020f0"}
             borderRadius={8}
         >
             {name}

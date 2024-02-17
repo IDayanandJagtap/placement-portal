@@ -11,7 +11,9 @@ const StudentCard = ({ id, name, degree, year, skills }) => {
         <VStack
             className="studentCard"
             alignItems={"start"}
-            backgroundColor={"blue.200"}
+            backgroundColor={"white"}
+            // backgroundColor={"gray.200"}
+            boxShadow={"md"}
             borderRadius={6}
             cursor={"pointer"}
             h={"fit-content"}

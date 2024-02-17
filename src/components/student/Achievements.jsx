@@ -6,14 +6,15 @@ const Achievements = () => {
         <Stack
             justifyContent={"start"}
             w={"full"}
-            p={8}
+            py={4}
+            px={6}
             my={2}
-            backgroundColor={"teal.50"}
-            boxShadow={"lg"}
+            backgroundColor={"white"}
+            boxShadow={"md"}
             borderRadius={"lg"}
         >
             <Text as={"h3"} fontSize={"32px"}>
-                Achievements :
+                Achievements
             </Text>
             <HStack pl={10} py={2}>
                 <UnorderedList>
