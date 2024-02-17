@@ -12,10 +12,70 @@ import {
     Text,
     VStack,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
 import StudentCard from "./student/StudentCard";
+import { FaLanguage } from "react-icons/fa6";
 
 const FetchLayout = ({ find }) => {
+    const [filterBoxValues, setFilterBoxValues] = useState(
+        Array(checkBoxes.length).fill(false)
+    );
+    const [studentData, setStudentData] = useState(data);
+
+    const handleCheckboxClick = (e, index) => {
+        let updatedChecked = [...filterBoxValues];
+        updatedChecked[index] = e.target.checked;
+
+        // console.log(updatedChecked);
+        setFilterBoxValues(updatedChecked);
+    };
+
+    const handleOnClearFilter = () => {
+        let emptyArray = Array(checkBoxes.length).fill(false);
+        setFilterBoxValues(emptyArray);
+        setStudentData(data);
+    };
+
+    const handleOnApplyFilter = () => {
+        const checkedItems = filterBoxValues
+            .map((elem, index) => {
+                if (elem) return checkBoxes[index];
+            })
+            .filter((elem) => {
+                if (elem) return elem;
+            });
+
+        // console.log(checkedItems);
+
+        if (checkedItems.length == 0) {
+            setStudentData(data);
+            return;
+        }
+
+        // api call, to fetch filtered students, param => checkedLanguages
+        // console.log(checkedLanguages);
+        // after an api call if no result is returned display msg no result found;
+
+        // Later remove this part
+        // Filter students based on skills
+        const filteredStudents = data
+            .map((student) => {
+                let flag = 0;
+                checkedItems.forEach((language) => {
+                    if (student.skills.includes(language)) {
+                        flag = 1;
+                    }
+                });
+
+                if (flag) return student;
+            })
+            .filter((elem) => {
+                if (elem) return elem;
+            });
+
+        setStudentData(filteredStudents);
+    };
+
     return (
         <Stack p={5}>
             {/* Search bar */}
@@ -59,7 +119,13 @@ const FetchLayout = ({ find }) => {
 
                         {checkBoxes.map((element, index) => {
                             return (
-                                <Checkbox key={index} variant={"ghost"}>
+                                <Checkbox
+                                    key={index}
+                                    isChecked={filterBoxValues[index]}
+                                    onChange={(e) => {
+                                        handleCheckboxClick(e, index);
+                                    }}
+                                >
                                     {element}
                                 </Checkbox>
                             );
@@ -71,8 +137,17 @@ const FetchLayout = ({ find }) => {
                             colorScheme="blue"
                             variant={"outline"}
                             size={"sm"}
+                            onClick={handleOnClearFilter}
                         >
                             Clear
+                        </Button>
+                        <Button
+                            colorScheme="blue"
+                            variant={"solid"}
+                            size={"sm"}
+                            onClick={handleOnApplyFilter}
+                        >
+                            Apply
                         </Button>
                     </HStack>
                 </Stack>
@@ -109,7 +184,7 @@ const FetchLayout = ({ find }) => {
 
 const checkBoxes = ["C", "C++", "Java", "JavaScript", "Python"];
 
-const studentData = [
+const data = [
     {
         id: 1,
         name: "Dayanand Jagtap",
