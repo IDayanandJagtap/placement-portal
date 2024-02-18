@@ -147,7 +147,7 @@ const UpdateStudent = () => {
                 borderRadius={"md"}
                 alignItems={"stretch"}
             >
-                <VStack w={"25%"} alignItems={"stretch"} pr={3}>
+                <VStack w={"22%"} alignItems={"stretch"}>
                     <Button
                         h={"3rem"}
                         fontSize={"18px"}
@@ -222,7 +222,7 @@ const UpdateStudent = () => {
                     w={"full"}
                     border={"2px solid #b4b4b4"}
                     boxShadow={"lg"}
-                    // ml={10}
+                    ml={6}
                     borderRadius={"sm"}
                     minH={"55vh"}
                 >

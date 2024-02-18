@@ -7,6 +7,7 @@ import StudentProfile from "./components/student/StudentProfile";
 import FetchLayout from "./components/FetchLayout";
 import Del from "./components/Del";
 import UpdateStudent from "./components/student/UpdateStudent";
+import "./global.css";
 
 function App() {
     return (

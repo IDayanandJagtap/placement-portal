@@ -1,3 +1,7 @@
+* {
+    font-family: "Ubuntu", "system-ui";
+}
+
 .hoverIcon,
 .studentCard {
     transition: transform 0.2s linear;

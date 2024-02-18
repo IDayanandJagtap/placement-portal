@@ -23,6 +23,7 @@ const StudentCard = ({ id, name, degree, year, skills }) => {
                 navigate(`/student/${id}`);
             }}
         >
+            {/* Use some professional font */}
             <Text as={"h3"} fontSize={"1.8rem"}>
                 {name}
             </Text>

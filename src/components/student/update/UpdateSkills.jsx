@@ -2,7 +2,7 @@ import { HStack, Stack, Text } from "@chakra-ui/react";
 import React, { useState } from "react";
 import Tag from "../../utils/Tag";
 
-const allTags = [
+const tags = [
     "C",
     "C++",
     "Java",
@@ -29,6 +29,13 @@ const allTags = [
 
 const UpdateSkills = () => {
     const [selectedTags, setSelectedTags] = useState([]);
+    const [allTags, setAllTags] = useState(tags);
+
+    const handleOnRemoveTag = (e) => {
+        // console.log(e.dataset.tagname);
+    };
+
+    const handleOnAddTag = (e) => {};
 
     return (
         <Stack h={"full"} p={4}>
@@ -43,10 +50,11 @@ const UpdateSkills = () => {
                 flexWrap={"wrap"}
                 borderRadius={"md"}
             >
-                <Tag name={"JavaScript"} />
-                <Tag name={"JavaScript"} />
-                <Tag name={"JavaScript"} />
-                <Tag name={"JavaScript"} />
+                <Tag
+                    name={"JavaScript"}
+                    showIcon={"delete"}
+                    onClickHandler={handleOnRemoveTag}
+                />
             </HStack>
 
             {/* All tags */}
@@ -58,7 +66,7 @@ const UpdateSkills = () => {
                 borderRadius={"md"}
             >
                 {allTags.map((e) => {
-                    return <Tag name={e} />;
+                    return <Tag name={e} onClickHandler={handleOnAddTag} />;
                 })}
             </HStack>
         </Stack>
