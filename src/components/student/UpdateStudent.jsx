@@ -1,5 +1,4 @@
 import {
-    Box,
     Button,
     HStack,
     Image,
@@ -9,12 +8,35 @@ import {
     Text,
     VStack,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
 import { FaPlus } from "react-icons/fa6";
 
-import demoImg from "../../assets/react.svg";
+import demoImg from "../../assets/userAvatar.png";
+import UpdateAchievements from "./update/UpdateAchievements";
+import UpdateAcademics from "./update/UpdateAcademics";
+import UpdateContact from "./update/UpdateContact";
+import UpdateSkills from "./update/UpdateSkills";
 
 const UpdateStudent = () => {
+    const [activeSection, setActiveSection] = useState(0);
+
+    const handleOnNextUpdate = () => {
+        if (activeSection == 3) {
+            // update
+            // api call
+            // let submit = confirm(
+            //     "Are you sure, you want to update your information ?"
+            // );
+            // if (submit) {
+            //     console.log("UPDAATIIIIIIIIIIIIIIIIIIIING");
+            // } else {
+            //     console.log("JALDI KAR ");
+            // }
+        } else {
+            setActiveSection(activeSection + 1);
+        }
+    };
+
     return (
         <VStack
             backgroundColor={"#f1f1f1"}
@@ -53,7 +75,7 @@ const UpdateStudent = () => {
                         p={3}
                         cursor={"pointer"}
                         borderRadius={"full"}
-                        backgroundColor={"gray.200"}
+                        // backgroundColor={"gray.300"}
                         _hover={{ backgroundColor: "#CBD5E0" }}
                     >
                         <FaPlus size={32} />
@@ -125,27 +147,109 @@ const UpdateStudent = () => {
                 borderRadius={"md"}
                 alignItems={"stretch"}
             >
-                <VStack w={"20%"} alignItems={"stretch"}>
-                    <Button h={"3rem"} fontSize={"20px"}>
+                <VStack w={"25%"} alignItems={"stretch"} pr={3}>
+                    <Button
+                        h={"3rem"}
+                        fontSize={"18px"}
+                        backgroundColor={activeSection == 0 ? "blue.700" : ""}
+                        color={activeSection == 0 ? "white" : ""}
+                        border={activeSection == 0 ? "1px solid #2C5282" : ""}
+                        _hover={
+                            activeSection == 0
+                                ? { background: "white", color: "#2C5282" }
+                                : ""
+                        }
+                        onClick={() => {
+                            setActiveSection(0);
+                        }}
+                    >
                         Skills
                     </Button>
-                    <Button h={"3rem"} fontSize={"20px"}>
+                    <Button
+                        h={"3rem"}
+                        fontSize={"18px"}
+                        backgroundColor={activeSection == 1 ? "blue.700" : ""}
+                        color={activeSection == 1 ? "white" : ""}
+                        border={activeSection == 1 ? "1px solid #2C5282" : ""}
+                        _hover={
+                            activeSection == 1
+                                ? { background: "white", color: "#2C5282" }
+                                : ""
+                        }
+                        onClick={() => {
+                            setActiveSection(1);
+                        }}
+                    >
                         Achievements
                     </Button>
-                    <Button h={"3rem"} fontSize={"20px"}>
+                    <Button
+                        h={"3rem"}
+                        fontSize={"18px"}
+                        backgroundColor={activeSection == 2 ? "blue.700" : ""}
+                        color={activeSection == 2 ? "white" : ""}
+                        border={activeSection == 2 ? "1px solid #2C5282" : ""}
+                        _hover={
+                            activeSection == 2
+                                ? { background: "white", color: "#2C5282" }
+                                : ""
+                        }
+                        onClick={() => {
+                            setActiveSection(2);
+                        }}
+                    >
                         Academics
                     </Button>
-                    <Button h={"3rem"} fontSize={"20px"}>
+                    <Button
+                        h={"3rem"}
+                        fontSize={"18px"}
+                        backgroundColor={activeSection == 3 ? "blue.700" : ""}
+                        color={activeSection == 3 ? "white" : ""}
+                        border={activeSection == 3 ? "1px solid #2C5282" : ""}
+                        _hover={
+                            activeSection == 3
+                                ? { background: "white", color: "#2C5282" }
+                                : ""
+                        }
+                        onClick={() => {
+                            setActiveSection(3);
+                        }}
+                    >
                         Contact
                     </Button>
                 </VStack>
-                {/* changable box */}
+                {/* changeable box */}
                 <Stack
                     w={"full"}
-                    border={"1px solid black"}
-                    ml={10}
+                    border={"2px solid #b4b4b4"}
+                    boxShadow={"lg"}
+                    // ml={10}
                     borderRadius={"sm"}
-                ></Stack>
+                    minH={"55vh"}
+                >
+                    {activeSection == 0 && <UpdateSkills />}
+                    {activeSection == 1 && <UpdateAchievements />}
+                    {activeSection == 2 && <UpdateAcademics />}
+                    {activeSection == 3 && <UpdateContact />}
+
+                    {/* Next button container */}
+                    <HStack
+                        w={"full"}
+                        justifyContent={"flex-end"}
+                        px={4}
+                        pb={3}
+                    >
+                        <Button
+                            backgroundColor={"blue.700"}
+                            color={"white"}
+                            variant={"solid"}
+                            border={"1px solid #2C5282"}
+                            _hover={{ background: "white", color: "#2C5282" }}
+                            onClick={handleOnNextUpdate}
+                        >
+                            {activeSection == 3 ? "Update" : "Next"}
+                        </Button>
+                    </HStack>
+                </Stack>
             </HStack>
         </VStack>
     );

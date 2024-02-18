@@ -22,3 +22,9 @@ const menuLinks = [
 menuLinks.map((e) => {
     console.log(e.link + " " + e.name);
 });
+
+const something = () => {};
+
+const newObj = {
+    something: () => {},
+};
