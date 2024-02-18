@@ -1,41 +1,79 @@
 import { HStack, Stack, Text } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Tag from "../../utils/Tag";
 
 const tags = [
     "C",
     "C++",
+    "C#",
     "Java",
     "Python",
-    "C#",
     "Go",
+    "PHP",
     "JavaScript",
+    "TypeScript",
+    "Kotlin",
     "HTML",
     "CSS",
-    "PHP",
-    "React",
+    "Bootstrap",
+    "Tailwind",
     "MySql",
     "Postgres",
     "MongoDb",
+    "React",
     "NodeJs",
     "NextJs",
-    "TypeScript",
+    "Django",
+    "Flask",
     "Mern",
     "Mean",
     "Vue",
     "Angular",
+    "React Native",
+    "Os",
+    "CN",
+    "Cloud computing",
+    "Aws",
+    "Google cloud",
+    "Azure",
     "Power Bi",
+    "pandas",
+    "scikit",
+    "Tensorflow",
+    "Matplotlib",
 ];
 
 const UpdateSkills = () => {
     const [selectedTags, setSelectedTags] = useState([]);
     const [allTags, setAllTags] = useState(tags);
 
-    const handleOnRemoveTag = (e) => {
-        // console.log(e.dataset.tagname);
+    const handleOnRemoveTag = (event) => {
+        // Remove from selectedTags and then add into allTags;
+        let removeTag = event.target.dataset.tagname;
+
+        // remove
+        let tags = selectedTags.filter((elem) => {
+            if (removeTag != elem) return elem;
+        });
+        setSelectedTags(tags);
+
+        // add
+        setAllTags([...allTags, removeTag]);
     };
 
-    const handleOnAddTag = (e) => {};
+    const handleOnAddTag = (event) => {
+        // Add into selectedTags and then remove from alltags;
+        let addTag = event.target.dataset.tagname;
+
+        // Add into selectedTags
+        setSelectedTags([...selectedTags, addTag]);
+
+        // remove from all tags
+        let filteredAllTags = allTags.filter((elem) => {
+            if (elem != addTag) return addTag;
+        });
+        setAllTags(filteredAllTags);
+    };
 
     return (
         <Stack h={"full"} p={4}>
@@ -50,11 +88,20 @@ const UpdateSkills = () => {
                 flexWrap={"wrap"}
                 borderRadius={"md"}
             >
-                <Tag
-                    name={"JavaScript"}
-                    showIcon={"delete"}
-                    onClickHandler={handleOnRemoveTag}
-                />
+                {selectedTags.length >= 1 ? (
+                    selectedTags.map((elem, index) => {
+                        return (
+                            <Tag
+                                key={index}
+                                name={elem}
+                                showIcon={"delete"}
+                                onClickHandler={handleOnRemoveTag}
+                            />
+                        );
+                    })
+                ) : (
+                    <Text color={"gray.500"}>No skill selected !</Text>
+                )}
             </HStack>
 
             {/* All tags */}
@@ -62,11 +109,21 @@ const UpdateSkills = () => {
                 border={"2px solid #b4b4b4"}
                 p={3}
                 my={3}
+                justifyContent={"start"}
+                alignItems={"start"}
                 flexWrap={"wrap"}
                 borderRadius={"md"}
+                height={"full"}
             >
-                {allTags.map((e) => {
-                    return <Tag name={e} onClickHandler={handleOnAddTag} />;
+                {allTags.map((e, index) => {
+                    return (
+                        <Tag
+                            key={index}
+                            name={e}
+                            showIcon={"add"}
+                            onClickHandler={handleOnAddTag}
+                        />
+                    );
                 })}
             </HStack>
         </Stack>

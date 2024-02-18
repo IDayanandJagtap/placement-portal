@@ -11,9 +11,10 @@ const Tag = ({ name, showIcon, onClickHandler }) => {
             px={2}
             py={1}
             mx={1}
+            my={1}
             data-tagname={name}
-            // backgroundColor={"#03A9F4"} // light blue
-            // backgroundColor={"cyan.800"}
+            // backgroundColor={"blue.500"} // light blue
+            // backgroundColor={"cyan.700"}
             // backgroundColor={"#0369A1"}
             // backgroundColor={"blue.600"}
             backgroundColor={"blue.700"}
@@ -23,12 +24,24 @@ const Tag = ({ name, showIcon, onClickHandler }) => {
             borderRadius={8}
             onClick={handleOnTagClick}
         >
-            <Text as={"span"}>{name}</Text>
-            {showIcon == "delete" && (
-                <Text as={"span"} fontWeight={"bold"} px={1}>
-                    X
+            <Text as={"span"} data-tagname={name}>
+                {name}
+            </Text>
+
+            {showIcon && (
+                <Text
+                    as={"span"}
+                    fontWeight={"bold"}
+                    px={1}
+                    fontSize={"18px"}
+                    color={"whiteAlpha.600"}
+                    data-tagname={name}
+                >
+                    {showIcon == "delete" && "-"}
+                    {showIcon == "add" && "+"}
                 </Text>
             )}
+            {/* added tagname for all components because user can click on any component! */}
         </HStack>
     );
 };
