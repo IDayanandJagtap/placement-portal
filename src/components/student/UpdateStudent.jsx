@@ -220,10 +220,10 @@ const UpdateStudent = () => {
                 {/* changeable box */}
                 <Stack
                     w={"full"}
-                    border={"2px solid #b4b4b4"}
-                    boxShadow={"lg"}
+                    border={"2px solid #CBD5E0"}
+                    // boxShadow={"md"}
                     ml={6}
-                    borderRadius={"sm"}
+                    borderRadius={"md"}
                     minH={"55vh"}
                 >
                     {activeSection == 0 && <UpdateSkills />}

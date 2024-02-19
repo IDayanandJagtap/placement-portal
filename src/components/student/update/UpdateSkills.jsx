@@ -83,7 +83,7 @@ const UpdateSkills = () => {
 
             {/* selected tags */}
             <HStack
-                border={"2px solid #b4b4b4"}
+                border={"2px solid #E2E8F0"}
                 p={3}
                 flexWrap={"wrap"}
                 borderRadius={"md"}
@@ -106,7 +106,7 @@ const UpdateSkills = () => {
 
             {/* All tags */}
             <HStack
-                border={"2px solid #b4b4b4"}
+                border={"2px solid #e2e8f0"}
                 p={3}
                 my={3}
                 justifyContent={"start"}

@@ -12,11 +12,19 @@ const UpdateContact = () => {
             <Grid templateColumns={"repeat(2, 1fr)"} columnGap={8}>
                 <GridItem>
                     <Text my={1}>Email </Text>
-                    <Input type="email" placeholder="student@gmail.com"></Input>
+                    <Input
+                        type="email"
+                        placeholder="student@gmail.com"
+                        border={"2px solid #E2E8F0"}
+                    ></Input>
                 </GridItem>
                 <GridItem>
                     <Text my={1}>Contact no </Text>
-                    <Input type="number" placeholder="0000000000"></Input>
+                    <Input
+                        type="number"
+                        placeholder="0000000000"
+                        border={"2px solid #E2E8F0"}
+                    ></Input>
                 </GridItem>
             </Grid>
 
@@ -31,6 +39,7 @@ const UpdateContact = () => {
                         <Input
                             type="text"
                             placeholder="https://www.github.com/username"
+                            border={"2px solid #E2E8F0"}
                         ></Input>
                     </HStack>
                 </GridItem>
@@ -40,6 +49,7 @@ const UpdateContact = () => {
                         <Input
                             type="text"
                             placeholder="https://www.x.com/username"
+                            border={"2px solid #E2E8F0"}
                         ></Input>
                     </HStack>
                 </GridItem>
@@ -49,6 +59,7 @@ const UpdateContact = () => {
                         <Input
                             type="text"
                             placeholder="https://www.linkedin.com/username"
+                            border={"2px solid #E2E8F0"}
                         ></Input>
                     </HStack>
                 </GridItem>

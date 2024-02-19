@@ -9,6 +9,7 @@ const UpdateAchievements = () => {
             </Text>
             <Textarea
                 h={"full"}
+                border={"2px solid #E2E8F0"}
                 placeholder="Enter you achievements here..."
             ></Textarea>
         </Stack>
