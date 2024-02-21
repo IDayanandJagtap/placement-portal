@@ -76,6 +76,7 @@ const UpdateStudent = () => {
                         borderRadius={"full"}
                         // backgroundColor={"gray.300"}
                         _hover={{ backgroundColor: "#CBD5E0" }}
+                        transition={"all 0.3s linear"}
                     >
                         <FaPlus size={32} />
                     </HStack>

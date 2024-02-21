@@ -89,7 +89,10 @@ const Login = () => {
                             Signup here
                         </Link>
                     </Text>
-                    <Button colorScheme="blue">Login</Button>
+                    <Button  backgroundColor={"blue.700"}
+                            color={"white"}
+                            border={"1px solid #2C5282"}
+                            _hover={{ background: "white", color: "#2C5282" }}>Login</Button>
                 </HStack>
             </VStack>
         </VStack>
