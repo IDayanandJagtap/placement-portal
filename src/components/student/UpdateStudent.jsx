@@ -64,7 +64,6 @@ const UpdateStudent = () => {
                         width={200}
                         height={200}
                         borderRadius={"full"}
-                        boxShadow={"2px 2px 5px #b4b4b4"}
                         opacity={0.4}
                     ></Image>
                     <HStack
