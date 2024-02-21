@@ -12,12 +12,8 @@ const Tag = ({ name, showIcon, onClickHandler }) => {
             py={1}
             mx={1}
             my={1}
-            data-tagname={name}
-            // backgroundColor={"blue.500"} // light blue
-            // backgroundColor={"cyan.700"}
-            // backgroundColor={"#0369A1"}
-            // backgroundColor={"blue.600"}
-            backgroundColor={"blue.700"}
+            data-tagname={name}            
+            backgroundColor={"#0369A1"}
             color={"#fff"}
             width={"fit-content"}
             cursor={onClickHandler ? "pointer" : "normal"}

@@ -45,7 +45,10 @@ const Header = () => {
                         );
                     })}
                     <Button
-                        colorScheme={"blue"}
+                        backgroundColor={"blue.700"}
+                        color={"white"}
+                        border={"1px solid #2C5282"}
+                        _hover={{ background: "white", color: "#2C5282" }}
                         mx={4}
                         onClick={() => {
                             navigate("/login");
