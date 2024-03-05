@@ -1,5 +1,6 @@
 * {
     font-family: "Ubuntu", "system-ui";
+    box-sizing: border-box;
 }
 
 .hoverIcon,
@@ -14,15 +15,13 @@
     transform: scale(1.01);
 }
 
-.primaryButton{
-    background-color: #2C5282;
-    color: #fff ;
-    border: 1px solid #2C5282;
-       
+.primaryButton {
+    background-color: #2c5282;
+    color: #fff;
+    border: 1px solid #2c5282;
 }
 
-.primaryButton:hover{
-
+.primaryButton:hover {
     background-color: transparent;
-    color: #2C5282;    
+    color: #2c5282;
 }

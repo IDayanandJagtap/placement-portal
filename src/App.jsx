@@ -8,6 +8,7 @@ import FetchLayout from "./components/FetchLayout";
 import Del from "./components/Del";
 import UpdateStudent from "./components/student/UpdateStudent";
 import "./global.css";
+import JobDescription from "./components/jobs/JobDescription";
 
 function App() {
     return (
@@ -26,6 +27,7 @@ function App() {
                     path="/student/update/:id"
                     element={<UpdateStudent />}
                 ></Route>
+                <Route path="/jobs/:id" element={<JobDescription />}></Route>
                 <Route path="/del" element={<Del />}></Route>
             </Routes>
         </BrowserRouter>
