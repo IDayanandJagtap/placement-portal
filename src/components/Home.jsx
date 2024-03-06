@@ -19,9 +19,10 @@ const Home = () => {
                         Jobs
                     </Heading>
 
-                    {demoJobs.map((e) => {
+                    {demoJobs.map((e, i) => {
                         return (
                             <Stack
+                                key={i}
                                 flexDirection={"column"}
                                 p={6}
                                 boxShadow={"md"}
@@ -47,8 +48,8 @@ const Home = () => {
                                     Expected Skills :
                                 </Text>
                                 <HStack flexWrap={"wrap"}>
-                                    {e.expectedSkills.map((skill) => {
-                                        return <Tag name={skill} />;
+                                    {e.expectedSkills.map((skill, index) => {
+                                        return <Tag name={skill} key={index} />;
                                     })}
                                 </HStack>
                             </Stack>

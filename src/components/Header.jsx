@@ -1,8 +1,17 @@
-import { Box, Button, HStack, Text } from "@chakra-ui/react";
-import React from "react";
+import {
+    Avatar,
+    Box,
+    Button,
+    HStack,
+    Text,
+    useDisclosure,
+} from "@chakra-ui/react";
+import React, { useState } from "react";
 import LeftSideMenu from "./header/LeftSideMenu";
 import SearchBar from "./header/SearchBar";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import UserDrawer from "./header/UserDrawer";
+import { FaUser } from "react-icons/fa";
 
 const navLinks = [
     { name: "Job", link: "/" },
@@ -12,10 +21,16 @@ const navLinks = [
 ];
 
 const Header = () => {
-    const location = useLocation();
-    const currentLocation = location.pathname;
-    // console.log(currentLocation);
+    // const location = useLocation();
+    // const currentLocation = location.pathname;
 
+    // Local login variable for testing :
+    const [isLoggedIn, setIsLoggedIn] = useState(0);
+
+    // User Drawer
+    const { isOpen, onOpen, onClose } = useDisclosure();
+
+    // For navigation
     const navigate = useNavigate();
 
     return (
@@ -44,18 +59,34 @@ const Header = () => {
                             </Link>
                         );
                     })}
-                    <Button
-                        backgroundColor={"blue.700"}
-                        color={"white"}
-                        border={"1px solid #2C5282"}
-                        _hover={{ background: "white", color: "#2C5282" }}
-                        mx={4}
-                        onClick={() => {
-                            navigate("/login");
-                        }}
-                    >
-                        Login
-                    </Button>
+
+                    {/* If logged in show user icon else show login button */}
+                    {isLoggedIn ? (
+                        <>
+                            <Avatar
+                                name="Dayanand Jagtap"
+                                bg={"blue.300"}
+                                mx={3}
+                                cursor={"pointer"}
+                                onClick={onOpen}
+                            />
+                            <UserDrawer isOpen={isOpen} onClose={onClose} />
+                        </>
+                    ) : (
+                        <Button
+                            backgroundColor={"blue.700"}
+                            color={"white"}
+                            border={"1px solid #2C5282"}
+                            _hover={{ background: "white", color: "#2C5282" }}
+                            mx={4}
+                            onClick={() => {
+                                // navigate("/login");
+                                setIsLoggedIn(1);
+                            }}
+                        >
+                            Login
+                        </Button>
+                    )}
                 </HStack>
             </HStack>
         </Box>
