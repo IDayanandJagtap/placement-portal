@@ -9,6 +9,8 @@ import Del from "./components/Del";
 import UpdateStudent from "./components/student/UpdateStudent";
 import "./global.css";
 import JobDescription from "./components/jobs/JobDescription";
+import FetchCompany from "./components/company/FetchCompany";
+import Dashboard from "./components/faculty/Dashboard";
 
 function App() {
     return (
@@ -28,6 +30,10 @@ function App() {
                     element={<UpdateStudent />}
                 ></Route>
                 <Route path="/jobs/:id" element={<JobDescription />}></Route>
+                <Route path="/companies" element={<FetchCompany />}></Route>
+
+                <Route path="/faculty" element={<Dashboard />}></Route>
+
                 <Route path="/del" element={<Del />}></Route>
             </Routes>
         </BrowserRouter>
