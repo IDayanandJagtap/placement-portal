@@ -1,88 +1,52 @@
-import { Button, Divider, HStack, Stack, Text, VStack } from "@chakra-ui/react";
-import React, { useState } from "react";
-import Approval from "./Approval";
+import { Grid, GridItem, Heading, Stack, Text, VStack } from "@chakra-ui/react";
+import React from "react";
+
+const data = [
+    { name: "Students", number: 80 },
+    { name: "Companies", number: 10 },
+    { name: "Jobs", number: 20 },
+    { name: "Jobs", number: 20 },
+];
 
 const Dashboard = () => {
-    const [activeSection, setActiveSection] = useState(0);
-
     return (
-        <Stack minH={"90vh"} background={"#f1f1f1"} p={6}>
-            <Stack
-                flexDirection={"row"}
-                background={"white"}
-                minH={"80vh"}
-                borderRadius={"md"}
-                boxShadow={"md"}
-                p={4}
+        <Stack px={6} py={4} h={"full"}>
+            <Grid
+                w={"100%"}
+                templateColumns={"repeat(auto-fit, minmax(250px, 30% ))"}
+                templateRows={"auto"}
+                gap={5}
+                justifyItems={"center"}
+                alignItems={"center"}
+                h={"full"}
             >
-                <Stack
-                    width={"250px"}
-                    flexDirection={"column"}
-                    alignItems={"stretch"}
-                    borderRight={"2px solid #718096"}
-                    // background={"white"}
-                    pr={4}
-                >
-                    {data.map((e, index) => {
-                        return (
-                            <Button
-                                key={index}
-                                backgroundColor={
-                                    activeSection == index ? "blue.700" : ""
-                                }
-                                color={activeSection == index ? "white" : ""}
-                                border={
-                                    activeSection == index
-                                        ? "1px solid #2C5282"
-                                        : ""
-                                }
-                                _hover={{}}
-                                onClick={() => {
-                                    setActiveSection(index);
-                                }}
+                {data.map((e) => {
+                    return (
+                        <GridItem>
+                            <VStack
+                                py={12}
+                                px={16}
+                                borderRadius={"sm"}
+                                boxShadow={"lg"}
+                                background={"#f1fff1"}
                             >
-                                {e.name}
-                            </Button>
-                        );
-                    })}
-                </Stack>
-                <Stack width={"100%"}>
-                    {activeSection == 2 && <Approval />}
-                </Stack>
-            </Stack>
+                                <Text
+                                    fontSize={"40px"}
+                                    fontWeight={"bold"}
+                                    my={2}
+                                >
+                                    {e.number}+
+                                </Text>
+                                <Heading as={"h3"} fontSize={"18px"}>
+                                    {e.name}
+                                </Heading>
+                            </VStack>
+                        </GridItem>
+                    );
+                })}
+            </Grid>
         </Stack>
     );
 };
 
 export default Dashboard;
-
-const data = [
-    {
-        name: "Dashboard",
-        data: "no of students, company, placedStudents, Jobs , open jobs",
-    },
-    {
-        name: "Profile",
-        data: "about faculty member",
-    },
-    {
-        name: "Approvals",
-        data: "companies and students for approval, to include only names or other data ! let's see",
-    },
-    {
-        name: "Students",
-        data: "All students same as students page but here the delete option is also available",
-    },
-    {
-        name: "Companies",
-        data: "same as students",
-    },
-    {
-        name: "Jobs",
-        data: "All open jobs (faculty can delete them ) ",
-    },
-    {
-        name: "Feedbacks",
-        data: "Show user feedbacks !",
-    },
-];

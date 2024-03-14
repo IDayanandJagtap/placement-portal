@@ -1,16 +1,13 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./components/Home";
-import Header from "./components/Header";
-import Login from "./components/authentication/Login";
-import Signup from "./components/authentication/Signup";
-import StudentProfile from "./components/student/StudentProfile";
-import FetchLayout from "./components/FetchLayout";
-import Del from "./components/Del";
-import UpdateStudent from "./components/student/UpdateStudent";
-import "./global.css";
+
+import { Home, Header, FetchLayout } from "./components";
+import { Login, Signup } from "./components/authentication";
+import { StudentProfile, UpdateStudent } from "./components/student";
 import JobDescription from "./components/jobs/JobDescription";
 import FetchCompany from "./components/company/FetchCompany";
-import Dashboard from "./components/faculty/Dashboard";
+import DashboardLayout from "./components/faculty/DashboardLayout";
+import "./global.css";
+import Del from "./components/Del";
 
 function App() {
     return (
@@ -32,7 +29,10 @@ function App() {
                 <Route path="/jobs/:id" element={<JobDescription />}></Route>
                 <Route path="/companies" element={<FetchCompany />}></Route>
 
-                <Route path="/faculty" element={<Dashboard />}></Route>
+                <Route
+                    path="/faculty/dashboard"
+                    element={<DashboardLayout />}
+                ></Route>
 
                 <Route path="/del" element={<Del />}></Route>
             </Routes>

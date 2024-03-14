@@ -18,7 +18,6 @@ import {
 } from "@chakra-ui/react";
 
 import { FaPlus, FaUser, FaUserEdit } from "react-icons/fa";
-import userImg from "../../assets/userAvatar.png";
 import { useNavigate } from "react-router-dom";
 
 // Button data
@@ -58,7 +57,7 @@ const UserDrawer = ({ isOpen, onClose }) => {
     //for development purpose only
     const userId = "1";
     //fetch user status: (faculty/student/company)        ... using props is better way to modularize this component ... but it'll make header unnecessarily complex
-    const drawerUser = "student"; // useSelector or useContext
+    const drawerUser = "faculty"; // useSelector or useContext
 
     let options;
     if (drawerUser === "company") {
