@@ -1,10 +1,18 @@
-import { Box, Button, HStack, Stack, Text, Textarea } from "@chakra-ui/react";
+import {
+    Box,
+    Button,
+    HStack,
+    Heading,
+    Stack,
+    Text,
+    Textarea,
+} from "@chakra-ui/react";
 import React, { useState } from "react";
 import Tag from "../utils/Tag";
-import { IoIosArrowRoundBack } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
+import { IoArrowBack } from "react-icons/io5";
 
-const JobDescription = () => {
+const ApplyToJob = () => {
     const [showTextArea, setShowTextArea] = useState(0);
     const navigate = useNavigate();
 
@@ -21,29 +29,41 @@ const JobDescription = () => {
     };
 
     return (
-        <Stack p={4} minH={"100vh"} background={"#f1f1f1"}>
-            <Box w={"70%"} mx={"auto"}>
+        <Stack p={[3, 4, 4, 4, 6]}>
+            <Box w={"100%"} mx={"auto"}>
                 <Button
                     alignSelf={"start"}
-                    background={"white"}
+                    color={"white"}
+                    padding={"2"}
+                    background={"primary.900"}
+                    colorScheme="primary"
+                    borderRadius={"full"}
                     onClick={() => {
-                        navigate("/");
+                        navigate(-1);
                     }}
                 >
-                    <IoIosArrowRoundBack size={40} />
+                    <IoArrowBack size={24} />
                 </Button>
 
                 <Stack
-                    background={"white"}
+                    // background={"primary.50"}
+                    background={"#F8FAFC"}
                     p={4}
                     mt={5}
                     borderRadius={"md"}
-                    boxShadow={"md"}
+                    boxShadow={"lg"}
                 >
-                    <Text as={"h2"} fontSize={"26px"}>
+                    <Heading
+                        as={"h2"}
+                        fontSize={["18px", "20px", "20px", "22px", "24px"]}
+                    >
                         JadeGlobal
-                    </Text>
-                    <Text as={"p"} color={"gray.500"}>
+                    </Heading>
+                    <Text
+                        as={"p"}
+                        color={"gray.500"}
+                        fontSize={["12px", "14px", "16px"]}
+                    >
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.
                         Numquam consequuntur pariatur, fugit rem perferendis ad
                         placeat. Voluptatem nisi excepturi, architecto est illo
@@ -53,7 +73,7 @@ const JobDescription = () => {
                         earum ipsum fugit et assumenda unde.
                     </Text>
 
-                    <Text as={"p"} mt={5} fontSize={"18px"}>
+                    <Text as={"p"} mt={5} fontSize={["16px", "18px"]}>
                         Expected Skills :
                     </Text>
                     <HStack flexWrap={"wrap"}>
@@ -74,12 +94,13 @@ const JobDescription = () => {
                     {/* Textarea display on apply click */}
                     {showTextArea && (
                         <Stack mt={5}>
-                            <Text as={"h3"} fontSize={"18px"}>
+                            <Text as={"h3"} fontSize={["16px", "18px"]}>
                                 Your bio :
                             </Text>
                             <Textarea
                                 rows={"10"}
                                 border={"2px solid #E2E8F0"}
+                                fontSize={["12px", "14px", " 16px"]}
                                 placeholder="Explain why you are suitable for this job..."
                             ></Textarea>
                         </Stack>
@@ -89,7 +110,8 @@ const JobDescription = () => {
                         {showTextArea && (
                             <Button
                                 colorScheme="red"
-                                px={6}
+                                px={[2, 4, 6]}
+                                size={["sm", "sm", "sm", "md"]}
                                 onClick={handleOnClickCancel}
                             >
                                 Cancel
@@ -97,7 +119,8 @@ const JobDescription = () => {
                         )}
                         <Button
                             colorScheme="green"
-                            px={6}
+                            px={[2, 4, 6]}
+                            size={["sm", "sm", "sm", "md"]}
                             onClick={handleOnClickApply}
                         >
                             {showTextArea ? "Submit" : "Apply"}
@@ -109,4 +132,4 @@ const JobDescription = () => {
     );
 };
 
-export default JobDescription;
+export default ApplyToJob;

@@ -1,6 +1,6 @@
 import { Stack } from "@chakra-ui/react";
 import React from "react";
-import JobPage from "./jobs/JobPage";
+import JobList from "./jobs/JobList";
 import Notifications from "./utils/Notifications";
 
 const JobOutlet = () => {
@@ -12,7 +12,7 @@ const JobOutlet = () => {
                 overflow={"scroll"}
                 px={[0, 2, 2, 3, 4]}
             >
-                <JobPage demoJobs={demoJobs} />
+                <JobList demoJobs={demoJobs} />
             </Stack>
 
             {/* Sidebar  -> show only in big screens*/}

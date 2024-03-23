@@ -8,7 +8,7 @@ import {
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import UserDrawer from "./header/UserDrawer";
+import UserDrawer from "../header/UserDrawer";
 
 const navLinks = [
     { name: "Job", link: "/" },

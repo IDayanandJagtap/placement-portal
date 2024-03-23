@@ -9,7 +9,7 @@ const cardColors = [
 ];
 const length = cardColors.length;
 
-const JobPage = ({ demoJobs }) => {
+const JobList = ({ demoJobs }) => {
     return (
         <Stack p={[3, 4, 4, 4, 6]} rowGap={[4, 5, 5, 5, 6]}>
             <Heading as={"h2"} fontSize={["24px", "28px"]}>
@@ -30,4 +30,4 @@ const JobPage = ({ demoJobs }) => {
     );
 };
 
-export default JobPage;
+export default JobList;

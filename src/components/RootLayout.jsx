@@ -12,7 +12,8 @@ const RootLayout = () => {
             h={"100dvh"}
             maxH={"100vh"}
             // background={"#2563EB"}
-            background={"#312E81"}
+            // background={"#312E81"}
+            background={"primary.900"}
             maxW={"100vw"}
             p={[2, 2, 2, 3, 4]}
             gap={0}
