@@ -8,11 +8,11 @@ const Tag = ({ name, showIcon, onClickHandler }) => {
     };
     return (
         <HStack
-            px={2}
+            px={[1.5, 2]}
             py={1}
-            mx={1}
-            my={1}
-            data-tagname={name}            
+            mx={[0, 1]}
+            my={[0, 1]}
+            data-tagname={name}
             backgroundColor={"#0369A1"}
             color={"#fff"}
             width={"fit-content"}
@@ -20,7 +20,11 @@ const Tag = ({ name, showIcon, onClickHandler }) => {
             borderRadius={8}
             onClick={handleOnTagClick}
         >
-            <Text as={"span"} data-tagname={name}>
+            <Text
+                as={"span"}
+                data-tagname={name}
+                fontSize={["10px", "10px", "12px", "12px", "14px", "16px"]}
+            >
                 {name}
             </Text>
 
