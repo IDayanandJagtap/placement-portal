@@ -7,11 +7,8 @@ import {
     useDisclosure,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
-import LeftSideMenu from "./header/LeftSideMenu";
-import SearchBar from "./header/SearchBar";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import UserDrawer from "./header/UserDrawer";
-import { FaUser } from "react-icons/fa";
 
 const navLinks = [
     { name: "Job", link: "/" },

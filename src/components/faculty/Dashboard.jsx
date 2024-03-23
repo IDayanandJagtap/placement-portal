@@ -20,9 +20,9 @@ const Dashboard = () => {
                 alignItems={"center"}
                 h={"full"}
             >
-                {data.map((e) => {
+                {data.map((e, index) => {
                     return (
-                        <GridItem>
+                        <GridItem key={index}>
                             <VStack
                                 py={12}
                                 px={16}

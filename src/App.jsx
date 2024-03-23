@@ -12,8 +12,9 @@ import Del from "./components/Del";
 function App() {
     return (
         <BrowserRouter>
-            <Header />
+            {/* <Header /> */}
             <Routes>
+                <Route path="/" element={<Home />}></Route>
                 <Route exact path="/" element={<Home />}></Route>
                 <Route exact path="/login" element={<Login />}></Route>
                 <Route exact path="/signup" element={<Signup />}></Route>

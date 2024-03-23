@@ -1,28 +1,14 @@
-import {
-    Button,
-    ButtonGroup,
-    HStack,
-    Image,
-    Stack,
-    Text,
-    VStack,
-} from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Button, HStack, Image, Stack, Text, VStack } from "@chakra-ui/react";
+import React, { useContext, useEffect, useState } from "react";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { FaLink, FaXTwitter } from "react-icons/fa6";
-import {
-    IoLogoGithub,
-    IoLogoInstagram,
-    IoCheckmarkSharp,
-    IoArrowBackOutline,
-} from "react-icons/io5";
+import { IoLogoGithub, IoLogoInstagram } from "react-icons/io5";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import demoImg from "../../assets/react.svg";
 import Skills from "./Skills";
 import Achievements from "./Achievements";
 import Academics from "./Academics";
 import "../../global.css";
-import logo from "../../../public/logo.jpeg";
 
 const StudentProfile = () => {
     const [student, setStudent] = useState({
@@ -34,6 +20,8 @@ const StudentProfile = () => {
     const navigate = useNavigate();
     const { id } = useParams();
     // console.log(id);
+    const location = useLocation();
+    // console.log(location.pathname.includes("student"));
 
     useEffect(() => {
         let stud = studentData.filter((e) => {
@@ -180,6 +168,37 @@ const StudentProfile = () => {
 
                 {/* Academics */}
                 <Academics />
+
+                {/* If current user is faculty then show the delete button! */}
+                {/* Also if faculty && this student is verified then show button to remove verified */}
+                <Stack
+                    justifyContent={"start"}
+                    w={"full"}
+                    py={4}
+                    px={6}
+                    my={2}
+                    backgroundColor={"white"}
+                    boxShadow={"md"}
+                    borderRadius={"lg"}
+                >
+                    <Text fontSize={"32px"}>Faculty options : </Text>
+                    <Stack alignItems={"flex-start"} my={2}>
+                        <Stack gap={0}>
+                            <Text color={"red.500"}>
+                                Invalidate : student does not have skills he/she
+                                has entered.
+                            </Text>
+                            <Text color={"red.500"}>
+                                Delete : not a verified student/ student not
+                                from your college.
+                            </Text>
+                        </Stack>
+                        <HStack mt={2} justifyContent={"flex-end"} w={"full"}>
+                            <Button colorScheme="blue">Invalidate</Button>
+                            <Button colorScheme="red">Delete </Button>
+                        </HStack>
+                    </Stack>
+                </Stack>
             </VStack>
         </>
     );

@@ -57,7 +57,7 @@ const UserDrawer = ({ isOpen, onClose }) => {
     //for development purpose only
     const userId = "1";
     //fetch user status: (faculty/student/company)        ... using props is better way to modularize this component ... but it'll make header unnecessarily complex
-    const drawerUser = "faculty"; // useSelector or useContext
+    const drawerUser = "company"; // useSelector or useContext
 
     let options;
     if (drawerUser === "company") {
@@ -131,7 +131,11 @@ const UserDrawer = ({ isOpen, onClose }) => {
                                         columnGap={1}
                                         color={"blackAplha.700"}
                                         onClick={() => {
-                                            navigate(e.link + userId);
+                                            let link =
+                                                drawerUser == "faculty"
+                                                    ? e.link
+                                                    : e.link + userId;
+                                            navigate(link);
                                             onClose();
                                         }}
                                     >

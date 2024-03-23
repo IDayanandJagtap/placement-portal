@@ -28,3 +28,45 @@ const something = () => {};
 const newObj = {
     something: () => {},
 };
+
+/* 
+    user -> storeUserDetails, fetchUserDetails, login, signup, logout
+    Faculty -> approvestudent, approveCompany, deleteCompany, deleteStudent, deleteJob;
+    student -> update, deleteProfile, fetchStudents, fetchSingleStudent, searchStudent
+    company -> update, PostJob, DeleteJob, fetchJobs, fetchSingleJob, fetchCompanies, fetchSingleCompany, searchCompany
+
+
+    #Context structure
+    User
+        Faculty
+            student
+                company
+                    <App>
+                company
+            student
+        Faculty
+    User
+
+
+    ?Company dashboard 
+     -Job posting 
+     - Job listing
+     - delete job 
+
+    ?Faculty dashboard 
+
+
+    ?Backend 
+
+
+    ?Home page 
+
+
+    ?History 
+
+    
+    ?Responsiveness 
+
+
+
+*/
