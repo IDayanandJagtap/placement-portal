@@ -4,10 +4,12 @@ import { JobOutlet, FetchLayout } from "./components";
 import { Login, Signup } from "./components/authentication";
 import { StudentProfile, UpdateStudent } from "./components/student";
 import JobDescriptionOutlet from "./components/jobs/JobDescriptionOutlet";
-import FetchCompany from "./components/company/FetchCompany";
+import FetchCompany from "./components/company/CompanyList";
 import DashboardLayout from "./components/faculty/DashboardLayout";
 import "./global.css";
 import RootLayout from "./components/RootLayout";
+import CompanyOutlet from "./components/CompanyOutlet";
+import CompanyDescriptionOutlet from "./components/company/CompanyDescriptionOutlet";
 
 function App() {
     return (
@@ -18,19 +20,26 @@ function App() {
                     <Route
                         exact
                         path="companies"
-                        element={<FetchCompany />}
+                        element={<CompanyOutlet />}
                     ></Route>
                     <Route
                         exact
                         path="students"
                         element={<FetchLayout />}
                     ></Route>
+                    {/* <Route path="history" element={<Home />}></Route> */}
+
+                    {/* Dynamic Routes */}
                     <Route
                         exact
                         path="jobs/:id"
                         element={<JobDescriptionOutlet />}
                     ></Route>
-                    {/* <Route path="history" element={<Home />}></Route> */}
+                    <Route
+                        exact
+                        path="companies/:id"
+                        element={<CompanyDescriptionOutlet />}
+                    ></Route>
 
                     {/* Authentication */}
                     <Route path="login" element={<Login />}></Route>
