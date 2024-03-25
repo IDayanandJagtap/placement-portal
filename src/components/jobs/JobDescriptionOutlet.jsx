@@ -34,7 +34,7 @@ export default JobDescriptionOutlet;
 const demoJobs = [
     {
         jobId: 1,
-        companyName: "Company Name",
+        companyName: "Job Name",
         jobDescription:
             " Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa quibusdam dolor, magnam officiis voluptate deserunt? Distinctio voluptates non fugiat et, voluptate tempora vitae natus, totam accusantium quod provident tempore? Enim harum nisi fuga non autem illum, eos vel officiis necessitatibus corporis sequi facere voluptatibus assumenda ea repellendus maxime. Incidunt, voluptas!",
         expectedSkills: [
@@ -50,28 +50,28 @@ const demoJobs = [
     },
     {
         jobId: 12,
-        companyName: "Company name",
+        companyName: "Job name",
         jobDescription:
             " Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa quibusdam dolor, magnam officiis voluptate deserunt? Distinctio voluptates non fugiat et, voluptate tempora vitae natus, totam accusantium quod provident tempore? Enim harum nisi fuga non autem illum, eos vel officiis necessitatibus corporis sequi facere voluptatibus assumenda ea repellendus maxime. Incidunt, voluptas!",
         expectedSkills: ["JavaScript", "React", "Cloud", "Hosting"],
     },
     {
         jobId: 123,
-        companyName: "Company",
+        companyName: "Job",
         jobDescription:
             " Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa quibusdam dolor, magnam officiis voluptate deserunt? Distinctio voluptates non fugiat et, voluptate tempora vitae natus, totam accusantium quod provident tempore? Enim harum nisi fuga non autem illum, eos vel officiis necessitatibus corporis sequi facere voluptatibus assumenda ea repellendus maxime. Incidunt, voluptas!",
         expectedSkills: ["JavaScript", "React", "Cloud", "Hosting"],
     },
     {
         jobId: 1234,
-        companyName: "Company",
+        companyName: "Job",
         jobDescription:
             " Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa quibusdam dolor, magnam officiis voluptate deserunt? Distinctio voluptates non fugiat et, voluptate tempora vitae natus, totam accusantium quod provident tempore? Enim harum nisi fuga non autem illum, eos vel officiis necessitatibus corporis sequi facere voluptatibus assumenda ea repellendus maxime. Incidunt, voluptas!",
         expectedSkills: ["JavaScript", "React", "Cloud", "Hosting"],
     },
     {
         jobId: 12345,
-        companyName: "Company",
+        companyName: "Job",
         jobDescription:
             " Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa quibusdam dolor, magnam officiis voluptate deserunt? Distinctio voluptates non fugiat et, voluptate tempora vitae natus, totam accusantium quod provident tempore? Enim harum nisi fuga non autem illum, eos vel officiis necessitatibus corporis sequi facere voluptatibus assumenda ea repellendus maxime. Incidunt, voluptas!",
         expectedSkills: ["JavaScript", "React", "Cloud", "Hosting"],

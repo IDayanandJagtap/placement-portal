@@ -4,17 +4,16 @@ import { useNavigate } from "react-router-dom";
 import Tag from "../utils/Tag";
 import { IoArrowForward } from "react-icons/io5";
 
-const JobCard = ({ job, lightColor, darkColor }) => {
+const JobCard = ({ job }) => {
     const navigate = useNavigate();
 
     return (
         <Stack
             flexDirection={"column"}
             p={[3, 4, 4, 5, 6]}
-            boxShadow={"md"}
-            background={lightColor}
-            border={"1px solid " + darkColor}
+            border={"1px solid #e7e7e7"}
             borderRadius={"xl"}
+            _hover={{ boxShadow: "md" }}
             onClick={() => {
                 // In mobile navigate button is not displayed, so navigation is used here
                 navigate("/job/" + job.jobId.toString());
@@ -40,7 +39,7 @@ const JobCard = ({ job, lightColor, darkColor }) => {
             </HStack>
             <Button
                 display={["none", "none", "none", "flex"]}
-                background={darkColor}
+                background={"primary.500"}
                 color={"white"}
                 width={"20px"}
                 padding={"2"}

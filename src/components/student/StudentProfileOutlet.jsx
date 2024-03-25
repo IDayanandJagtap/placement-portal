@@ -7,7 +7,7 @@ const sideBarItems = [
     { name: "Profile", section: "#profile" },
     { name: "Skills", section: "#skills" },
     { name: "Achievements", section: "#achievements" },
-    { name: "Academics", section: "#Academics" },
+    { name: "Academics", section: "#academics" },
 ];
 
 const StudentProfileOutlet = () => {

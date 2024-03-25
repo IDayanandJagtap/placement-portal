@@ -12,14 +12,14 @@ const StudentCard = ({ student }) => {
             className="studentCard"
             alignItems={"start"}
             backgroundColor={"white"}
-            border={"1px solid #b4b4b4"}
-            boxShadow={"md"}
+            border={"1px solid #e7e7e7"}
+            boxShadow={"xs"}
             borderRadius={6}
             cursor={"pointer"}
             h={"fit-content"}
             py={3}
             px={5}
-            _hover={{ background: "primary.50" }}
+            _hover={{ background: "secondary.50", boxShadow: "md" }}
             onClick={() => {
                 navigate(`/students/${student.id}`);
             }}

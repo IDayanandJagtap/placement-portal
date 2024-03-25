@@ -51,10 +51,9 @@ const CompanyList = () => {
                             flexDirection={["column", "column", "row"]}
                             alignItems={"center"}
                             justifyContent={"center"}
-                            boxShadow={"md"}
-                            background={cardColors[i % length].light}
-                            border={"1px solid " + cardColors[i % length].dark}
+                            border={"1px solid #e7e7e7"}
                             borderRadius={"xl"}
+                            _hover={{ boxShadow: "md" }}
                             minH={["fit-content", "fit-content", "18%"]}
                             onClick={() => {
                                 // In mobile navigate button is not displayed, so navigation is used here
@@ -104,7 +103,7 @@ const CompanyList = () => {
                                 </Text>
                                 <Button
                                     display={["none", "none", "flex"]}
-                                    background={cardColors[i % length].dark}
+                                    background={"primary.500"}
                                     color={"white"}
                                     width={"20px"}
                                     padding={"2"}

@@ -50,14 +50,9 @@ const Filter = ({
                         Clear
                     </Button>
                     <Button
-                        // colorScheme="blue"
-                        backgroundColor={"primary.900"}
-                        // color={"white"}
                         colorScheme="primary"
                         variant={"solid"}
                         size={"sm"}
-                        // border={"1px solid #2C5282"}
-                        // _hover={{ background: "white", color: "#2C5282" }}
                         onClick={handleOnApplyFilter}
                     >
                         Apply

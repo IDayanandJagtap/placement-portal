@@ -13,6 +13,7 @@ const Skills = ({ data }) => {
             backgroundColor={"secondary.50"}
             boxShadow={"md"}
             borderRadius={"lg"}
+            id="skills"
         >
             <Text
                 as={"h3"}

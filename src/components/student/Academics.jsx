@@ -20,6 +20,7 @@ const Academics = () => {
             backgroundColor={"secondary.50"}
             boxShadow={"md"}
             borderRadius={"lg"}
+            id="academics"
         >
             <Text
                 as={"h3"}

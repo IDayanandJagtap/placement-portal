@@ -12,6 +12,7 @@ const Achievements = () => {
             backgroundColor={"secondary.50"}
             boxShadow={"md"}
             borderRadius={"lg"}
+            id="achievements"
         >
             <Text
                 as={"h3"}

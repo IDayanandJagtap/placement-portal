@@ -58,7 +58,7 @@ const StudentProfile = () => {
                     alignSelf={"start"}
                     color={"white"}
                     padding={"2"}
-                    background={"primary.900"}
+                    // background={"primary.900"}
                     colorScheme="primary"
                     borderRadius={"full"}
                     onClick={() => {
@@ -76,6 +76,7 @@ const StudentProfile = () => {
                     backgroundColor={"secondary.50"}
                     boxShadow={"md"}
                     borderRadius={"md"}
+                    id="profile"
                 >
                     {/* Main info */}
                     <VStack

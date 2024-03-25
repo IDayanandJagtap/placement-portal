@@ -47,12 +47,13 @@ const ApplyToJob = () => {
                 </Button>
 
                 <Stack
-                    // background={"primary.50"}
-                    background={"#F8FAFC"}
+                    // background={"#F8FAFC"}
+                    background={"secondary.50"}
                     p={4}
                     mt={5}
+                    border={"1px solid #e7e7e7"}
                     borderRadius={"md"}
-                    boxShadow={"lg"}
+                    boxShadow={"md"}
                 >
                     <Heading
                         as={"h2"}
