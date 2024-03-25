@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import { JobOutlet, FetchLayout } from "./components";
+import { JobOutlet } from "./components";
 import { Login, Signup } from "./components/authentication";
 import { StudentProfile, UpdateStudent } from "./components/student";
 import JobDescriptionOutlet from "./components/jobs/JobDescriptionOutlet";
@@ -10,6 +10,8 @@ import "./global.css";
 import RootLayout from "./components/RootLayout";
 import CompanyOutlet from "./components/CompanyOutlet";
 import CompanyDescriptionOutlet from "./components/company/CompanyDescriptionOutlet";
+import StudentOutlet from "./components/StudentOutlet";
+import StudentProfileOutlet from "./components/student/StudentProfileOutlet";
 
 function App() {
     return (
@@ -25,20 +27,25 @@ function App() {
                     <Route
                         exact
                         path="students"
-                        element={<FetchLayout />}
+                        element={<StudentOutlet />}
                     ></Route>
                     {/* <Route path="history" element={<Home />}></Route> */}
 
                     {/* Dynamic Routes */}
                     <Route
                         exact
-                        path="jobs/:id"
+                        path="job/:id"
                         element={<JobDescriptionOutlet />}
                     ></Route>
                     <Route
                         exact
-                        path="companies/:id"
+                        path="company/:id"
                         element={<CompanyDescriptionOutlet />}
+                    ></Route>
+                    <Route
+                        exact
+                        path="students/:id"
+                        element={<StudentProfileOutlet />}
                     ></Route>
 
                     {/* Authentication */}

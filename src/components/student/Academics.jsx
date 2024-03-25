@@ -15,43 +15,62 @@ const Academics = () => {
             justifyContent={"start"}
             w={"full"}
             py={4}
-            px={6}
+            px={[4, 6]}
             my={2}
-            backgroundColor={"white"}
+            backgroundColor={"secondary.50"}
             boxShadow={"md"}
             borderRadius={"lg"}
         >
-            <Text as={"h3"} fontSize={"32px"}>
-                Academics
+            <Text
+                as={"h3"}
+                fontWeight={500}
+                fontSize={["22px", "24px", "26px", "32px"]}
+            >
+                Academics :
             </Text>
-            <HStack pl={10} py={2}>
+            <HStack pl={[0, 0, 10]} py={[1, 1, 3]}>
                 <Grid
                     templateColumns={"1fr 1fr"}
                     w={"full"}
                     rowGap={3}
-                    fontSize={"large"}
+                    fontSize={["14px", "16px", "16px", "18px"]}
                 >
                     <GridItem>
                         1st sem :{" "}
-                        <Text as={"span"} fontWeight={"bold"}>
+                        <Text as={"span"} fontWeight={"500"}>
                             {" "}
                             94.5
                         </Text>
                     </GridItem>
                     <GridItem>
-                        2nd sem : <Text as={"span"}>94.5</Text>
+                        2nd sem :{" "}
+                        <Text as={"span"} fontWeight={"500"}>
+                            94.5
+                        </Text>
                     </GridItem>
                     <GridItem>
-                        3rd sem : <Text as={"span"}>94.5</Text>
+                        3rd sem :{" "}
+                        <Text as={"span"} fontWeight={"500"}>
+                            94.5
+                        </Text>
                     </GridItem>
                     <GridItem>
-                        4th sem : <Text as={"span"}>94.5</Text>
+                        4th sem :{" "}
+                        <Text as={"span"} fontWeight={"500"}>
+                            94.5
+                        </Text>
                     </GridItem>
                     <GridItem>
-                        5th sem : <Text as={"span"}>94.5</Text>
+                        5th sem :{" "}
+                        <Text as={"span"} fontWeight={"500"}>
+                            94.5
+                        </Text>
                     </GridItem>
                     <GridItem>
-                        6th sem : <Text as={"span"}>94.5</Text>
+                        6th sem :{" "}
+                        <Text as={"span"} fontWeight={"500"}>
+                            94.5
+                        </Text>
                     </GridItem>
                 </Grid>
             </HStack>

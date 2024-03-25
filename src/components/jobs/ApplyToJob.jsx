@@ -31,6 +31,7 @@ const ApplyToJob = () => {
     return (
         <Stack p={[3, 4, 4, 4, 6]}>
             <Box w={"100%"} mx={"auto"}>
+                {/* Back button */}
                 <Button
                     alignSelf={"start"}
                     color={"white"}

@@ -1,2 +1,2 @@
 export { default as JobOutlet } from "./JobOutlet";
-export { default as FetchLayout } from "./FetchLayout";
+export { default as FetchLayout } from "./StudentOutlet";

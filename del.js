@@ -23,12 +23,6 @@ menuLinks.map((e) => {
     console.log(e.link + " " + e.name);
 });
 
-const something = () => {};
-
-const newObj = {
-    something: () => {},
-};
-
 /* 
     user -> storeUserDetails, fetchUserDetails, login, signup, logout
     Faculty -> approvestudent, approveCompany, deleteCompany, deleteStudent, deleteJob;
@@ -70,5 +64,10 @@ const newObj = {
     ----------------------------------------------------
                 |-----------------------------------------
 
+
+    Components : 
+        
+
+        history?
 
 */

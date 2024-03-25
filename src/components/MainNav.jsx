@@ -30,6 +30,7 @@ const MainNav = ({ outletRef }) => {
         let navlabels = Array.from(
             document.getElementsByClassName("navlabels")
         );
+        console.log(navlabels);
         navlabels.forEach((e) => {
             e.style.display = "block";
         });

@@ -17,7 +17,7 @@ const JobCard = ({ job, lightColor, darkColor }) => {
             borderRadius={"xl"}
             onClick={() => {
                 // In mobile navigate button is not displayed, so navigation is used here
-                navigate(job.jobId.toString());
+                navigate("/job/" + job.jobId.toString());
             }}
         >
             <Heading
@@ -49,7 +49,7 @@ const JobCard = ({ job, lightColor, darkColor }) => {
                 alignSelf={"flex-end"}
                 _hover={{ transform: "scale(1.1)" }}
                 onClick={() => {
-                    navigate(job.jobId.toString());
+                    navigate("/job/" + job.jobId.toString());
                 }}
             >
                 <IoArrowForward size={20} />

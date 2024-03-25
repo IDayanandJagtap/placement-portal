@@ -1,9 +1,16 @@
-import { Button, HStack, Image, Stack, Text, VStack } from "@chakra-ui/react";
-import React, { useContext, useEffect, useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import {
+    Button,
+    HStack,
+    Heading,
+    Image,
+    Stack,
+    Text,
+    VStack,
+} from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { FaLink, FaXTwitter } from "react-icons/fa6";
-import { IoLogoGithub, IoLogoInstagram } from "react-icons/io5";
-import { IoIosArrowRoundBack } from "react-icons/io";
+import { IoArrowBack, IoLogoGithub, IoLogoLinkedin } from "react-icons/io5";
 import demoImg from "../../assets/react.svg";
 import Skills from "./Skills";
 import Achievements from "./Achievements";
@@ -19,9 +26,6 @@ const StudentProfile = () => {
     });
     const navigate = useNavigate();
     const { id } = useParams();
-    // console.log(id);
-    const location = useLocation();
-    // console.log(location.pathname.includes("student"));
 
     useEffect(() => {
         let stud = studentData.filter((e) => {
@@ -46,50 +50,54 @@ const StudentProfile = () => {
                 }}
             ></img> */}
             <VStack
-                w={"100%"}
-                mx={"auto"}
-                py={20}
-                px={"15%"}
-                background={"#f1f1f1"}
+                p={[3, 4, 4, 4, 6]}
+                rowGap={[1, 4, 4, 5, 6]}
                 // borderRadius={"md"}
             >
                 <Button
                     alignSelf={"start"}
-                    background={"white"}
+                    color={"white"}
+                    padding={"2"}
+                    background={"primary.900"}
+                    colorScheme="primary"
+                    borderRadius={"full"}
                     onClick={() => {
-                        navigate("/students");
+                        navigate(-1);
                     }}
-                    // background={"blue.50"}
                 >
-                    <IoIosArrowRoundBack size={40} />
+                    <IoArrowBack size={24} />
                 </Button>
 
-                <HStack
+                <Stack
                     w={"full"}
                     p={5}
                     my={2}
-                    backgroundColor={"white"}
+                    flexDirection={["column-reverse", "column-reverse", "row"]}
+                    backgroundColor={"secondary.50"}
                     boxShadow={"md"}
                     borderRadius={"md"}
                 >
                     {/* Main info */}
                     <VStack
                         width={"full"}
-                        alignItems={"start"}
+                        alignItems={["center", "center", "start"]}
                         justifyContent={"start"}
                         pl={1}
                     >
-                        <Text as={"h1"} fontSize={"40px"}>
+                        <Heading
+                            as={"h1"}
+                            fontSize={["24px", "26px", "26px", "30px", "32px"]}
+                        >
                             {student.name}
                             {/* isVerified */}
                             {/* <IoCheckmarkSharp /> */}
-                        </Text>
+                        </Heading>
                         <Text
                             as={"h3"}
                             color={"gray.500"}
-                            mt={"-15px"}
+                            mt={[-1, -2]}
                             pl={1}
-                            fontSize={"20px"}
+                            fontSize={["14px", "16px", "16px", "18px"]}
                         >
                             {student.degree}{" "}
                             <Text as={"span"}>, {student.year} year</Text>
@@ -98,7 +106,7 @@ const StudentProfile = () => {
                         {/* Portfolio link */}
                         <HStack color={"blue.700"} mt={1} mb={2}>
                             <FaLink size={"20"} />
-                            <Text as={"a"} fontSize={"20px"}>
+                            <Text as={"a"} fontSize={["16px", "18px", "20px"]}>
                                 <a
                                     target="_blank"
                                     href="https://dayanandjagtap.vercel.app"
@@ -117,7 +125,7 @@ const StudentProfile = () => {
                                 <FaXTwitter size={24} className="hoverIcon" />
                             </a>
                             <a target="_blank" href="#">
-                                <IoLogoInstagram
+                                <IoLogoLinkedin
                                     size={24}
                                     className="hoverIcon"
                                 />
@@ -127,13 +135,9 @@ const StudentProfile = () => {
                         {/* Buttons */}
                         <HStack mt={12}>
                             <Button
-                                background={"blue.700"}
-                                border={"1px solid #2C5282"}
-                                color={"white"}
-                                _hover={{
-                                    color: "#2C5282",
-                                    background: "transparent",
-                                }}
+                                size={["sm", "md"]}
+                                colorScheme="primary"
+                                // background={"primary.900"}
                             >
                                 Download CV
                             </Button>
@@ -141,6 +145,7 @@ const StudentProfile = () => {
                                 variant={"outline"}
                                 border={"1px solid #2C5282"}
                                 color={"#2c5282"}
+                                size={["sm", "md"]}
                             >
                                 Contact
                             </Button>
@@ -148,7 +153,7 @@ const StudentProfile = () => {
                     </VStack>
 
                     {/* Profile pic */}
-                    <VStack w={"30%"} py={2}>
+                    <VStack w={["100%", "100%", "50%"]} py={2} pb={[3, 3, 0]}>
                         <Image
                             src={demoImg}
                             width={200}
@@ -158,7 +163,7 @@ const StudentProfile = () => {
                             filter={"drop-shadow(2px 2px 4px #000)"}
                         ></Image>
                     </VStack>
-                </HStack>
+                </Stack>
 
                 {/* Skills */}
                 <Skills data={student.skills} />
@@ -175,15 +180,23 @@ const StudentProfile = () => {
                     justifyContent={"start"}
                     w={"full"}
                     py={4}
-                    px={6}
+                    px={[4, 6]}
                     my={2}
-                    backgroundColor={"white"}
+                    backgroundColor={"secondary.50"}
                     boxShadow={"md"}
                     borderRadius={"lg"}
                 >
-                    <Text fontSize={"32px"}>Faculty options : </Text>
+                    <Text
+                        fontWeight={500}
+                        fontSize={["22px", "24px", "26px", "32px"]}
+                    >
+                        Faculty options :{" "}
+                    </Text>
                     <Stack alignItems={"flex-start"} my={2}>
-                        <Stack gap={0}>
+                        <Stack
+                            gap={0}
+                            fontSize={["14px", "16px", "16px", "18px"]}
+                        >
                             <Text color={"red.500"}>
                                 Invalidate : student does not have skills he/she
                                 has entered.
@@ -194,8 +207,12 @@ const StudentProfile = () => {
                             </Text>
                         </Stack>
                         <HStack mt={2} justifyContent={"flex-end"} w={"full"}>
-                            <Button colorScheme="blue">Invalidate</Button>
-                            <Button colorScheme="red">Delete </Button>
+                            <Button colorScheme="blue" size={["sm", "md"]}>
+                                Invalidate
+                            </Button>
+                            <Button colorScheme="red" size={["sm", "md"]}>
+                                Delete{" "}
+                            </Button>
                         </HStack>
                     </Stack>
                 </Stack>

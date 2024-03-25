@@ -9,17 +9,13 @@
     }
 }
 
-.hoverIcon,
-.studentCard {
-    transition: transform 0.2s linear;
-}
 .hoverIcon:hover {
     transform: scale(1.1);
 }
 
-.studentCard:hover {
+/* .studentCard:hover {
     transform: scale(1.01);
-}
+} */
 
 .primaryButton {
     background-color: #2c5282;

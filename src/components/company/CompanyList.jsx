@@ -58,7 +58,7 @@ const CompanyList = () => {
                             minH={["fit-content", "fit-content", "18%"]}
                             onClick={() => {
                                 // In mobile navigate button is not displayed, so navigation is used here
-                                navigate(e.id.toString());
+                                navigate("/company/" + e.id.toString());
                             }}
                         >
                             <Stack w={"50%"}>
@@ -114,7 +114,7 @@ const CompanyList = () => {
                                     right={1}
                                     _hover={{ transform: "scale(1.1)" }}
                                     onClick={() => {
-                                        navigate(e.id);
+                                        navigate("/company/" + e.id.toString());
                                     }}
                                 >
                                     <IoArrowForward size={20} />

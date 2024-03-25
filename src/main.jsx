@@ -9,12 +9,15 @@ import { StudentProvider } from "./contextApi/StudentContext";
 const theme = extendTheme({
     colors: {
         primary: {
-            50: "#EEF2FF",
-            100: "#E0E7FF",
-            500: "#6366F1",
-            600: "#4F46E5",
-            800: "#3730A3",
-            900: "#312E81",
+            50: "#EFF6FF",
+            100: "#DBEAFE",
+            500: "#1E3A8A",
+            600: "#2563EB",
+            800: "#1E40AF",
+            900: "#172554",
+        },
+        secondary: {
+            50: "#F9FAFB",
         },
     },
 });
