@@ -1,9 +1,9 @@
 import { Stack } from "@chakra-ui/react";
 import React from "react";
-import ApplyToJob from "./ApplyToJob";
-import Notifications from "../utils/Notifications";
+import { ApplyToJob } from ".";
+import { Notifications } from "../utils";
 
-const JobDescriptionOutlet = () => {
+const JobProfileContainer = () => {
     return (
         <Stack flexDirection={"row"} h={"full"} overflow={"auto"} gap={0}>
             {/* Main component */}
@@ -29,7 +29,7 @@ const JobDescriptionOutlet = () => {
     );
 };
 
-export default JobDescriptionOutlet;
+export default JobProfileContainer;
 
 const demoJobs = [
     {

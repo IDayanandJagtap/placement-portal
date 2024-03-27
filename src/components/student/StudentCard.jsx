@@ -1,6 +1,6 @@
 import { HStack, Heading, Text, VStack } from "@chakra-ui/react";
 import React from "react";
-import Tag from "../utils/Tag";
+import { Tag } from "../utils";
 import "../../global.css";
 import { useNavigate } from "react-router-dom";
 

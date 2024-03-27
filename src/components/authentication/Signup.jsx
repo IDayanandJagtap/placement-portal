@@ -2,18 +2,22 @@ import {
     Box,
     Button,
     HStack,
+    Image,
     Input,
     InputGroup,
+    InputLeftAddon,
+    InputLeftElement,
     InputRightElement,
     Select,
+    Stack,
     Text,
-    VStack,
 } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
-import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 import { useRef, useState } from "react";
-
-const Signup = () => {
+import { IoMdEye, IoMdEyeOff } from "react-icons/io";
+import { Link } from "react-router-dom";
+import { IoLockClosed, IoMail, IoPeople } from "react-icons/io5";
+import loginImg from "../../assets/loginHero.png";
+const Login = () => {
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
     const inputPassword = useRef(null);
 
@@ -28,94 +32,155 @@ const Signup = () => {
     };
 
     return (
-        <VStack
-            w={["100%", "100%", "95%", "70%"]}
-            mx={"auto"}
-            h={"90vh"}
+        <Stack
+            zIndex={1}
+            background={"primary.900 "}
+            w={"100vw"}
+            h={"100vh"}
+            position={"fixed"}
+            top={0}
+            right={0}
+            p={4}
             justifyContent={"center"}
+            flexDirection={"row"}
         >
-            <VStack
-                w={["95%", "90%", "80%", "50%"]}
-                mx={"auto"}
-                boxShadow={"lg"}
+            <Stack
+                w={"full"}
+                justifyContent={"space-between"}
+                alignItems={"center"}
                 p={6}
-                background={"gray.300"}
-                borderRadius={"8"}
-                gap={4}
             >
-                <Text as={"h1"} fontSize={"30"} mb={4} fontWeight={"semibold"}>
-                    Signup
-                </Text>
-                <Input
-                    type="text"
-                    id="name"
-                    placeholder="Enter full name"
-                    border={"none"}
-                    background={"white"}
-                    required
-                ></Input>
-                <Input
-                    type="email"
-                    id="email"
-                    placeholder="Enter your email"
-                    border={"none"}
-                    background={"white"}
-                    required
-                ></Input>
-                <InputGroup>
-                    <Input
-                        type="password"
-                        placeholder="Enter your password"
-                        border={"none"}
-                        background={"white"}
-                        ref={inputPassword}
-                        required
-                    ></Input>
-                    <InputRightElement
-                        opacity={".7"}
-                        cursor={"pointer"}
-                        onClick={toggleShowPassword}
-                    >
-                        {isPasswordVisible ? <IoMdEyeOff /> : <IoMdEye />}
-                    </InputRightElement>
-                </InputGroup>
-                <Input
-                    type="password"
-                    placeholder="Confirm password"
-                    border={"none"}
-                    background={"white"}
-                    required
-                ></Input>
-                <Select
-                    placeholder="Signup as"
-                    border={"none"}
-                    background={"white"}
-                    required
-                    color={"gray.500"}
+                <Text
+                    fontSize={"20"}
+                    //fontWeight={"semibold"}
+                    //textAlign={"center"}
+                    color={"white"}
                 >
-                    <option value="student">Student</option>
-                    <option value="company">Company</option>
-                    <option value="faculty">Faculty</option>
-                </Select>
-
-                <HStack justifyContent={"space-between"} w={"full"} mt={6}>
-                    <Text as={"p"} pl={1}>
-                        Already have an account ? &nbsp;
-                        <Link to={"/login"} style={{ color: "#3182CE" }}>
-                            Login here
-                        </Link>
+                    <Text as={"span"} fontSize={"40px"} fontWeight={"500"}>
+                        PLACED
                     </Text>
-                    <Button  backgroundColor={"blue.700"}
-                            color={"white"}
-                            border={"1px solid #2C5282"}
-                            _hover={{ background: "white", color: "#2C5282" }}>Signup</Button>
-                </HStack>
-            </VStack>
-            <Text my={2}>
-                You will be redirected to dashboard to create your profile.
-            </Text>
-        </VStack>
+                    <br />
+                    Your gateway to career opportunities.
+                    <br /> Login to explore job listings, connect with
+                    employers, and take the next step towards your professional
+                    journey.
+                </Text>
+                <Image w={450} src={loginImg} />
+            </Stack>
+            <Stack
+                w={"full"}
+                background={"white"}
+                p={6}
+                gap={4}
+                borderRadius={"xl"}
+            >
+                <Stack
+                    w={"60%"}
+                    h={"60%"}
+                    // background={"gray.200"}
+                    justifyContent={"space-between"}
+                    m={"auto"}
+                    p={4}
+                >
+                    <Text
+                        as={"h1"}
+                        fontSize={"30"}
+                        textAlign={"center"}
+                        fontWeight={"semibold"}
+                    >
+                        Create account !
+                    </Text>
+                    <Stack gap={6}>
+                        <InputGroup>
+                            <InputLeftElement ml={-1}>
+                                <IoMail size={20} />
+                            </InputLeftElement>
+                            <Input
+                                type="email"
+                                id="email"
+                                placeholder="Email"
+                                variant={"flushed"}
+                                borderBottom={"2px solid #b4b4b4"}
+                                required
+                            ></Input>
+                        </InputGroup>
+                        <InputGroup>
+                            <InputLeftElement ml={-1}>
+                                <IoLockClosed size={20} />
+                            </InputLeftElement>
+                            <Input
+                                type="password"
+                                placeholder="Password"
+                                variant={"flushed"}
+                                borderBottom={"2px solid #b4b4b4"}
+                                ref={inputPassword}
+                                required
+                            ></Input>
+                            <InputRightElement
+                                onClick={toggleShowPassword}
+                                cursor={"pointer"}
+                            >
+                                {isPasswordVisible ? (
+                                    <IoMdEyeOff />
+                                ) : (
+                                    <IoMdEye />
+                                )}
+                            </InputRightElement>
+                        </InputGroup>
+                        <InputGroup>
+                            <InputLeftElement ml={-1}>
+                                <IoLockClosed size={20} />
+                            </InputLeftElement>
+                            <Input
+                                type="password"
+                                placeholder="Confirm password"
+                                variant={"flushed"}
+                                borderBottom={"2px solid #b4b4b4"}
+                                ref={inputPassword}
+                                required
+                            ></Input>
+                            <InputRightElement
+                                onClick={toggleShowPassword}
+                                cursor={"pointer"}
+                            >
+                                {isPasswordVisible ? (
+                                    <IoMdEyeOff />
+                                ) : (
+                                    <IoMdEye />
+                                )}
+                            </InputRightElement>
+                        </InputGroup>
+                        <InputGroup borderBottom={"2px solid #b4b4b4"}>
+                            <InputLeftElement ml={-1}>
+                                <IoPeople size={20} />
+                            </InputLeftElement>
+                            <Select
+                                placeholder="Signup as"
+                                variant={"flushed"}
+                                required
+                                color={"gray.500"}
+                                pl={8}
+                            >
+                                <option value="student">Student</option>
+                                <option value="company">Company</option>
+                            </Select>
+                        </InputGroup>
+                        <Button colorScheme="primary" mt={2}>
+                            Signup
+                        </Button>
+                    </Stack>
+                    <HStack justify={"center"} w={"full"}>
+                        <Text as={"p"} pl={1}>
+                            Already have an account ? &nbsp;
+                            <Link to={"/login"} style={{ color: "#3182CE" }}>
+                                Login here
+                            </Link>
+                        </Text>
+                    </HStack>
+                </Stack>
+            </Stack>
+        </Stack>
     );
 };
 
-export default Signup;
+export default Login;

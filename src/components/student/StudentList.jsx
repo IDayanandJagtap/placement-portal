@@ -30,7 +30,6 @@ const StudentList = ({ studentData }) => {
                 w={"full"}
                 gap={5}
                 overflow={"scroll"}
-                // border={"1px solid red"}
                 templateColumns={["1fr", "1fr", "1fr 1fr"]}
             >
                 {studentData.map((student) => {

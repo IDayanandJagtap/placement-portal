@@ -1,7 +1,7 @@
 import { Button, Checkbox, HStack, Stack, Text } from "@chakra-ui/react";
 import React from "react";
 
-const Filter = ({
+const StudentFilter = ({
     checkBoxes,
     filterBoxValues,
     handleCheckboxClick,
@@ -63,4 +63,4 @@ const Filter = ({
     );
 };
 
-export default Filter;
+export default StudentFilter;

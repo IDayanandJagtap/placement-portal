@@ -8,7 +8,7 @@ import {
     Textarea,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
-import Tag from "../utils/Tag";
+import { Tag } from "../utils";
 import { useNavigate } from "react-router-dom";
 import { IoArrowBack } from "react-icons/io5";
 
@@ -47,7 +47,6 @@ const ApplyToJob = () => {
                 </Button>
 
                 <Stack
-                    // background={"#F8FAFC"}
                     background={"secondary.50"}
                     p={4}
                     mt={5}

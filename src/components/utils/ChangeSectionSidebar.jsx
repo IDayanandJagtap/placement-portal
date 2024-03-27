@@ -1,14 +1,7 @@
 import { Divider, Stack, Text, VStack } from "@chakra-ui/react";
 import React, { useState } from "react";
-import { HashLink } from "react-router-hash-link";
 
-const PageInfoSideBar = ({ list }) => {
-    let [currentSection, setCurrentSection] = useState("#");
-
-    const handleOnLinkClick = () => {
-        setCurrentSection(window.location.hash);
-    };
-
+const ChangeSectionSidebar = ({ list, currentSection, handler }) => {
     return (
         <Stack p={4}>
             <Text as={"h3"} fontSize={"20px"}>
@@ -28,9 +21,9 @@ const PageInfoSideBar = ({ list }) => {
                         cursor={"pointer"}
                         borderRadius={"md"}
                         fontSize={"18px"}
-                        onClick={handleOnLinkClick}
+                        onClick={() => handler(e.section)}
                     >
-                        <HashLink to={e.section}>{e.name}</HashLink>
+                        {e.name}
                     </Text>
                 ))}
             </VStack>
@@ -38,4 +31,4 @@ const PageInfoSideBar = ({ list }) => {
     );
 };
 
-export default PageInfoSideBar;
+export default ChangeSectionSidebar;

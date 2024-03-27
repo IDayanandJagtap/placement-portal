@@ -14,6 +14,7 @@ const links = [
 ];
 
 const MainNav = ({ outletRef }) => {
+    //change component name.
     const navigate = useNavigate();
     const { pathname } = useLocation();
     const hamMenuRef = useRef(0);

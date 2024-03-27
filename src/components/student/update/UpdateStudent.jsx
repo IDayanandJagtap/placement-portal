@@ -11,11 +11,11 @@ import {
 import React, { useState } from "react";
 import { FaPlus } from "react-icons/fa6";
 
-import demoImg from "../../assets/userAvatar.png";
-import UpdateAchievements from "./update/UpdateAchievements";
-import UpdateAcademics from "./update/UpdateAcademics";
-import UpdateContact from "./update/UpdateContact";
-import UpdateSkills from "./update/UpdateSkills";
+import demoImg from "../../../assets/userAvatar.png";
+import UpdateAchievements from "./UpdateAchievements";
+import UpdateAcademics from "./UpdateAcademics";
+import UpdateContact from "./UpdateContact";
+import UpdateSkills from "./UpdateSkills";
 
 const UpdateStudent = () => {
     const [activeSection, setActiveSection] = useState(0);

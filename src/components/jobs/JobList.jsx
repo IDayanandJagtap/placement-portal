@@ -1,6 +1,6 @@
-import { Heading, Stack, Text } from "@chakra-ui/react";
+import { Heading, Stack } from "@chakra-ui/react";
 import React from "react";
-import JobCard from "./JobCard";
+import { JobCard } from "./";
 
 const JobList = ({ demoJobs }) => {
     return (

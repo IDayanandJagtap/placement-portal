@@ -1,7 +1,6 @@
 import { Stack } from "@chakra-ui/react";
 import React, { useState } from "react";
-import StudentList from "./student/StudentList";
-import Filter from "./student/Filter";
+import { StudentList, StudentFilter } from "./student";
 
 const StudentOutlet = () => {
     const [filterBoxValues, setFilterBoxValues] = useState(
@@ -82,7 +81,7 @@ const StudentOutlet = () => {
                 p={[2, 2, 2, 2, 4]}
                 background={"#EEF2FF"}
             >
-                <Filter
+                <StudentFilter
                     checkBoxes={checkBoxes}
                     filterBoxValues={filterBoxValues}
                     handleCheckboxClick={handleCheckboxClick}

@@ -1,8 +1,7 @@
 import { Stack } from "@chakra-ui/react";
 import React from "react";
-import CompanyList from "./company/CompanyList";
-import PageInfoSideBar from "./utils/PageInfoSideBar";
-import Notifications from "./utils/Notifications";
+import { CompanyList } from "./company";
+import { Notifications } from "./utils";
 
 const CompanyOutlet = () => {
     return (

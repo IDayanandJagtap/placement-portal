@@ -1,6 +1,6 @@
 import { Button, HStack, Heading, Stack, Text, VStack } from "@chakra-ui/react";
 import React from "react";
-import Tag from "../utils/Tag";
+import Tag from "../../utils/Tag";
 
 const Skills = ({ data }) => {
     return (

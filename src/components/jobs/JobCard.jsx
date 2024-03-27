@@ -1,7 +1,7 @@
 import { Button, HStack, Heading, Stack, Text } from "@chakra-ui/react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Tag from "../utils/Tag";
+import { Tag } from "../utils";
 import { IoArrowForward } from "react-icons/io5";
 
 const JobCard = ({ job }) => {

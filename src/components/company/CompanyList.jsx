@@ -15,13 +15,6 @@ import { IoArrowForward, IoSearch } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import demoImg from "../../assets/jade.png";
 
-const cardColors = [
-    { dark: "#EF4444", light: "#FEF2F2" },
-    { dark: "#EAB308", light: "#FEFCE8" },
-    { dark: "#22C55E", light: "#F0FDF4" },
-];
-const length = cardColors.length;
-
 const CompanyList = () => {
     const navigate = useNavigate();
     return (

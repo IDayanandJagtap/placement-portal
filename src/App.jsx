@@ -1,17 +1,17 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import { JobOutlet } from "./components";
 import { Login, Signup } from "./components/authentication";
-import { StudentProfile, UpdateStudent } from "./components/student";
-import JobDescriptionOutlet from "./components/jobs/JobDescriptionOutlet";
-import FetchCompany from "./components/company/CompanyList";
-import DashboardLayout from "./components/faculty/DashboardLayout";
+import {
+    JobOutlet,
+    CompanyOutlet,
+    RootLayout,
+    StudentOutlet,
+    DashboardContainer,
+} from "./components";
+import { JobProfileContainer } from "./components/jobs";
+import { CompanyProfileContainer } from "./components/company";
+import { StudentProfileContainer } from "./components/student";
 import "./global.css";
-import RootLayout from "./components/RootLayout";
-import CompanyOutlet from "./components/CompanyOutlet";
-import CompanyDescriptionOutlet from "./components/company/CompanyDescriptionOutlet";
-import StudentOutlet from "./components/StudentOutlet";
-import StudentProfileOutlet from "./components/student/StudentProfileOutlet";
 
 function App() {
     return (
@@ -29,50 +29,34 @@ function App() {
                         path="students"
                         element={<StudentOutlet />}
                     ></Route>
+                    <Route
+                        exact
+                        path="/me"
+                        element={<DashboardContainer />}
+                    ></Route>
                     {/* <Route path="history" element={<Home />}></Route> */}
 
                     {/* Dynamic Routes */}
                     <Route
                         exact
                         path="job/:id"
-                        element={<JobDescriptionOutlet />}
+                        element={<JobProfileContainer />}
                     ></Route>
                     <Route
                         exact
                         path="company/:id"
-                        element={<CompanyDescriptionOutlet />}
+                        element={<CompanyProfileContainer />}
                     ></Route>
                     <Route
                         exact
                         path="students/:id"
-                        element={<StudentProfileOutlet />}
+                        element={<StudentProfileContainer />}
                     ></Route>
 
                     {/* Authentication */}
                     <Route path="login" element={<Login />}></Route>
                     <Route path="signup" element={<Signup />}></Route>
                 </Route>
-                {/* <Route exact path="/" element={<Home />}></Route>
-                <Route exact path="/login" element={<Login />}></Route>
-                <Route exact path="/signup" element={<Signup />}></Route>
-                <Route
-                    path="/students"
-                    element={<FetchLayout find={"student"} />}
-                ></Route>
-                <Route path="/student/:id" element={<StudentProfile />}></Route>
-                <Route
-                    path="/student/update/:id"
-                    element={<UpdateStudent />}
-                ></Route>
-                <Route path="/jobs/:id" element={<JobDescription />}></Route>
-                <Route path="/companies" element={<FetchCompany />}></Route>
-
-                <Route
-                    path="/faculty/dashboard"
-                    element={<DashboardLayout />}
-                ></Route>
-
-                <Route path="/del" element={<Del />}></Route> */}
             </Routes>
         </BrowserRouter>
     );
