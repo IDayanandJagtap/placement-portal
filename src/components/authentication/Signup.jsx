@@ -1,25 +1,27 @@
 import {
-    Box,
     Button,
     HStack,
     Image,
     Input,
     InputGroup,
-    InputLeftAddon,
     InputLeftElement,
     InputRightElement,
     Select,
     Stack,
     Text,
+    VStack,
 } from "@chakra-ui/react";
 import { useRef, useState } from "react";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
-import { Link } from "react-router-dom";
-import { IoLockClosed, IoMail, IoPeople } from "react-icons/io5";
-import loginImg from "../../assets/loginHero.png";
+import { Link, useNavigate } from "react-router-dom";
+import { IoLockClosed, IoMail, IoPeople, IoPlayForward } from "react-icons/io5";
+import loginImg from "../../assets/loginImg5.jpg";
+
 const Login = () => {
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
     const inputPassword = useRef(null);
+    const navigate = useNavigate();
+    const signupComponentRef = useRef(0); // ref to the main parent to change it's style
 
     const toggleShowPassword = (e) => {
         if (isPasswordVisible) {
@@ -31,10 +33,18 @@ const Login = () => {
         }
     };
 
+    const handleOnSignupClick = (e) => {
+        signupComponentRef.current.style.top = "-100vh";
+        setTimeout(() => navigate("/"), 300);
+    };
+
     return (
         <Stack
+            ref={signupComponentRef}
             zIndex={1}
-            background={"primary.900 "}
+            background={`url(${loginImg})`}
+            backgroundRepeat={"no-repeat"}
+            backgroundSize={"cover"}
             w={"100vw"}
             h={"100vh"}
             position={"fixed"}
@@ -46,26 +56,39 @@ const Login = () => {
         >
             <Stack
                 w={"full"}
-                justifyContent={"space-between"}
+                justifyContent={"center"}
                 alignItems={"center"}
                 p={6}
             >
-                <Text
-                    fontSize={"20"}
-                    //fontWeight={"semibold"}
-                    //textAlign={"center"}
+                <Stack
+                    w={"60%"}
+                    h={"60%"}
+                    background={"rgba(125, 194, 230, 0.5)"}
+                    borderRadius={"md"}
+                    p={8}
+                    fontSize={"40px"}
                     color={"white"}
                 >
-                    <Text as={"span"} fontSize={"40px"} fontWeight={"500"}>
+                    <Text fontWeight={"600"} fontSize={"50px"}>
                         PLACED
                     </Text>
-                    <br />
-                    Your gateway to career opportunities.
-                    <br /> Login to explore job listings, connect with
-                    employers, and take the next step towards your professional
-                    journey.
-                </Text>
-                <Image w={450} src={loginImg} />
+                    <HStack mt={2}>
+                        <IoPlayForward />
+                        <Text as={"span"}>Your gateway to</Text>
+                    </HStack>
+                    <Text>
+                        <Text as={"span"} color={"black"} fontWeight={"500"}>
+                            career
+                        </Text>{" "}
+                        opportunities.
+                    </Text>
+                    <Text fontSize={"20px"} mt={8}>
+                        Login to explore Job listings, connect with Employers
+                        and take the next step towards your professional
+                        journey!
+                    </Text>
+                </Stack>
+                {/* <Image w={450} src={loginImg} /> */}
             </Stack>
             <Stack
                 w={"full"}
@@ -76,8 +99,7 @@ const Login = () => {
             >
                 <Stack
                     w={"60%"}
-                    h={"60%"}
-                    // background={"gray.200"}
+                    h={"70%"}
                     justifyContent={"space-between"}
                     m={"auto"}
                     p={4}
@@ -88,7 +110,7 @@ const Login = () => {
                         textAlign={"center"}
                         fontWeight={"semibold"}
                     >
-                        Create account !
+                        Get started !
                     </Text>
                     <Stack gap={6}>
                         <InputGroup>
@@ -165,18 +187,25 @@ const Login = () => {
                                 <option value="company">Company</option>
                             </Select>
                         </InputGroup>
-                        <Button colorScheme="primary" mt={2}>
+                        <Text fontSize={"12px"} pl={1} color={"red.500"}>
+                            You'll be redirected to complete your profile.
+                        </Text>
+                        <Button
+                            colorScheme="primary"
+                            mt={2}
+                            onClick={handleOnSignupClick}
+                        >
                             Signup
                         </Button>
                     </Stack>
-                    <HStack justify={"center"} w={"full"}>
+                    <VStack justify={"center"} w={"full"}>
                         <Text as={"p"} pl={1}>
                             Already have an account ? &nbsp;
                             <Link to={"/login"} style={{ color: "#3182CE" }}>
                                 Login here
                             </Link>
                         </Text>
-                    </HStack>
+                    </VStack>
                 </Stack>
             </Stack>
         </Stack>

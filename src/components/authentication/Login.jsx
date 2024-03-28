@@ -1,11 +1,8 @@
 import {
-    Box,
     Button,
     HStack,
-    Image,
     Input,
     InputGroup,
-    InputLeftAddon,
     InputLeftElement,
     InputRightElement,
     Select,
@@ -15,8 +12,8 @@ import {
 import { useRef, useState } from "react";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 import { Link } from "react-router-dom";
-import { IoLockClosed, IoMail, IoPeople } from "react-icons/io5";
-import loginImg from "../../assets/loginHero.png";
+import { IoLockClosed, IoMail, IoPeople, IoPlayForward } from "react-icons/io5";
+import loginImg from "../../assets/loginImg5.jpg";
 const Login = () => {
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
     const inputPassword = useRef(null);
@@ -34,7 +31,9 @@ const Login = () => {
     return (
         <Stack
             zIndex={1}
-            background={"primary.900 "}
+            background={`url(${loginImg})`}
+            backgroundRepeat={"no-repeat"}
+            backgroundSize={"cover"}
             w={"100vw"}
             h={"100vh"}
             position={"fixed"}
@@ -46,27 +45,39 @@ const Login = () => {
         >
             <Stack
                 w={"full"}
-                border={"1px solid red"}
-                justifyContent={"space-between"}
+                justifyContent={"center"}
                 alignItems={"center"}
                 p={6}
             >
-                <Text
-                    fontSize={"20"}
-                    //fontWeight={"semibold"}
-                    //textAlign={"center"}
+                <Stack
+                    w={"60%"}
+                    h={"60%"}
+                    background={"rgba(125, 194, 230, 0.5)"}
+                    borderRadius={"md"}
+                    p={8}
+                    fontSize={"40px"}
                     color={"white"}
                 >
-                    <Text as={"span"} fontSize={"40px"} fontWeight={"500"}>
+                    <Text fontWeight={"600"} fontSize={"50px"}>
                         PLACED
                     </Text>
-                    <br />
-                    Your gateway to career opportunities.
-                    <br /> Login to explore job listings, connect with
-                    employers, and take the next step towards your professional
-                    journey.
-                </Text>
-                <Image w={450} src={loginImg} />
+                    <HStack mt={2}>
+                        <IoPlayForward />
+                        <Text as={"span"}>Your gateway to</Text>
+                    </HStack>
+                    <Text>
+                        <Text as={"span"} color={"black"} fontWeight={"500"}>
+                            career
+                        </Text>{" "}
+                        opportunities.
+                    </Text>
+                    <Text fontSize={"20px"} mt={8}>
+                        Login to explore Job listings, connect with Employers
+                        and take the next step towards your professional
+                        journey!
+                    </Text>
+                </Stack>
+                {/* <Image w={450} src={loginImg} /> */}
             </Stack>
             <Stack
                 w={"full"}
