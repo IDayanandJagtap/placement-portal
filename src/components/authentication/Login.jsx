@@ -51,7 +51,7 @@ const Login = () => {
             >
                 <Stack
                     w={"60%"}
-                    h={"60%"}
+                    h={"fit-content"}
                     background={"rgba(125, 194, 230, 0.5)"}
                     borderRadius={"md"}
                     p={8}

@@ -1,11 +1,13 @@
-import { HStack, Stack } from "@chakra-ui/react";
+import { Heading, Stack } from "@chakra-ui/react";
 import React from "react";
+import Profile from "./description/Profile";
+import Jobs from "./description/Jobs";
 
 const CompanyProfile = () => {
     return (
-        <Stack>
-            <Stack minH={"70vh"} border={"1px solid red"} id="profile"></Stack>
-            <Stack minH={"50vh"} border={"1px solid Yellow"} id="jobs"></Stack>
+        <Stack p={[4, 6]} gap={12}>
+            <Profile />
+            <Jobs />
         </Stack>
     );
 };

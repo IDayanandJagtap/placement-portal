@@ -11,6 +11,7 @@ const JobCard = ({ job }) => {
         <Stack
             flexDirection={"column"}
             p={[3, 4, 4, 5, 6]}
+            background={"primary.50"}
             border={"1px solid #e7e7e7"}
             borderRadius={"xl"}
             _hover={{ boxShadow: "md" }}
