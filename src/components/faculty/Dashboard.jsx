@@ -1,26 +1,44 @@
-import { Stack } from "@chakra-ui/react";
+import { Stack, Text } from "@chakra-ui/react";
 import React, { useState } from "react";
-import ChangeSectionSidebar from "../../utils/ChangeSectionSidebar";
-import StudentProfile from "../description/StudentProfile";
-import UpdateStudent from "../update/UpdateStudent";
-import Jobs from "./Jobs";
-import Settings from "./Settings";
-import MobileSecondaryNav from "../../utils/MobileSecondaryNav";
-import { FaUser, FaUserPen, FaSuitcase, FaGear } from "react-icons/fa6";
+import {
+    FaUser,
+    FaUserPlus,
+    FaGear,
+    FaNoteSticky,
+    FaChartLine,
+} from "react-icons/fa6";
+import { IoMdCheckmark } from "react-icons/io";
+import { ChangeSectionSidebar, MobileSecondaryNav } from "../utils";
+import Insights from "./Insights";
+import Approval from "./Approval";
 
 const list = [
-    { name: "View Profile", icon: <FaUser size={18} />, section: "profile" },
     {
-        name: "Edit profile",
-        icon: <FaUserPen size={20} />,
-        section: "editprofile",
+        name: "Insights",
+        icon: <FaChartLine size={20} />,
+        section: "insights",
     },
-    { name: "Jobs", icon: <FaSuitcase size={20} />, section: "jobs" },
+    { name: "Profile", icon: <FaUser size={18} />, section: "profile" },
+    {
+        name: "Approvals",
+        icon: <IoMdCheckmark size={20} />,
+        section: "approval",
+    },
+    {
+        name: "Add new faculty",
+        icon: <FaUserPlus size={20} />,
+        section: "addFaculty",
+    },
+    {
+        name: "Feedbacks",
+        icon: <FaNoteSticky size={20} />,
+        section: "feedbacks",
+    },
     { name: "Settings", icon: <FaGear size={20} />, section: "settings" },
 ];
 
 const Dashboard = () => {
-    const [currentSection, setCurrentSection] = useState("profile");
+    const [currentSection, setCurrentSection] = useState("insights");
     const changeSection = (section) => {
         setCurrentSection(section);
     };
@@ -47,13 +65,8 @@ const Dashboard = () => {
                 overflow={"scroll"}
                 px={[0, 2, 2, 3, 4]}
             >
-                {/* Student profile , update, jobs, setting */}
-                {currentSection == "profile" && (
-                    <StudentProfile studentInfo={studentInfo} />
-                )}
-                {currentSection == "editprofile" && <UpdateStudent />}
-                {currentSection == "jobs" && <Jobs />}
-                {currentSection == "settings" && <Settings />}
+                {currentSection === "insights" && <Insights />}
+                {currentSection === "approval" && <Approval />}
             </Stack>
 
             {/* Sidebar  -> show only in big screens*/}

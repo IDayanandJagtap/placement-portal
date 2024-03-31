@@ -1,7 +1,7 @@
 import { Divider, Stack, Text, VStack } from "@chakra-ui/react";
 import React, { useState } from "react";
 
-const ChangeSectionSidebar = ({ list, currentSection, handler }) => {
+const ChangeSectionSidebar = ({ menu, currentSection, handler }) => {
     return (
         <Stack p={4}>
             <Text as={"h3"} fontSize={"20px"}>
@@ -9,7 +9,7 @@ const ChangeSectionSidebar = ({ list, currentSection, handler }) => {
             </Text>
             <Divider />
             <VStack mt={8} alignItems={"stretch"}>
-                {list.map((e, i) => (
+                {menu.map((e, i) => (
                     <Text
                         key={i}
                         background={

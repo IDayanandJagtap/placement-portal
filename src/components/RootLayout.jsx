@@ -23,9 +23,10 @@ const RootLayout = () => {
                 w={["90%", "92%", "85%", "85%", "88%"]}
                 background={"#fff"}
                 h={"full"}
-                overflow={"hidden"}
+                // overflow={"hidden"}
                 borderRadius={"xl"}
                 ref={outletRef}
+                zIndex={0}
             >
                 <Outlet />
             </Stack>

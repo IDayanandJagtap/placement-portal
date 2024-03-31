@@ -15,19 +15,21 @@ const Approval = () => {
     const navigate = useNavigate();
 
     return (
-        <Stack px={6} py={4}>
-            <Heading as={"h2"} fontSize={"28px"}>
+        <Stack px={6} py={4} mb={[8, 8, 8, 4]}>
+            <Heading
+                as={"h2"}
+                fontSize={["24px", "26px", "26px", "30px", "32px"]}
+            >
                 Approvals
             </Heading>
 
-            <Grid
-                templateColumns={"repeat(auto-fit, minmax(400px, 1fr))"}
-                templateRows={"auto"}
-                // background={"gray.200"}
-                // p={6}
+            <Stack
                 borderRadius={"sm"}
                 gap={6}
                 my={4}
+                flexDirection={["column", "column", "row"]}
+                flexWrap={"wrap"}
+                justifyContent={"space-around"}
             >
                 {studentData.map((e) => {
                     return (
@@ -48,7 +50,7 @@ const Approval = () => {
                     name={"Dayanand Jagtap"}
                     userType={"Company"}
                 ></Card>
-            </Grid>
+            </Stack>
         </Stack>
     );
 };
@@ -60,9 +62,12 @@ const Card = ({ id, name, degree, year, avatarUrl, navigate, userType }) => {
             p={4}
             borderRadius={"md"}
             boxShadow={"md"}
-            width={"400px"}
-            background={"#f2f2f2"}
+            width={["fit-content", "fit-content", "400px"]}
+            background={"primary.50"}
             position={"relative"}
+            onClick={() => {
+                navigate("/students/" + id);
+            }}
         >
             <Tag
                 position={"absolute"}
@@ -71,16 +76,20 @@ const Card = ({ id, name, degree, year, avatarUrl, navigate, userType }) => {
                 variant={"subtle"}
                 colorScheme="blue"
                 borderRadius={"full"}
+                size={["sm", "sm", "md"]}
             >
                 {userType}
             </Tag>
-            <Avatar size={"xl"} src={avatarUrl} name={name} />
+            <Avatar size={["lg", "lg", "xl"]} src={avatarUrl} name={name} />
             <Stack w={"full"}>
-                <Text fontSize={"20px"} fontWeight={"semibold"}>
+                <Text
+                    fontSize={["16px", "16px", "18px ", "20px"]}
+                    fontWeight={"semibold"}
+                >
                     {name}
                 </Text>
                 {degree && year && (
-                    <Text>
+                    <Text fontSize={["12px", "14px", "16px"]}>
                         {degree} , {year} year
                     </Text>
                 )}
@@ -88,7 +97,7 @@ const Card = ({ id, name, degree, year, avatarUrl, navigate, userType }) => {
                     <Button colorScheme="red" size={"sm"}>
                         Reject
                     </Button>
-                    {navigate && (
+                    {/* {navigate && (
                         <Button
                             colorScheme="blue"
                             size={"sm"}
@@ -98,9 +107,15 @@ const Card = ({ id, name, degree, year, avatarUrl, navigate, userType }) => {
                         >
                             View
                         </Button>
-                    )}
+                    )} */}
 
-                    <Button colorScheme="green" size={"sm"}>
+                    <Button
+                        colorScheme="green"
+                        size={"sm"}
+                        onClick={(e) => {
+                            e.stopPropagation(); // same event handler on parent ...
+                        }}
+                    >
                         Approve
                     </Button>
                 </HStack>

@@ -37,7 +37,7 @@ const UpdateStudent = () => {
     };
 
     return (
-        <VStack p={[3, 4, 4, 4, 6]} rowGap={[1, 4, 4, 5, 6]}>
+        <VStack p={[3, 4, 4, 4, 6]} rowGap={[1, 4, 4, 5, 6]} mb={[8, 8, 8, 0]}>
             {/* heading */}
             <Heading
                 as={"h1"}
