@@ -4,66 +4,106 @@ import { FaGithub, FaLinkedin, FaXTwitter } from "react-icons/fa6";
 
 const UpdateContact = () => {
     return (
-        <Stack h={"full"} p={4}>
-            <Text as={"h2"} fontWeight={"semibold"} fontSize={"24px"} mb={3}>
+        <Stack
+            w={"full"}
+            py={[4]}
+            px={[4, 6]}
+            my={2}
+            boxShadow={"md"}
+            borderRadius={"lg"}
+        >
+            <Text
+                as={"h2"}
+                fontWeight={"semibold"}
+                fontSize={["18px", "20px", "22px", "24px"]}
+                mb={3}
+            >
                 Contact details
             </Text>
 
-            <Grid templateColumns={"repeat(2, 1fr)"} columnGap={8}>
-                <GridItem>
-                    <Text my={1}>Email </Text>
+            <Stack
+                flexDirection={["column", "row", "row"]}
+                w={"full"}
+                gap={[4, 4, 8]}
+            >
+                <Stack w={"full"} fontSize={["14px", "16px"]}>
+                    <Text my={1} as={"label"} htmlFor={"portfolio"}>
+                        Portfolio{" "}
+                    </Text>
                     <Input
+                        w={"full"}
                         type="email"
-                        placeholder="student@gmail.com"
+                        id="portfolio"
+                        fontSize={["14px", "16px"]}
+                        placeholder="https://your-site.com"
                         border={"2px solid #E2E8F0"}
                     ></Input>
-                </GridItem>
-                <GridItem>
+                </Stack>
+                <Stack w={"full"} fontSize={["14px", "16px"]}>
                     <Text my={1}>Contact no </Text>
                     <Input
+                        w={"full"}
                         type="number"
+                        fontSize={["14px", "16px"]}
                         placeholder="0000000000"
                         border={"2px solid #E2E8F0"}
                     ></Input>
-                </GridItem>
-            </Grid>
+                </Stack>
+            </Stack>
 
-            <Text as={"h2"} fontWeight={"semibold"} fontSize={"24px"} mt={10}>
+            {/* Socials */}
+            <Text
+                as={"h2"}
+                fontWeight={"semibold"}
+                fontSize={["18px", "20px", "22px", "24px"]}
+                mt={10}
+            >
                 Socials
             </Text>
 
-            <Grid templateColumns={"repeat(2, 1fr)"} columnGap={8} rowGap={4}>
-                <GridItem>
+            <Stack
+                flexDirection={"row"}
+                flexWrap={"wrap"}
+                gap={4}
+                justifyContent={"space-between"}
+            >
+                <Stack w={["full", "full", "45%"]}>
                     <HStack my={1}>
                         <FaGithub size={32} />
                         <Input
                             type="text"
                             placeholder="https://www.github.com/username"
                             border={"2px solid #E2E8F0"}
+                            fontSize={["14px", "16px"]}
+                            p={[2, 3]}
                         ></Input>
                     </HStack>
-                </GridItem>
-                <GridItem>
+                </Stack>
+                <Stack w={["full", "full", "45%"]}>
                     <HStack>
                         <FaXTwitter size={32} />
                         <Input
                             type="text"
                             placeholder="https://www.x.com/username"
                             border={"2px solid #E2E8F0"}
+                            fontSize={["14px", "16px"]}
+                            p={[2, 3]}
                         ></Input>
                     </HStack>
-                </GridItem>
-                <GridItem>
+                </Stack>
+                <Stack w={["full", "full", "45%"]}>
                     <HStack>
                         <FaLinkedin size={32} />
                         <Input
                             type="text"
                             placeholder="https://www.linkedin.com/username"
                             border={"2px solid #E2E8F0"}
+                            fontSize={["14px", "16px"]}
+                            p={[2, 3]}
                         ></Input>
                     </HStack>
-                </GridItem>
-            </Grid>
+                </Stack>
+            </Stack>
         </Stack>
     );
 };

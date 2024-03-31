@@ -33,7 +33,7 @@ const Tag = ({ name, showIcon, onClickHandler }) => {
                     as={"span"}
                     fontWeight={"bold"}
                     px={1}
-                    fontSize={"18px"}
+                    fontSize={["10px", "10px", "12px", "12px", "14px", "16px"]}
                     color={"whiteAlpha.600"}
                     data-tagname={name}
                 >

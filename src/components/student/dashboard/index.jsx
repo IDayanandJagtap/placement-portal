@@ -12,7 +12,7 @@ const list = [
 ];
 
 const Dashboard = () => {
-    const [currentSection, setCurrentSection] = useState("profile");
+    const [currentSection, setCurrentSection] = useState("editprofile");
     const changeSection = (section) => {
         setCurrentSection(section);
     };

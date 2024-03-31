@@ -1,6 +1,7 @@
 import {
     Button,
     HStack,
+    Heading,
     Image,
     Input,
     Select,
@@ -8,7 +9,7 @@ import {
     Text,
     VStack,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React from "react";
 import { FaPlus } from "react-icons/fa6";
 
 import demoImg from "../../../assets/userAvatar.png";
@@ -18,8 +19,6 @@ import UpdateContact from "./UpdateContact";
 import UpdateSkills from "./UpdateSkills";
 
 const UpdateStudent = () => {
-    const [activeSection, setActiveSection] = useState(0);
-
     const handleOnNextUpdate = () => {
         if (activeSection == 3) {
             // update
@@ -38,32 +37,33 @@ const UpdateStudent = () => {
     };
 
     return (
-        <VStack
-            backgroundColor={"#f1f1f1"}
-            minH={"90vh"}
-            p={5}
-            fontFamily={"system-ui"}
-        >
+        <VStack p={[3, 4, 4, 4, 6]} rowGap={[1, 4, 4, 5, 6]}>
             {/* heading */}
-            <Text as={"h1"} fontSize={"32px"} my={8} fontWeight={"semibold"}>
+            <Heading
+                as={"h1"}
+                fontSize={["24px", "26px", "26px", "30px", "32px"]}
+                my={3}
+            >
                 Update profile
-            </Text>
-            <HStack
-                w={"80%"}
-                backgroundColor={"white"}
-                px={5}
-                py={8}
+            </Heading>
+            <Stack
+                w={"full"}
+                p={5}
                 my={2}
+                flexDirection={["column", "column", "row"]}
                 boxShadow={"lg"}
                 borderRadius={"md"}
             >
                 {/* Profile Image */}
-                <VStack position={"relative"} width={"20%"}>
+                <VStack
+                    position={"relative"}
+                    width={["full", "full", "20%"]}
+                    h={["150px", "150px", "full"]}
+                >
                     <Image
                         src={demoImg}
-                        width={200}
-                        height={200}
                         borderRadius={"full"}
+                        h={"full"}
                         opacity={0.4}
                     ></Image>
                     <HStack
@@ -74,7 +74,6 @@ const UpdateStudent = () => {
                         p={3}
                         cursor={"pointer"}
                         borderRadius={"full"}
-                        // backgroundColor={"gray.300"}
                         _hover={{ backgroundColor: "#CBD5E0" }}
                         transition={"all 0.3s linear"}
                     >
@@ -84,32 +83,64 @@ const UpdateStudent = () => {
                 {/* Name info */}
                 <VStack
                     // border={"1px solid red"}
-                    width={"full"}
+                    width={["full", "full", "70%"]}
                     alignItems={"start"}
                     py={2}
-                    pl={10}
+                    pl={[0, 0, 4, 10]}
                 >
-                    <Stack w={"full"}>
-                        <Text
-                            as={"label"}
-                            fontSize={"18px"}
-                            fontWeight={"semibold"}
-                        >
-                            Name :
-                        </Text>
-                        <Input placeholder="Enter your name..." w={"45%"} />
-                    </Stack>
-
-                    <HStack w={"full"} mt={5}>
+                    <Stack
+                        w={"full"}
+                        mt={5}
+                        flexDirection={["column", "column", "row"]}
+                    >
                         <Stack w={"full"}>
                             <Text
                                 as={"label"}
-                                fontSize={"18px"}
-                                fontWeight={"semibold"}
+                                fontSize={["16px", "18px", "20px"]}
+                                fontWeight={"500"}
+                            >
+                                Name :
+                            </Text>
+                            <Input
+                                placeholder="Enter your name"
+                                w={["full", "full", "90%"]}
+                                fontSize={["14px", "16px", "18px"]}
+                            />
+                        </Stack>
+                        <Stack w="full">
+                            <Text
+                                as={"label"}
+                                fontSize={["16px", "18px", "20px"]}
+                                fontWeight={"500"}
+                            >
+                                Upload resume :{" "}
+                            </Text>
+                            <Input
+                                type="file"
+                                w={["full", "full", "90%"]}
+                                fontSize={["14px", "16px", "18px"]}
+                            />
+                        </Stack>
+                    </Stack>
+
+                    <Stack
+                        w={"full"}
+                        mt={5}
+                        flexDirection={["column", "column", "row"]}
+                    >
+                        <Stack w={"full"}>
+                            <Text
+                                as={"label"}
+                                fontSize={["16px", "18px", "20px"]}
+                                fontWeight={"500"}
                             >
                                 Degree :
                             </Text>
-                            <Select placeholder="Select degree" w={"90%"}>
+                            <Select
+                                placeholder="Select degree"
+                                w={["full", "full", "90%"]}
+                                fontSize={["14px", "16px", "18px"]}
+                            >
                                 <option value="bcs">
                                     Bsc Computer Science
                                 </option>
@@ -121,135 +152,39 @@ const UpdateStudent = () => {
                         <Stack w="full">
                             <Text
                                 as={"label"}
-                                fontSize={"18px"}
-                                fontWeight={"semibold"}
+                                fontSize={["16px", "18px", "20px"]}
+                                fontWeight={"500"}
                             >
                                 Year :{" "}
                             </Text>
-                            <Select placeholder="Select year" w={"90%"}>
+                            <Select
+                                placeholder="Select year"
+                                w={["full", "full", "90%"]}
+                                fontSize={["14px", "16px", "18px"]}
+                            >
                                 <option value="1">1st year</option>
                                 <option value="2">2nd year</option>
                                 <option value="3">3rd year</option>
                             </Select>
                         </Stack>
-                    </HStack>
+                    </Stack>
                 </VStack>
-            </HStack>
+            </Stack>
 
-            {/*  select section */}
-            <HStack
-                w={"80%"}
-                backgroundColor={"white"}
-                px={5}
-                py={8}
-                my={2}
-                boxShadow={"lg"}
-                borderRadius={"md"}
-                alignItems={"stretch"}
-            >
-                <VStack w={"22%"} alignItems={"stretch"}>
-                    <Button
-                        h={"3rem"}
-                        fontSize={"18px"}
-                        backgroundColor={activeSection == 0 ? "blue.700" : ""}
-                        color={activeSection == 0 ? "white" : ""}
-                        border={activeSection == 0 ? "1px solid #2C5282" : ""}
-                        _hover={
-                            activeSection == 0
-                                ? { background: "white", color: "#2C5282" }
-                                : ""
-                        }
-                        onClick={() => {
-                            setActiveSection(0);
-                        }}
-                    >
-                        Skills
-                    </Button>
-                    <Button
-                        h={"3rem"}
-                        fontSize={"18px"}
-                        backgroundColor={activeSection == 1 ? "blue.700" : ""}
-                        color={activeSection == 1 ? "white" : ""}
-                        border={activeSection == 1 ? "1px solid #2C5282" : ""}
-                        _hover={
-                            activeSection == 1
-                                ? { background: "white", color: "#2C5282" }
-                                : ""
-                        }
-                        onClick={() => {
-                            setActiveSection(1);
-                        }}
-                    >
-                        Achievements
-                    </Button>
-                    <Button
-                        h={"3rem"}
-                        fontSize={"18px"}
-                        backgroundColor={activeSection == 2 ? "blue.700" : ""}
-                        color={activeSection == 2 ? "white" : ""}
-                        border={activeSection == 2 ? "1px solid #2C5282" : ""}
-                        _hover={
-                            activeSection == 2
-                                ? { background: "white", color: "#2C5282" }
-                                : ""
-                        }
-                        onClick={() => {
-                            setActiveSection(2);
-                        }}
-                    >
-                        Academics
-                    </Button>
-                    <Button
-                        h={"3rem"}
-                        fontSize={"18px"}
-                        backgroundColor={activeSection == 3 ? "blue.700" : ""}
-                        color={activeSection == 3 ? "white" : ""}
-                        border={activeSection == 3 ? "1px solid #2C5282" : ""}
-                        _hover={
-                            activeSection == 3
-                                ? { background: "white", color: "#2C5282" }
-                                : ""
-                        }
-                        onClick={() => {
-                            setActiveSection(3);
-                        }}
-                    >
-                        Contact
-                    </Button>
-                </VStack>
-                {/* changeable box */}
-                <Stack
-                    w={"full"}
-                    border={"2px solid #CBD5E0"}
-                    // boxShadow={"md"}
-                    ml={6}
-                    borderRadius={"md"}
-                    minH={"55vh"}
+            <UpdateSkills />
+            <UpdateAchievements />
+            <UpdateAcademics />
+            <UpdateContact />
+
+            {/* Next button container */}
+            <HStack w={"full"} justifyContent={"flex-end"} px={4} pb={3}>
+                <Button
+                    colorScheme="primary"
+                    size={["sm", "sm", "md"]}
+                    onClick={handleOnNextUpdate}
                 >
-                    {activeSection == 0 && <UpdateSkills />}
-                    {activeSection == 1 && <UpdateAchievements />}
-                    {activeSection == 2 && <UpdateAcademics />}
-                    {activeSection == 3 && <UpdateContact />}
-
-                    {/* Next button container */}
-                    <HStack
-                        w={"full"}
-                        justifyContent={"flex-end"}
-                        px={4}
-                        pb={3}
-                    >
-                        <Button
-                            backgroundColor={"blue.700"}
-                            color={"white"}
-                            variant={"solid"}
-                            border={"1px solid #2C5282"}
-                            _hover={{ background: "white", color: "#2C5282" }}
-                            onClick={handleOnNextUpdate}
-                        >
-                            {activeSection == 3 ? "Update" : "Next"}
-                        </Button>
-                    </HStack>
-                </Stack>
+                    Update
+                </Button>
             </HStack>
         </VStack>
     );

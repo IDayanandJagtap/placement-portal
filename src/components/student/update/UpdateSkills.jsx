@@ -76,8 +76,20 @@ const UpdateSkills = () => {
     };
 
     return (
-        <Stack h={"full"} p={4}>
-            <Text as={"h2"} fontWeight={"semibold"} fontSize={"24px"} mb={3}>
+        <Stack
+            w={"full"}
+            py={[4]}
+            px={[4, 6]}
+            my={2}
+            boxShadow={"md"}
+            borderRadius={"lg"}
+        >
+            <Text
+                as={"h2"}
+                fontWeight={"semibold"}
+                fontSize={["18px", "20px", "22px", "24px"]}
+                mb={3}
+            >
                 Skills
             </Text>
 
@@ -114,6 +126,8 @@ const UpdateSkills = () => {
                 flexWrap={"wrap"}
                 borderRadius={"md"}
                 height={"full"}
+                overflow={"auto"}
+                maxH={"50vh"}
             >
                 {allTags.map((e, index) => {
                     return (

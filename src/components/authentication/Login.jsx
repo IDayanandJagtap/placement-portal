@@ -13,7 +13,8 @@ import { useRef, useState } from "react";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { IoLockClosed, IoMail, IoPeople, IoPlayForward } from "react-icons/io5";
-import loginImg from "../../assets/loginImg5.jpg";
+import loginImg from "../../assets/authBackground.jpg";
+
 const Login = () => {
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
     const inputPassword = useRef(null);
