@@ -16,6 +16,9 @@ const StudentProfile = ({ studentInfo }) => {
     const navigate = useNavigate();
     const { id } = useParams();
 
+    // user type from context
+    const userType = "student";
+
     // fetch here from db
     useEffect(() => {
         let stud;
@@ -63,46 +66,52 @@ const StudentProfile = ({ studentInfo }) => {
 
                 {/* If current user is faculty then show the delete button! */}
                 {/* Also if faculty && this student is verified then show button to remove verified */}
-                <Stack
-                    justifyContent={"start"}
-                    w={"full"}
-                    py={4}
-                    px={[4, 6]}
-                    my={2}
-                    backgroundColor={"secondary.50"}
-                    boxShadow={"md"}
-                    borderRadius={"lg"}
-                >
-                    <Text
-                        fontWeight={500}
-                        fontSize={["22px", "24px", "26px", "32px"]}
+                {userType === "faculty" && (
+                    <Stack
+                        justifyContent={"start"}
+                        w={"full"}
+                        py={4}
+                        px={[4, 6]}
+                        my={2}
+                        backgroundColor={"secondary.50"}
+                        boxShadow={"md"}
+                        borderRadius={"lg"}
                     >
-                        Faculty options :{" "}
-                    </Text>
-                    <Stack alignItems={"flex-start"} my={2}>
-                        <Stack
-                            gap={0}
-                            fontSize={["14px", "16px", "16px", "18px"]}
+                        <Text
+                            fontWeight={500}
+                            fontSize={["22px", "24px", "26px", "32px"]}
                         >
-                            <Text color={"red.500"}>
-                                Invalidate : student does not have skills he/she
-                                has entered.
-                            </Text>
-                            <Text color={"red.500"}>
-                                Delete : not a verified student/ student not
-                                from your college.
-                            </Text>
+                            Faculty options :{" "}
+                        </Text>
+                        <Stack alignItems={"flex-start"} my={2}>
+                            <Stack
+                                gap={0}
+                                fontSize={["14px", "16px", "16px", "18px"]}
+                            >
+                                <Text color={"red.500"}>
+                                    Invalidate : student does not have skills
+                                    he/she has entered.
+                                </Text>
+                                <Text color={"red.500"}>
+                                    Delete : not a verified student/ student not
+                                    from your college.
+                                </Text>
+                            </Stack>
+                            <HStack
+                                mt={2}
+                                justifyContent={"flex-end"}
+                                w={"full"}
+                            >
+                                <Button colorScheme="blue" size={["sm", "md"]}>
+                                    Invalidate
+                                </Button>
+                                <Button colorScheme="red" size={["sm", "md"]}>
+                                    Delete{" "}
+                                </Button>
+                            </HStack>
                         </Stack>
-                        <HStack mt={2} justifyContent={"flex-end"} w={"full"}>
-                            <Button colorScheme="blue" size={["sm", "md"]}>
-                                Invalidate
-                            </Button>
-                            <Button colorScheme="red" size={["sm", "md"]}>
-                                Delete{" "}
-                            </Button>
-                        </HStack>
                     </Stack>
-                </Stack>
+                )}
             </VStack>
         </>
     );

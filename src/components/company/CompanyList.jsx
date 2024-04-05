@@ -10,13 +10,28 @@ import {
     Text,
     VStack,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
 import { IoArrowForward, IoSearch } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import demoImg from "../../assets/jade.png";
 
 const CompanyList = () => {
     const navigate = useNavigate();
+    const [searchedCompany, setSearchedCompany] = useState(companyData);
+
+    const handleOnSearchInputChange = (e) => {
+        let searchable = e.target.value.toLowerCase();
+
+        if (searchable.trim() != "") {
+            let company = companyData.filter((element) => {
+                // make comparison of lowercase values
+                return element.name.toLowerCase().includes(searchable);
+            });
+            setSearchedCompany(company);
+        } else {
+            setSearchedCompany(companyData);
+        }
+    };
     return (
         <Stack p={[3, 4, 4, 4, 6]}>
             {/* Search bar */}
@@ -26,6 +41,7 @@ const CompanyList = () => {
                         type="text"
                         placeholder="Search company..."
                         variant={"outline"}
+                        onChange={handleOnSearchInputChange}
                         border={"2px solid #3182CE"}
                     />
                     <InputRightElement w={"4rem"}>
@@ -36,7 +52,7 @@ const CompanyList = () => {
 
             {/* fetch here */}
             <VStack mt={10} gap={6}>
-                {companyData.map((e, i) => {
+                {searchedCompany.map((e, i) => {
                     return (
                         <Stack
                             key={i}
