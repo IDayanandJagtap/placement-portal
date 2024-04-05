@@ -18,10 +18,16 @@ const Profile = () => {
             minH={"90dvh"}
             id="profile"
             background={"primary.50"}
-            p={6}
+            p={[4, 6]}
             borderRadius={"md"}
         >
-            <Stack h={"fit-content"} flexDirection={"row"} gap={8}>
+            <Stack
+                h={"fit-content"}
+                flexDirection={["column", "column", "column", "row"]}
+                justifyContent={"center"}
+                alignItems={"center"}
+                gap={8}
+            >
                 <Image
                     src={demoImg}
                     w={200}
@@ -31,18 +37,36 @@ const Profile = () => {
                     boxShadow={"md"}
                     backgroundColor={"white"}
                 />
-                <VStack alignItems={"flex-start"} w={"80%"} p={4}>
-                    <Stack>
-                        <Heading as={"h1"} fontSize={"40px"}>
+                <VStack
+                    alignItems={"flex-start"}
+                    w={["100%", "100%", "100%", "80%"]}
+                    p={4}
+                >
+                    <Stack
+                        w={"full"}
+                        textAlign={["center", "center", "center", "left"]}
+                    >
+                        <Heading
+                            as={"h1"}
+                            fontSize={["22px", "24px", "28px", "32px"]}
+                        >
                             Jade Global
                         </Heading>
-                        <Text fontSize={"18px"} pl={3}>
+                        <Text
+                            fontSize={["14px", "16px", "16px", "18px"]}
+                            pl={3}
+                        >
                             <q>We hire the besht</q>
                         </Text>
                     </Stack>
 
                     {/* Socials */}
-                    <HStack mt={12} gap={4}>
+                    <HStack
+                        w={"full"}
+                        mt={12}
+                        gap={4}
+                        justifyContent={["center", "center", "center", "start"]}
+                    >
                         <a target="_blank" href="#">
                             <IoMail size={30} className="hoverIcon" />
                         </a>
@@ -57,14 +81,20 @@ const Profile = () => {
             </Stack>
 
             {/* Space */}
-            <Stack h={"6vh"}></Stack>
+            <Stack h={["2vh", "2vh", "2vh", "4vh"]}></Stack>
             <Divider borderColor={"gray.300"} borderWidth={"1px"} />
-            <Stack h={"4vh"}></Stack>
+            <Stack h={["2vh", "2vh", "2vh", "4vh"]}></Stack>
 
             {/* About section */}
             <Stack ml={1}>
-                <Heading fontSize={"28px"}>About us : </Heading>
-                <Text letterSpacing={".7px"} pl={6}>
+                <Heading fontSize={["22px", "24px", "28px"]}>
+                    About us :{" "}
+                </Heading>
+                <Text
+                    letterSpacing={".7px"}
+                    pl={[0, 0, 0, 6]}
+                    fontSize={["12px", "14px", "14px", "16px"]}
+                >
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     Reprehenderit dignissimos nihil itaque aliquam, nisi facere
                     est nulla modi ducimus accusantium harum impedit, ad laborum

@@ -5,7 +5,7 @@ import Jobs from "./description/Jobs";
 
 const CompanyProfile = () => {
     return (
-        <Stack p={[4, 6]} gap={12}>
+        <Stack p={[2, 2, 4, 6]} gap={12}>
             <Profile />
             <Jobs />
         </Stack>
