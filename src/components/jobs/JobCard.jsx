@@ -55,22 +55,29 @@ const JobCard = ({ job }) => {
                     return <Tag name={skill} key={index} />;
                 })}
             </HStack>
-            <Button
-                display={["none", "none", "none", "flex"]}
-                background={"primary.500"}
-                color={"white"}
-                width={"20px"}
-                padding={"2"}
-                borderRadius={"full"}
-                justifySelf={"flex-end"}
-                alignSelf={"flex-end"}
-                _hover={{ transform: "scale(1.1)" }}
-                onClick={() => {
-                    navigate("/job/" + job.jobId.toString());
-                }}
-            >
-                <IoArrowForward size={20} />
-            </Button>
+
+            <HStack justifyContent={"space-between"}>
+                <Text
+                    color={"gray.500"}
+                    fontSize={["12px", "12px", "14px", "14px", "14px"]}
+                >
+                    23/04/2024
+                </Text>
+                <Button
+                    display={["none", "none", "none", "flex"]}
+                    background={"primary.500"}
+                    color={"white"}
+                    width={"20px"}
+                    padding={"2"}
+                    borderRadius={"full"}
+                    _hover={{ transform: "scale(1.1)" }}
+                    onClick={() => {
+                        navigate("/job/" + job.jobId.toString());
+                    }}
+                >
+                    <IoArrowForward size={20} />
+                </Button>
+            </HStack>
         </Stack>
     );
 };

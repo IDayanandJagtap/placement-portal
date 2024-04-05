@@ -54,12 +54,21 @@ const ApplyToJob = () => {
                     borderRadius={"md"}
                     boxShadow={"md"}
                 >
-                    <Heading
-                        as={"h2"}
-                        fontSize={["18px", "20px", "20px", "22px", "24px"]}
-                    >
-                        JobTitle
-                    </Heading>
+                    <HStack justifyContent={"space-between"}>
+                        <Text
+                            fontWeight={"500"}
+                            as={"h2"}
+                            fontSize={["18px", "20px", "20px", "22px", "24px"]}
+                        >
+                            JobTitle
+                        </Text>
+                        <Text
+                            color={"gray.500"}
+                            fontSize={["12px", "12px", "14px", "14px", "14px"]}
+                        >
+                            23/04/2024
+                        </Text>
+                    </HStack>
                     <Text
                         fontSize={["12px", "12px", "14px", "14px", "14px"]}
                         fontWeight={"500"}
