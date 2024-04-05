@@ -1,4 +1,4 @@
-import { HStack, Heading, Text, VStack } from "@chakra-ui/react";
+import { HStack, Text, VStack } from "@chakra-ui/react";
 import React from "react";
 import { Tag } from "../utils";
 import "../../global.css";
@@ -25,12 +25,13 @@ const StudentCard = ({ student }) => {
             }}
         >
             {/* Use some professional font */}
-            <Heading
+            <Text
                 as={"h3"}
+                fontWeight={"500"}
                 fontSize={["16px", "18px", "20px", "24px", "26px"]}
             >
                 {student.name}
-            </Heading>
+            </Text>
             <Text mt={-1.5} fontSize={["12px", "12px", "14px", "14px", "16px"]}>
                 {student.degree} , {student.year}
             </Text>

@@ -12,7 +12,7 @@ import StudentCard from "./StudentCard";
 
 const StudentList = ({ studentData }) => {
     return (
-        <Stack p={[3, 4, 4, 4, 6]} rowGap={[4, 5, 5, 5, 6]}>
+        <Stack p={[3, 4, 4, 4, 6]} rowGap={[4, 5, 5, 5, 6]} minH={"90vh"}>
             <HStack justifyContent={"center"}>
                 <InputGroup w={["100%", "100%", "70%", "50%"]}>
                     <Input

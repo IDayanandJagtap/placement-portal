@@ -108,9 +108,7 @@ const EditProfile = () => {
 
             {/* button */}
             <HStack justifyContent={"flex-end"}>
-                <Button size={["sm", "sm", "md"]} colorScheme="red">
-                    Clear
-                </Button>
+                <Button size={["sm", "sm", "md"]}>Clear</Button>
                 <Button size={["sm", "sm", "md"]} colorScheme="primary">
                     Update
                 </Button>

@@ -58,13 +58,31 @@ const ApplyToJob = () => {
                         as={"h2"}
                         fontSize={["18px", "20px", "20px", "22px", "24px"]}
                     >
-                        JadeGlobal
+                        JobTitle
                     </Heading>
                     <Text
+                        fontSize={["12px", "12px", "14px", "14px", "14px"]}
+                        fontWeight={"500"}
+                    >
+                        CompanyName
+                    </Text>
+                    <Text
                         as={"p"}
+                        fontSize={["12px", "12px", "14px", "16px"]}
+                        mt={"2"}
+                        fontWeight={"500"}
+                    >
+                        Job type : <Text as={"span"}>Internship</Text>
+                    </Text>
+                    <Text
+                        as={"p"}
+                        mt={3}
                         color={"gray.500"}
                         fontSize={["12px", "14px", "16px"]}
                     >
+                        <Text as={"span"} fontWeight={"500"}>
+                            Description : <br></br>
+                        </Text>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.
                         Numquam consequuntur pariatur, fugit rem perferendis ad
                         placeat. Voluptatem nisi excepturi, architecto est illo

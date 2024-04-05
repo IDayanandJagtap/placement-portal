@@ -1,9 +1,11 @@
 import { Stack } from "@chakra-ui/react";
 import React from "react";
-import { ApplyToJob } from ".";
+import { ApplyToJob, ShowAppliedStudents } from ".";
 import { Notifications } from "../utils";
 
 const JobProfileContainer = () => {
+    const userType = "faculty";
+
     return (
         <Stack flexDirection={"row"} h={"full"} overflow={"auto"} gap={0}>
             {/* Main component */}
@@ -13,6 +15,9 @@ const JobProfileContainer = () => {
                 px={[0, 2, 2, 3, 4]}
             >
                 <ApplyToJob demoJobs={demoJobs} />
+                {(userType === "company" || userType === "faculty") && (
+                    <ShowAppliedStudents />
+                )}
             </Stack>
 
             {/* Sidebar  -> show only in big screens*/}

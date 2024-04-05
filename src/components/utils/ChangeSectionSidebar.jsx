@@ -5,7 +5,7 @@ const ChangeSectionSidebar = ({ menu, currentSection, handler }) => {
     return (
         <Stack p={4}>
             <Text as={"h3"} fontSize={"20px"}>
-                ON THIS PAGE
+                username
             </Text>
             <Divider />
             <VStack mt={8} alignItems={"stretch"}>
