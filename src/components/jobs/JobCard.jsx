@@ -25,9 +25,26 @@ const JobCard = ({ job }) => {
                 fontSize={["16px", "18px", "18px", "20px", "22px"]}
             >
                 {job.companyName}
+                {/* Job title */}
             </Heading>
+            <Text
+                fontSize={["12px", "12px", "14px", "14px", "14px"]}
+                fontWeight={"500"}
+            >
+                CompanyName
+            </Text>
+
+            <Text
+                as={"p"}
+                fontSize={["12px", "12px", "14px", "16px"]}
+                mt={"2"}
+                fontWeight={"500"}
+            >
+                Job type : <Text as={"span"}>Internship</Text>
+            </Text>
+
             <Text as={"p"} fontSize={["12px", "12px", "14px", "14px", "14px"]}>
-                {job.jobDescription}
+                {job.jobDescription.substring(0, 200)} {"..."}
             </Text>
 
             <Text as={"p"} mt={[0, 1, 1, 1, 3]} fontSize={["14px", "16px"]}>

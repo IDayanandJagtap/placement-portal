@@ -1,52 +1,34 @@
-import { Stack, Text } from "@chakra-ui/react";
+import { Stack } from "@chakra-ui/react";
 import React, { useState } from "react";
-import {
-    FaUser,
-    FaUserPlus,
-    FaGear,
-    FaNoteSticky,
-    FaChartLine,
-} from "react-icons/fa6";
-import { IoMdCheckmark } from "react-icons/io";
-import { ChangeSectionSidebar, MobileSecondaryNav } from "../utils";
-import Insights from "./Insights";
-import Approval from "./Approval";
+import { FaGear, FaUserPen, FaSuitcase, FaPlus } from "react-icons/fa6";
+import { ChangeSectionSidebar, MobileSecondaryNav } from "../../utils";
+import NewJob from "./NewJob";
+import JobPosted from "./JobPosted";
 import EditProfile from "./EditProfile";
-import AddFaculty from "./AddFaculty";
 import Settings from "./Settings";
-import Notifications from "./Notifications";
 
 const list = [
     {
-        name: "Insights",
-        icon: <FaChartLine size={20} />,
-        section: "insights",
+        name: "New Job",
+        icon: <FaPlus size={20} />,
+        section: "newjob",
+    },
+    {
+        name: "Jobs posted",
+        icon: <FaSuitcase size={20} />,
+        section: "jobs",
     },
     {
         name: "Edit Profile",
-        icon: <FaUser size={18} />,
+        icon: <FaUserPen size={18} />,
         section: "editprofile",
     },
-    {
-        name: "Approvals",
-        icon: <IoMdCheckmark size={20} />,
-        section: "approval",
-    },
-    {
-        name: "Add new faculty",
-        icon: <FaUserPlus size={20} />,
-        section: "addFaculty",
-    },
-    {
-        name: "Notifications",
-        icon: <FaNoteSticky size={20} />,
-        section: "notifications",
-    },
+
     { name: "Settings", icon: <FaGear size={20} />, section: "settings" },
 ];
 
 const Dashboard = () => {
-    const [currentSection, setCurrentSection] = useState("approval");
+    const [currentSection, setCurrentSection] = useState("newjob");
     const changeSection = (section) => {
         setCurrentSection(section);
     };
@@ -73,12 +55,10 @@ const Dashboard = () => {
                 overflow={"scroll"}
                 px={[0, 2, 2, 3, 4]}
             >
-                {currentSection === "insights" && <Insights />}
-                {currentSection === "approval" && <Approval />}
-                {currentSection === "editprofile" && <EditProfile />}
-                {currentSection === "addFaculty" && <AddFaculty />}
-                {currentSection === "notifications" && <Notifications />}
-                {currentSection === "settings" && <Settings />}
+                {currentSection == "newjob" && <NewJob />}
+                {currentSection == "jobs" && <JobPosted />}
+                {currentSection == "editprofile" && <EditProfile />}
+                {currentSection == "settings" && <Settings />}
             </Stack>
 
             {/* Sidebar  -> show only in big screens*/}
