@@ -20,6 +20,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<RootLayout />}>
                     <Route index element={<JobOutlet />}></Route>
+                    <Route path="jobs" exact element={<JobOutlet />}></Route>
                     <Route
                         exact
                         path="companies"

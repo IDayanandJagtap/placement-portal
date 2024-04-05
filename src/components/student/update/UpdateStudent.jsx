@@ -96,7 +96,7 @@ const UpdateStudent = () => {
                         <Stack w={"full"}>
                             <Text
                                 as={"label"}
-                                fontSize={["16px", "18px", "20px"]}
+                                fontSize={["16px", "18px"]}
                                 fontWeight={"500"}
                             >
                                 Name :
@@ -104,13 +104,13 @@ const UpdateStudent = () => {
                             <Input
                                 placeholder="Enter your name"
                                 w={["full", "full", "90%"]}
-                                fontSize={["14px", "16px", "18px"]}
+                                fontSize={["14px", "16px"]}
                             />
                         </Stack>
                         <Stack w="full">
                             <Text
                                 as={"label"}
-                                fontSize={["16px", "18px", "20px"]}
+                                fontSize={["16px", "18px"]}
                                 fontWeight={"500"}
                             >
                                 Upload resume :{" "}
@@ -118,7 +118,7 @@ const UpdateStudent = () => {
                             <Input
                                 type="file"
                                 w={["full", "full", "90%"]}
-                                fontSize={["14px", "16px", "18px"]}
+                                fontSize={["14px", "16px"]}
                             />
                         </Stack>
                     </Stack>
@@ -131,7 +131,7 @@ const UpdateStudent = () => {
                         <Stack w={"full"}>
                             <Text
                                 as={"label"}
-                                fontSize={["16px", "18px", "20px"]}
+                                fontSize={["16px", "18px"]}
                                 fontWeight={"500"}
                             >
                                 Degree :
@@ -139,7 +139,7 @@ const UpdateStudent = () => {
                             <Select
                                 placeholder="Select degree"
                                 w={["full", "full", "90%"]}
-                                fontSize={["14px", "16px", "18px"]}
+                                fontSize={["14px", "16px"]}
                             >
                                 <option value="bcs">
                                     Bsc Computer Science
@@ -152,7 +152,7 @@ const UpdateStudent = () => {
                         <Stack w="full">
                             <Text
                                 as={"label"}
-                                fontSize={["16px", "18px", "20px"]}
+                                fontSize={["16px", "18px"]}
                                 fontWeight={"500"}
                             >
                                 Year :{" "}
@@ -160,7 +160,7 @@ const UpdateStudent = () => {
                             <Select
                                 placeholder="Select year"
                                 w={["full", "full", "90%"]}
-                                fontSize={["14px", "16px", "18px"]}
+                                fontSize={["14px", "16px"]}
                             >
                                 <option value="1">1st year</option>
                                 <option value="2">2nd year</option>
@@ -178,6 +178,7 @@ const UpdateStudent = () => {
 
             {/* Next button container */}
             <HStack w={"full"} justifyContent={"flex-end"} px={4} pb={3}>
+                <Button>Clear</Button>
                 <Button
                     colorScheme="primary"
                     size={["sm", "sm", "md"]}

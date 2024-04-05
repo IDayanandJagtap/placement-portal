@@ -6,7 +6,7 @@ import { default as CompanyDashboard } from "./company/dashboard";
 const DashboardContainer = () => {
     // bring from useContext;
     // const user = "faculty";
-    const user = "company";
+    const user = "student";
 
     return (
         <Stack overflow={"scroll"}>
