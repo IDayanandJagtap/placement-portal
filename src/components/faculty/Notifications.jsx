@@ -22,8 +22,10 @@ const Notifications = () => {
 
                 {/* buttons */}
                 <HStack mt={6} justifyContent={"flex-end"}>
-                    <Button>Cancel</Button>
-                    <Button colorScheme="primary">Update</Button>
+                    <Button size={["sm", "sm", "md"]}>Cancel</Button>
+                    <Button colorScheme="primary" size={["sm", "sm", "md"]}>
+                        Update
+                    </Button>
                 </HStack>
             </Stack>
 
@@ -45,7 +47,9 @@ const Notifications = () => {
                     <Text>hello what is this </Text>
                     <Text color={"gray.500"}>Date</Text>
                     <HStack justifyContent={"end"} w={"full"}>
-                        <Button colorScheme="red">Delete</Button>
+                        <Button colorScheme="red" size={["sm", "sm", "md"]}>
+                            Delete
+                        </Button>
                     </HStack>
                 </Stack>
                 <Stack

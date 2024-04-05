@@ -5,7 +5,6 @@ const data = [
     { name: "Students", number: 80 },
     { name: "Companies", number: 10 },
     { name: "Jobs", number: 20 },
-    { name: "Jobs", number: 20 },
 ];
 
 const Insights = () => {
@@ -14,15 +13,13 @@ const Insights = () => {
             px={6}
             py={4}
             minH={["fit-content", "fit-content", "fit-content", "95vh"]}
-            mb={[8, 8, 8, 4]}
         >
             <Grid
                 w={"100%"}
                 templateColumns={"repeat(auto-fit, minmax(250px, 30% ))"}
                 templateRows={"auto"}
                 gap={5}
-                justifyItems={"center"}
-                alignItems={"center"}
+                placeContent={"center"}
                 h={"full"}
             >
                 {data.map((e, index) => {
@@ -52,6 +49,8 @@ const Insights = () => {
                     );
                 })}
             </Grid>
+            {/* space for mobile */}
+            <Stack minH={"10vh"}></Stack>
         </Stack>
     );
 };
