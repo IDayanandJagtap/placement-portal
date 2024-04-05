@@ -7,6 +7,7 @@ import {
     RootLayout,
     StudentOutlet,
     DashboardContainer,
+    HistoryOutlet,
 } from "./components";
 import { JobProfileContainer } from "./components/jobs";
 import { CompanyProfileContainer } from "./components/company";
@@ -18,7 +19,7 @@ function App() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<RootLayout />}>
-                    <Route exact path="jobs" element={<JobOutlet />}></Route>
+                    <Route index element={<JobOutlet />}></Route>
                     <Route
                         exact
                         path="companies"
@@ -28,6 +29,11 @@ function App() {
                         exact
                         path="students"
                         element={<StudentOutlet />}
+                    ></Route>
+                    <Route
+                        exact
+                        path="history"
+                        element={<HistoryOutlet />}
                     ></Route>
                     <Route
                         exact
