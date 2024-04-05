@@ -7,7 +7,7 @@ import {
     Grid,
     Text,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IoSearch } from "react-icons/io5";
 import StudentCard from "./StudentCard";
 
@@ -27,6 +27,10 @@ const StudentList = ({ studentData }) => {
             setSearchedStudents(studentData);
         }
     };
+
+    useEffect(() => {
+        setSearchedStudents(studentData);
+    }, [studentData]);
     return (
         <Stack p={[3, 4, 4, 4, 6]} rowGap={[4, 5, 5, 5, 6]} minH={"90vh"}>
             <HStack justifyContent={"center"}>
