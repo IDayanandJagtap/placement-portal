@@ -2,7 +2,23 @@ import { Grid, GridItem, HStack, Input, Stack, Text } from "@chakra-ui/react";
 import React from "react";
 import { FaGithub, FaLinkedin, FaXTwitter } from "react-icons/fa6";
 
-const UpdateContact = () => {
+const UpdateContact = ({ formFields, setFormFields }) => {
+    const hanldeOnContactInputChange = (e) => {
+        const field = e.target.name;
+        const value = e.target.value;
+        setFormFields({ ...formFields, [field]: value });
+    };
+
+    const hanldeOnSocialsChange = (e) => {
+        const field = e.target.name;
+        const value = e.target.value;
+        setFormFields({
+            ...formFields,
+            contact: { ...formFields.contact, [field]: value },
+        });
+        console.log(formFields);
+    };
+
     return (
         <Stack
             w={"full"}
@@ -37,6 +53,9 @@ const UpdateContact = () => {
                         fontSize={["14px", "16px"]}
                         placeholder="https://your-site.com"
                         border={"2px solid #E2E8F0"}
+                        value={formFields.portfolio}
+                        name="portfolio"
+                        onChange={hanldeOnContactInputChange}
                     ></Input>
                 </Stack>
                 <Stack w={"full"} fontSize={["14px", "16px"]}>
@@ -47,6 +66,9 @@ const UpdateContact = () => {
                         fontSize={["14px", "16px"]}
                         placeholder="0000000000"
                         border={"2px solid #E2E8F0"}
+                        name="phone"
+                        onChange={hanldeOnContactInputChange}
+                        value={formFields.phone}
                     ></Input>
                 </Stack>
             </Stack>
@@ -71,11 +93,14 @@ const UpdateContact = () => {
                     <HStack my={1}>
                         <FaGithub size={32} />
                         <Input
-                            type="text"
+                            type="url"
                             placeholder="https://www.github.com/username"
                             border={"2px solid #E2E8F0"}
                             fontSize={["14px", "16px"]}
                             p={[2, 3]}
+                            value={formFields.contact.github}
+                            name="github"
+                            onChange={hanldeOnSocialsChange}
                         ></Input>
                     </HStack>
                 </Stack>
@@ -88,6 +113,9 @@ const UpdateContact = () => {
                             border={"2px solid #E2E8F0"}
                             fontSize={["14px", "16px"]}
                             p={[2, 3]}
+                            value={formFields.contact.twitter}
+                            name="twitter"
+                            onChange={hanldeOnSocialsChange}
                         ></Input>
                     </HStack>
                 </Stack>
@@ -100,6 +128,9 @@ const UpdateContact = () => {
                             border={"2px solid #E2E8F0"}
                             fontSize={["14px", "16px"]}
                             p={[2, 3]}
+                            value={formFields.contact.linkedin}
+                            name="linkedin"
+                            onChange={hanldeOnSocialsChange}
                         ></Input>
                     </HStack>
                 </Stack>

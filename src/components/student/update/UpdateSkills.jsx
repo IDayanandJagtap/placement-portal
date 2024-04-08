@@ -2,8 +2,16 @@ import React, { useEffect, useState } from "react";
 import { SelectSkills } from "../../utils";
 import { Stack, Text } from "@chakra-ui/react";
 
-const UpdateSkills = () => {
+const UpdateSkills = ({ formFields, setFormFields }) => {
     const [selectedTags, setSelectedTags] = useState([]);
+
+    useEffect(() => {
+        setFormFields({
+            ...formFields,
+            skills: [...selectedTags],
+        });
+        // console.log(formFields);
+    }, [selectedTags]);
 
     return (
         <Stack

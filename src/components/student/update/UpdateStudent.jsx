@@ -8,32 +8,64 @@ import {
     Stack,
     Text,
     VStack,
+    useToast,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useContext, useRef, useState } from "react";
+import demoImg from "../../../assets/userAvatar.png";
 import { FaPlus } from "react-icons/fa6";
 
-import demoImg from "../../../assets/userAvatar.png";
-import UpdateAchievements from "./UpdateAchievements";
-import UpdateAcademics from "./UpdateAcademics";
-import UpdateContact from "./UpdateContact";
-import UpdateSkills from "./UpdateSkills";
+import {
+    UpdateAchievements,
+    UpdateAcademics,
+    UpdateContact,
+    UpdateSkills,
+} from ".";
+import { StudentContext } from "../../../contextApi/StudentContext";
+
+const emptyStudentDetails = {
+    name: "",
+    degree: "",
+    year: "",
+    skills: [],
+    academics: Array(6).fill(0),
+    achievements: "",
+    portfolio: "",
+    phone: "0000000000",
+    contact: { github: "", linkedin: "", twitter: "" },
+};
 
 const UpdateStudent = () => {
-    const handleOnNextUpdate = () => {
-        if (activeSection == 3) {
-            // update
-            // api call
-            // let submit = confirm(
-            //     "Are you sure, you want to update your information ?"
-            // );
-            // if (submit) {
-            //     console.log("UPDAATIIIIIIIIIIIIIIIIIIIING");
-            // } else {
-            //     console.log("JALDI KAR ");
-            // }
-        } else {
-            setActiveSection(activeSection + 1);
-        }
+    const [files, setFiles] = useState({ img: "", resume: "" });
+    const [formFields, setFormFields] = useState(emptyStudentDetails);
+    const profileImageRef = useRef();
+    const { updateStudent } = useContext(StudentContext);
+    const toast = useToast();
+
+    const handleFileButtonClick = () => {
+        profileImageRef.current.click();
+    };
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+        setFiles({ ...files, [e.target.name]: file });
+        console.log(e.target.name);
+        console.log(files);
+    };
+    const handleOnInputChange = (e) => {
+        const field = e.target.name;
+        const value = e.target.value;
+        setFormFields({ ...formFields, [field]: value });
+        console.log(formFields);
+    };
+
+    const handleOnUpdateClick = async () => {
+        const result = await updateStudent(formFields, files);
+        toast({
+            title: result.title,
+            description: result.description,
+            status: result.status,
+            duration: 3000,
+            isClosable: true,
+        });
     };
 
     return (
@@ -60,6 +92,14 @@ const UpdateStudent = () => {
                     width={["full", "full", "20%"]}
                     h={["150px", "150px", "full"]}
                 >
+                    <Input
+                        type="file"
+                        display={"none"}
+                        name="img"
+                        accept=".jpeg .jpg .png"
+                        ref={profileImageRef}
+                        onChange={handleFileChange}
+                    ></Input>
                     <Image
                         src={demoImg}
                         borderRadius={"full"}
@@ -77,7 +117,7 @@ const UpdateStudent = () => {
                         _hover={{ backgroundColor: "#CBD5E0" }}
                         transition={"all 0.3s linear"}
                     >
-                        <FaPlus size={32} />
+                        <FaPlus size={32} onClick={handleFileButtonClick} />
                     </HStack>
                 </VStack>
                 {/* Name info */}
@@ -105,6 +145,9 @@ const UpdateStudent = () => {
                                 placeholder="Enter your name"
                                 w={["full", "full", "90%"]}
                                 fontSize={["14px", "16px"]}
+                                value={formFields.name}
+                                name="name"
+                                onChange={handleOnInputChange}
                             />
                         </Stack>
                         <Stack w="full">
@@ -117,8 +160,11 @@ const UpdateStudent = () => {
                             </Text>
                             <Input
                                 type="file"
+                                name="resume"
+                                accept=".pdf .docx"
                                 w={["full", "full", "90%"]}
                                 fontSize={["14px", "16px"]}
+                                onChange={handleFileChange}
                             />
                         </Stack>
                     </Stack>
@@ -140,6 +186,8 @@ const UpdateStudent = () => {
                                 placeholder="Select degree"
                                 w={["full", "full", "90%"]}
                                 fontSize={["14px", "16px"]}
+                                name="degree"
+                                onChange={handleOnInputChange}
                             >
                                 <option value="bcs">
                                     Bsc Computer Science
@@ -161,6 +209,8 @@ const UpdateStudent = () => {
                                 placeholder="Select year"
                                 w={["full", "full", "90%"]}
                                 fontSize={["14px", "16px"]}
+                                name="year"
+                                onChange={handleOnInputChange}
                             >
                                 <option value="1">1st year</option>
                                 <option value="2">2nd year</option>
@@ -171,10 +221,22 @@ const UpdateStudent = () => {
                 </VStack>
             </Stack>
 
-            <UpdateSkills />
-            <UpdateAchievements />
-            <UpdateAcademics />
-            <UpdateContact />
+            <UpdateSkills
+                formFields={formFields}
+                setFormFields={setFormFields}
+            />
+            <UpdateAchievements
+                formFields={formFields}
+                setFormFields={setFormFields}
+            />
+            <UpdateAcademics
+                formFields={formFields}
+                setFormFields={setFormFields}
+            />
+            <UpdateContact
+                formFields={formFields}
+                setFormFields={setFormFields}
+            />
 
             {/* Next button container */}
             <HStack w={"full"} justifyContent={"flex-end"} px={4} pb={3}>
@@ -182,7 +244,7 @@ const UpdateStudent = () => {
                 <Button
                     colorScheme="primary"
                     size={["sm", "sm", "md"]}
-                    onClick={handleOnNextUpdate}
+                    onClick={handleOnUpdateClick}
                 >
                     Update
                 </Button>

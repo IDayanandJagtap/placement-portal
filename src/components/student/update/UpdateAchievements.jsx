@@ -1,7 +1,12 @@
 import { Stack, Text, Textarea } from "@chakra-ui/react";
 import React from "react";
 
-const UpdateAchievements = () => {
+const UpdateAchievements = ({ formFields, setFormFields }) => {
+    const handleOnAchievementChange = (e) => {
+        const value = e.target.value;
+        setFormFields({ ...formFields, achievements: value });
+    };
+
     return (
         <Stack
             w={"full"}
@@ -25,6 +30,8 @@ const UpdateAchievements = () => {
                 border={"2px solid #E2E8F0"}
                 fontSize={["14px", "16px", "18px"]}
                 placeholder="Enter you achievements here..."
+                onChange={handleOnAchievementChange}
+                value={formFields.achievements}
             ></Textarea>
         </Stack>
     );

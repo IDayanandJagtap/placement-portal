@@ -19,6 +19,7 @@ const MobileSecondaryNav = ({ menu, currentSection, onClickHandler }) => {
                 return (
                     <Stack
                         // border={"2px solid red"}
+                        key={i}
                         onClick={() => onClickHandler(e.section)}
                         p={2}
                         borderRadius={"full"}
