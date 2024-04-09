@@ -9,11 +9,13 @@ import {
     Stack,
     Text,
     VStack,
+    useToast,
 } from "@chakra-ui/react";
-import { useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 import { Link, useNavigate } from "react-router-dom";
 import { IoLockClosed, IoMail, IoPeople, IoPlayForward } from "react-icons/io5";
+import { UserContext } from "../../contextApi/UserContext";
 import loginImg from "../../assets/loginImg5.jpg";
 
 const Signup = () => {
@@ -21,6 +23,14 @@ const Signup = () => {
     const inputPassword = useRef(null);
     const navigate = useNavigate();
     const signupComponentRef = useRef(0); // ref to the main parent to change it's style
+    const toast = useToast();
+    const { signup } = useContext(UserContext);
+    const [formData, setFormData] = useState({
+        email: "",
+        password: "",
+        confirmPassword: "",
+        userType: "",
+    });
 
     const toggleShowPassword = (e) => {
         if (isPasswordVisible) {
@@ -32,10 +42,35 @@ const Signup = () => {
         }
     };
 
-    const handleOnSignupClick = (e) => {
-        signupComponentRef.current.style.top = "-100vh";
-        setTimeout(() => navigate("/"), 300);
+    const handleInputChange = (e) => {
+        const field = e.target.name;
+        const value = e.target.value;
+
+        setFormData({ ...formData, [field]: value });
     };
+
+    const handleOnSignupClick = async () => {
+        const response = await signup(formData);
+        toast({
+            status: response.status,
+            title: response.title,
+            description: response.description,
+            duration: 3000,
+            isClosable: true,
+        });
+        // on successfull signup take the page up and go to dashboard
+        if (response.status === "success") {
+            signupComponentRef.current.style.top = "-100vh";
+            setTimeout(() => navigate("/me"), 300);
+        }
+    };
+
+    // if already logged in don't show this page
+    useEffect(() => {
+        if (isLoggedIn) {
+            navigate("/jobs");
+        }
+    }, []);
 
     return (
         <Stack
@@ -136,6 +171,9 @@ const Signup = () => {
                                     variant={"flushed"}
                                     fontSize={["14px", "16px"]}
                                     borderBottom={"2px solid #b4b4b4"}
+                                    value={formData.email}
+                                    name="email"
+                                    onChange={handleInputChange}
                                     required
                                 ></Input>
                             </InputGroup>
@@ -150,6 +188,9 @@ const Signup = () => {
                                     fontSize={["14px", "16px"]}
                                     borderBottom={"2px solid #b4b4b4"}
                                     ref={inputPassword}
+                                    value={formData.password}
+                                    name="password"
+                                    onChange={handleInputChange}
                                     required
                                 ></Input>
                                 <InputRightElement
@@ -174,6 +215,9 @@ const Signup = () => {
                                     fontSize={["14px", "16px"]}
                                     borderBottom={"2px solid #b4b4b4"}
                                     ref={inputPassword}
+                                    value={formData.confirmPassword}
+                                    name="confirmPassword"
+                                    onChange={handleInputChange}
                                     required
                                 ></Input>
                                 <InputRightElement
@@ -198,6 +242,8 @@ const Signup = () => {
                                     required
                                     color={"gray.500"}
                                     pl={8}
+                                    name="userType"
+                                    onChange={handleInputChange}
                                 >
                                     <option value="student">Student</option>
                                     <option value="company">Company</option>

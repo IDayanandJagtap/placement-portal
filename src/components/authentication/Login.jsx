@@ -8,16 +8,27 @@ import {
     Select,
     Stack,
     Text,
+    useToast,
 } from "@chakra-ui/react";
-import { useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { IoLockClosed, IoMail, IoPeople, IoPlayForward } from "react-icons/io5";
 import loginImg from "../../assets/authBackground.jpg";
+import { UserContext } from "../../contextApi/UserContext";
 
 const Login = () => {
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
     const inputPassword = useRef(null);
+    const loginComponentRef = useRef(null);
+    const navigate = useNavigate();
+    const { login, isLoggedIn } = useContext(UserContext);
+    const toast = useToast();
+    const [formData, setFormData] = useState({
+        email: "",
+        password: "",
+        userType: "",
+    });
 
     const toggleShowPassword = (e) => {
         if (isPasswordVisible) {
@@ -29,9 +40,38 @@ const Login = () => {
         }
     };
 
+    const handleInputChange = (e) => {
+        const field = e.target.name;
+        const value = e.target.value;
+        setFormData({ ...formData, [field]: value });
+    };
+
+    const handleOnLogin = async () => {
+        const response = await login(formData);
+        toast({
+            title: response.title,
+            description: response.description,
+            status: response.status,
+            duration: 3000,
+            isClosable: true,
+        });
+        // on successfull login take the login screen up and show home page
+        if (response.status === "success") {
+            loginComponentRef.current.style.top = "-100vh";
+            setTimeout(() => navigate("/jobs"), 300);
+        }
+    };
+
+    // if already logged in don't show this page
+    useEffect(() => {
+        if (isLoggedIn) {
+            navigate("/jobs");
+        }
+    }, []);
+
     return (
         <Stack
-            // zIndex={1}
+            ref={loginComponentRef}
             background={`url(${loginImg})`}
             backgroundRepeat={"no-repeat"}
             backgroundSize={"cover"}
@@ -128,6 +168,9 @@ const Login = () => {
                                     fontSize={["14px", "16px"]}
                                     variant={"flushed"}
                                     borderBottom={"2px solid #b4b4b4"}
+                                    name="email"
+                                    value={formData.email}
+                                    onChange={handleInputChange}
                                     required
                                 ></Input>
                             </InputGroup>
@@ -142,6 +185,9 @@ const Login = () => {
                                     variant={"flushed"}
                                     borderBottom={"2px solid #b4b4b4"}
                                     ref={inputPassword}
+                                    name="password"
+                                    value={formData.password}
+                                    onChange={handleInputChange}
                                     required
                                 ></Input>
                                 <InputRightElement
@@ -166,13 +212,19 @@ const Login = () => {
                                     required
                                     color={"gray.500"}
                                     pl={8}
+                                    name="userType"
+                                    onChange={handleInputChange}
                                 >
                                     <option value="student">Student</option>
                                     <option value="company">Company</option>
                                     <option value="faculty">Faculty</option>
                                 </Select>
                             </InputGroup>
-                            <Button colorScheme="primary" mt={2}>
+                            <Button
+                                colorScheme="primary"
+                                mt={2}
+                                onClick={handleOnLogin}
+                            >
                                 Login
                             </Button>
                         </Stack>

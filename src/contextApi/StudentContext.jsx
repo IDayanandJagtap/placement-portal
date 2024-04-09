@@ -1,12 +1,27 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 import { useUpdateStudentFormValidation } from "../hooks/formValidation";
 
 const StudentContext = createContext();
 
 const StudentProvider = (props) => {
-    const name = "Dj";
-    const setName = (value) => {
-        return value;
+    const [myInfo, setMyInfo] = useState(null);
+
+    const fetchMyInfo = async () => {
+        try {
+            let response = await fetch(
+                `${import.meta.env.VITE_API_HOST_URL}api/students/getme`
+            );
+
+            response = response.json();
+            if (response.success) {
+                setMyInfo(response.data);
+                return { ...myInfo };
+            }
+
+            throw new Error("Unable to fetch user info");
+        } catch (err) {
+            console.log(err.message);
+        }
     };
 
     const updateStudent = async (formFields, files) => {
@@ -31,7 +46,7 @@ const StudentProvider = (props) => {
 
         // make a api call
         let response = await fetch(
-            `${process.env.API_HOST_URL}api/students/update`,
+            `${import.meta.env.VITE_API_HOST_URL}api/students/update`,
             {
                 method: "POST",
                 body: formData,
@@ -56,7 +71,7 @@ const StudentProvider = (props) => {
         };
     };
     return (
-        <StudentContext.Provider value={{ name, setName, updateStudent }}>
+        <StudentContext.Provider value={{ myInfo, fetchMyInfo, updateStudent }}>
             {props.children}
         </StudentContext.Provider>
     );

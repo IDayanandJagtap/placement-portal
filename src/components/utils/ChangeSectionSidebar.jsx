@@ -1,11 +1,13 @@
 import { Divider, Stack, Text, VStack } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useContext } from "react";
+import { UserContext } from "../../contextApi/UserContext";
 
 const ChangeSectionSidebar = ({ menu, currentSection, handler }) => {
+    const { user } = useContext(UserContext);
     return (
         <Stack p={4}>
             <Text as={"h3"} fontSize={"20px"}>
-                username
+                {user.userName ? user.userName : user.userEmail}
             </Text>
             <Divider />
             <VStack mt={8} alignItems={"stretch"}>

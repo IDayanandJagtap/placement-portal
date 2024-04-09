@@ -71,4 +71,7 @@ menuLinks.map((e) => {
         history?
 
          
+
+    ? studentProfile -> getStudentById , facultyOptions
+    ? 
 */

@@ -1,10 +1,11 @@
 import { Button, HStack, Stack, Text, VStack } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { IoArrowBack } from "react-icons/io5";
+import React, { useContext, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 import { Skills, Achievements, Academics, Profile } from "./";
 import "../../../global.css";
+import { UserContext } from "../../../contextApi/UserContext";
+import { StudentContext } from "../../../contextApi/StudentContext";
 
 const StudentProfile = ({ studentInfo }) => {
     const [student, setStudent] = useState({
@@ -12,22 +13,27 @@ const StudentProfile = ({ studentInfo }) => {
         year: "",
         degree: "",
         skills: [],
+        resumeUrl: "",
+        achievements: "",
+        academics: Array(6).fill(0),
+        contact: { github: "", linkedin: "", twitter: "" },
     });
-    const navigate = useNavigate();
     const { id } = useParams();
 
     // user type from context
-    const userType = "student";
+    const { userType } = useContext(UserContext);
+    // const { fetchMyInfo, myInfo } = useContext(StudentContext);
 
     // fetch here from db
     useEffect(() => {
+        // don't write async effects instead write async function here and call it immediately
         let stud;
         if (id) {
-            stud = studentData.filter((e) => {
-                return e.id == id;
-            })[0];
+            // make a db call till then wait
+            // await fetchMyInfo(); ... here it is getOneStudent// getStudentByIds
+            // stud = myInfo;
         } else {
-            stud = studentInfo;
+            stud = studentInfo; // from context
         }
 
         setStudent(stud);
@@ -56,13 +62,13 @@ const StudentProfile = ({ studentInfo }) => {
                 <Profile student={student} />
 
                 {/* Skills */}
-                <Skills data={student.skills} />
+                <Skills skills={student.skills} />
 
                 {/* Achievements */}
-                <Achievements />
+                <Achievements achievements={student.achievements} />
 
                 {/* Academics */}
-                <Academics />
+                <Academics academics={student.academics} />
 
                 {/* If current user is faculty then show the delete button! */}
                 {/* Also if faculty && this student is verified then show button to remove verified */}

@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 
-const Academics = () => {
+const Academics = ({ academics }) => {
     return (
         <Stack
             justifyContent={"start"}
@@ -39,38 +39,37 @@ const Academics = () => {
                     <GridItem>
                         1st sem :{" "}
                         <Text as={"span"} fontWeight={"500"}>
-                            {" "}
-                            94.5
+                            {academics[0] !== 0 ? academics[0] : "Not provided"}
                         </Text>
                     </GridItem>
                     <GridItem>
                         2nd sem :{" "}
                         <Text as={"span"} fontWeight={"500"}>
-                            94.5
+                            {academics[1] !== 0 ? academics[1] : "Not provided"}
                         </Text>
                     </GridItem>
                     <GridItem>
                         3rd sem :{" "}
                         <Text as={"span"} fontWeight={"500"}>
-                            94.5
+                            {academics[2] !== 0 ? academics[2] : "Not provided"}
                         </Text>
                     </GridItem>
                     <GridItem>
                         4th sem :{" "}
                         <Text as={"span"} fontWeight={"500"}>
-                            94.5
+                            {academics[3] !== 0 ? academics[3] : "Not provided"}
                         </Text>
                     </GridItem>
                     <GridItem>
                         5th sem :{" "}
                         <Text as={"span"} fontWeight={"500"}>
-                            94.5
+                            {academics[4] !== 0 ? academics[4] : "Not provided"}
                         </Text>
                     </GridItem>
                     <GridItem>
                         6th sem :{" "}
                         <Text as={"span"} fontWeight={"500"}>
-                            94.5
+                            {academics[5] !== 0 ? academics[5] : "Not provided"}
                         </Text>
                     </GridItem>
                 </Grid>

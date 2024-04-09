@@ -1,5 +1,5 @@
 import { Stack } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import ChangeSectionSidebar from "../../utils/ChangeSectionSidebar";
 import StudentProfile from "../description/StudentProfile";
 import UpdateStudent from "../update/UpdateStudent";
@@ -7,6 +7,7 @@ import Jobs from "./Jobs";
 import Settings from "./Settings";
 import MobileSecondaryNav from "../../utils/MobileSecondaryNav";
 import { FaUser, FaUserPen, FaSuitcase, FaGear } from "react-icons/fa6";
+import { UserContext } from "../../../contextApi/UserContext";
 
 const list = [
     { name: "View Profile", icon: <FaUser size={18} />, section: "profile" },
@@ -26,14 +27,17 @@ const Dashboard = () => {
     };
 
     // Fetch from context
-    const studentInfo = {
+    const demoStudent = {
         id: 1,
-        name: "Dayanand Jagtap",
-        degree: "Bsc computer science",
-        year: "3rd",
-        skills: ["JavaScript", "Java", "C"],
+        name: "",
+        degree: "",
+        year: "",
+        achievements: "",
+        contact: [],
+        skills: [],
+        academics: Array(6).fill(0),
     };
-
+    const { myInfo } = useContext(UserContext);
     return (
         <Stack
             flexDirection={"row"}
@@ -49,7 +53,9 @@ const Dashboard = () => {
             >
                 {/* Student profile , update, jobs, setting */}
                 {currentSection == "profile" && (
-                    <StudentProfile studentInfo={studentInfo} />
+                    <StudentProfile
+                        studentInfo={myInfo ? myInfo : demoStudent}
+                    />
                 )}
                 {currentSection == "editprofile" && <UpdateStudent />}
                 {currentSection == "jobs" && <Jobs />}

@@ -1,18 +1,17 @@
 import { Stack } from "@chakra-ui/react";
-import React from "react";
+import React, { useContext } from "react";
 import { default as StudentDashboard } from "./student/dashboard";
 import { default as FacultyDashboard } from "./faculty/Dashboard";
 import { default as CompanyDashboard } from "./company/dashboard";
+import { UserContext } from "../contextApi/UserContext";
 const DashboardContainer = () => {
-    // bring from useContext;
-    // const user = "faculty";
-    const user = "student";
+    const { user } = useContext(UserContext);
 
     return (
         <Stack overflow={"scroll"}>
-            {user === "faculty" && <FacultyDashboard />}
-            {user === "company" && <CompanyDashboard />}
-            {user === "student" && <StudentDashboard />}
+            {user.userType === "faculty" && <FacultyDashboard />}
+            {user.userType === "company" && <CompanyDashboard />}
+            {user.userType === "student" && <StudentDashboard />}
         </Stack>
     );
 };

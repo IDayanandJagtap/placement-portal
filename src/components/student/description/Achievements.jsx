@@ -1,7 +1,7 @@
-import { HStack, ListItem, Stack, Text, UnorderedList } from "@chakra-ui/react";
+import { HStack, Stack, Text } from "@chakra-ui/react";
 import React from "react";
 
-const Achievements = () => {
+const Achievements = ({ achievements }) => {
     return (
         <Stack
             justifyContent={"start"}
@@ -21,21 +21,19 @@ const Achievements = () => {
             >
                 Achievements :
             </Text>
-            <HStack
-                pl={[0, 0, 10]}
-                py={[1, 1, 3]}
-                fontSize={["14px", "16px", "16px", "18px"]}
-            >
-                <UnorderedList>
-                    <ListItem>
-                        Won first prize at mmcoe in programming{" "}
-                    </ListItem>
-                    <ListItem>
-                        Won champion trophy in technical event at Jaikranti
-                        college, katraj
-                    </ListItem>
-                </UnorderedList>
-            </HStack>
+            {achievements ? (
+                <HStack
+                    pl={[0, 0, 10]}
+                    py={[1, 1, 3]}
+                    fontSize={["14px", "16px", "16px", "18px"]}
+                >
+                    <Text>{achievements}</Text>
+                </HStack>
+            ) : (
+                <Text pl={[0, 0, 10]} py={[1, 1, 3]}>
+                    No achievements added
+                </Text>
+            )}
         </Stack>
     );
 };

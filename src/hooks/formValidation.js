@@ -25,4 +25,33 @@ const useUpdateStudentFormValidation = (data) => {
     return error;
 };
 
-export { useUpdateStudentFormValidation };
+const useSignupFormValidation = (data) => {
+    const { email, password, confirmPassword, userType } = data;
+    const errors = [];
+
+    const isValidEmail = (email) => {
+        // Regular expression for basic email validation
+        let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailPattern.test(email);
+    };
+
+    if (!isValidEmail(email)) {
+        errors.push("Please enter a valid email!");
+    }
+
+    if (password !== confirmPassword) {
+        errors.push("Password and confirm password must be the same");
+    }
+
+    if (password.length < 6) {
+        errors.push("Password should be minimum 6 characters");
+    }
+
+    if (userType === "") {
+        errors.push("Please select user type");
+    }
+
+    return errors;
+};
+
+export { useUpdateStudentFormValidation, useSignupFormValidation };
