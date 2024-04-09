@@ -59,7 +59,7 @@ const StudentProfile = ({ studentInfo }) => {
         } else {
             setStudent(studentInfo);
         }
-    }, []);
+    }, [studentInfo]);
 
     return (
         <>

@@ -74,8 +74,15 @@ const UserProvider = ({ children }) => {
             description: response.error,
         };
     };
+
+    const logout = () => {
+        // remove from locaStorage
+        localStorage.removeItem("user");
+    };
     return (
-        <UserContext.Provider value={{ user, isLoggedIn, login, signup }}>
+        <UserContext.Provider
+            value={{ user, isLoggedIn, login, signup, logout }}
+        >
             {children}
         </UserContext.Provider>
     );

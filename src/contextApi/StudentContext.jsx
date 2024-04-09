@@ -4,18 +4,19 @@ import { useUpdateStudentFormValidation } from "../hooks/formValidation";
 const StudentContext = createContext();
 
 const StudentProvider = (props) => {
-    const [myInfo, setMyInfo] = useState(null);
-
     const fetchMyInfo = async () => {
         try {
             let response = await fetch(
-                `${import.meta.env.VITE_API_HOST_URL}api/students/getme`
+                `${import.meta.env.VITE_API_HOST_URL}api/students/getme`,
+                {
+                    method: "GET",
+                    credentials: "include",
+                }
             );
 
-            response = response.json();
+            response = await response.json();
             if (response.success) {
-                setMyInfo(response.data);
-                return { ...myInfo };
+                return response.data;
             }
 
             throw new Error("Unable to fetch user info");
@@ -38,14 +39,12 @@ const StudentProvider = (props) => {
 
     const updateStudent = async (formFields, files) => {
         // validate using own hook
-        const errors = useUpdateStudentFormValidation(formFields);
+        const errors = useUpdateStudentFormValidation(formFields, files);
         if (errors.length > 0) {
-            let error = "";
-            errors.forEach((e) => (error = error + " " + e));
             return {
                 status: "error",
                 title: "Error",
-                description: error,
+                description: errors.join(" "),
             };
         }
 
@@ -62,6 +61,7 @@ const StudentProvider = (props) => {
             {
                 method: "POST",
                 body: formData,
+                credentials: "include",
             }
         );
 
@@ -84,7 +84,7 @@ const StudentProvider = (props) => {
     };
     return (
         <StudentContext.Provider
-            value={{ myInfo, fetchMyInfo, getStudentById, updateStudent }}
+            value={{ fetchMyInfo, getStudentById, updateStudent }}
         >
             {props.children}
         </StudentContext.Provider>

@@ -60,7 +60,7 @@ const Profile = ({ student }) => {
                     >
                         {student.degree} {/* show only when degree is set */}
                         {student.year && (
-                            <Text as={"span"}>, {student.year} year</Text>
+                            <Text as={"span"}>, {student.year} </Text>
                         )}
                     </Text>
                 )}

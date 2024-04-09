@@ -7,6 +7,7 @@ import Jobs from "./Jobs";
 import Settings from "./Settings";
 import MobileSecondaryNav from "../../utils/MobileSecondaryNav";
 import { FaUser, FaUserPen, FaSuitcase, FaGear } from "react-icons/fa6";
+import { StudentContext } from "../../../contextApi/StudentContext";
 import { UserContext } from "../../../contextApi/UserContext";
 
 const list = [
@@ -26,25 +27,31 @@ const Dashboard = () => {
         setCurrentSection(section);
     };
     const toast = useToast();
-
-    // Fetch from context
-    const demoStudent = {
-        id: 1,
+    const [studentInfo, setStudentInfo] = useState({
         name: "",
-        degree: "",
         year: "",
-        achievements: "",
-        contact: [],
+        degree: "",
         skills: [],
+        resumeUrl: "",
+        achievements: "",
         academics: Array(6).fill(0),
-    };
-    const { myInfo } = useContext(UserContext);
+        contact: { github: "", linkedin: "", twitter: "" },
+    });
+
+    const { fetchMyInfo } = useContext(StudentContext);
 
     useEffect(() => {
         const getInfo = async () => {
-            const response = fetchMyInfo();
+            const response = await fetchMyInfo();
+            console.log(response);
             if (response.error) {
-                toast({ title: error, duration: 9000 });
+                toast({
+                    title: response.error,
+                    status: "error",
+                    duration: 9000,
+                });
+            } else {
+                setStudentInfo(response);
             }
         };
         getInfo();
@@ -65,11 +72,14 @@ const Dashboard = () => {
             >
                 {/* Student profile , update, jobs, setting */}
                 {currentSection == "profile" && (
-                    <StudentProfile
-                        studentInfo={myInfo ? myInfo : demoStudent}
+                    <StudentProfile studentInfo={studentInfo} />
+                )}
+                {currentSection == "editprofile" && (
+                    <UpdateStudent
+                        studentInfo={studentInfo}
+                        setCurrentSection={setCurrentSection}
                     />
                 )}
-                {currentSection == "editprofile" && <UpdateStudent />}
                 {currentSection == "jobs" && <Jobs />}
                 {currentSection == "settings" && <Settings />}
             </Stack>

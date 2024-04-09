@@ -21,6 +21,7 @@ import {
     UpdateSkills,
 } from ".";
 import { StudentContext } from "../../../contextApi/StudentContext";
+import { useNavigate } from "react-router-dom";
 
 const emptyStudentDetails = {
     name: "",
@@ -34,12 +35,13 @@ const emptyStudentDetails = {
     contact: { github: "", linkedin: "", twitter: "" },
 };
 
-const UpdateStudent = () => {
+const UpdateStudent = ({ studentInfo, setCurrentSection }) => {
     const [files, setFiles] = useState({ img: "", resume: "" });
-    const [formFields, setFormFields] = useState(emptyStudentDetails);
+    const [formFields, setFormFields] = useState(studentInfo);
     const profileImageRef = useRef();
     const { updateStudent } = useContext(StudentContext);
     const toast = useToast();
+    const navigate = useNavigate();
 
     const handleFileButtonClick = () => {
         profileImageRef.current.click();
@@ -59,6 +61,9 @@ const UpdateStudent = () => {
 
     const handleOnUpdateClick = async () => {
         const result = await updateStudent(formFields, files);
+        // navigate again so the user info will be updated (fetch) and set current section to profile
+        navigate("/me");
+        setCurrentSection("profile");
         toast({
             title: result.title,
             description: result.description,
@@ -189,10 +194,10 @@ const UpdateStudent = () => {
                                 name="degree"
                                 onChange={handleOnInputChange}
                             >
-                                <option value="bcs">
+                                <option value="Bsc Computer Science">
                                     Bsc Computer Science
                                 </option>
-                                <option value="bca">
+                                <option value="Bsc Computer Application">
                                     Bsc Computer Application
                                 </option>
                             </Select>
@@ -212,9 +217,9 @@ const UpdateStudent = () => {
                                 name="year"
                                 onChange={handleOnInputChange}
                             >
-                                <option value="1">1st year</option>
-                                <option value="2">2nd year</option>
-                                <option value="3">3rd year</option>
+                                <option value="1st year">1st year</option>
+                                <option value="2nd year">2nd year</option>
+                                <option value="3rd year">3rd year</option>
                             </Select>
                         </Stack>
                     </Stack>

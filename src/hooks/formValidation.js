@@ -25,7 +25,7 @@ const useUpdateStudentFormValidation = (data) => {
     return error;
 };
 
-const useSignupFormValidation = (data) => {
+const useSignupFormValidation = (data, files) => {
     const { email, password, confirmPassword, userType } = data;
     const errors = [];
 
@@ -51,6 +51,9 @@ const useSignupFormValidation = (data) => {
         errors.push("Please select user type");
     }
 
+    if (files.length < 2) {
+        errors.push("Please upload profile and resume both");
+    }
     return errors;
 };
 
