@@ -43,7 +43,6 @@ const Dashboard = () => {
     useEffect(() => {
         const getInfo = async () => {
             const response = await fetchMyInfo();
-            console.log(response);
             if (response.error) {
                 toast({
                     title: response.error,

@@ -1,15 +1,19 @@
 import { Button, Text, VStack } from "@chakra-ui/react";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { UserContext } from "../../../contextApi/UserContext";
 import { useNavigate } from "react-router-dom";
 
 const Settings = () => {
     const { logout } = useContext(UserContext);
+    const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
 
     const handleOnLogout = () => {
+        setIsLoading(true);
         logout();
-        navigate("/login");
+        setTimeout(() => {
+            navigate("/login");
+        }, 1000);
     };
     return (
         <VStack
@@ -24,6 +28,7 @@ const Settings = () => {
                 size={["sm", "sm", "md"]}
                 colorScheme="primary"
                 onClick={handleOnLogout}
+                isLoading={isLoading}
             >
                 Logout
             </Button>

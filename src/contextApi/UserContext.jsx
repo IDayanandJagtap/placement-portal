@@ -4,7 +4,9 @@ import { useSignupFormValidation } from "../hooks/formValidation";
 const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
-    const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
+    const userFromLocalStorage = JSON.parse(localStorage.getItem("user"));
+    const userTemplate = { userType: "" };
+    const [user, setUser] = useState(userFromLocalStorage || userTemplate);
     const [isLoggedIn, setIsLoggedIn] = useState(
         localStorage.getItem("user") ? true : false
     );
@@ -78,6 +80,7 @@ const UserProvider = ({ children }) => {
     const logout = () => {
         // remove from locaStorage
         localStorage.removeItem("user");
+        setUser(userTemplate);
     };
     return (
         <UserContext.Provider

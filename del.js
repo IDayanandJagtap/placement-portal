@@ -72,6 +72,9 @@ menuLinks.map((e) => {
 
          
 
-    ? studentProfile -> getStudentById , facultyOptions
-    ? 
+    ? studentProfile -> download CV not working 
+    ? auth -> confirm password eye, check logout once
+    
+    ? company -> dashboard
+
 */

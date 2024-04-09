@@ -7,13 +7,57 @@ import {
     Text,
     Textarea,
     VStack,
+    useToast,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useContext, useState } from "react";
 
 import demoImg from "../../../assets/logo.jpeg";
 import { FaLinkedin, FaPlus, FaXTwitter } from "react-icons/fa6";
+import { useRef } from "react";
+import { CompanyContext } from "../../../contextApi/CompanyContext";
+import { useNavigate } from "react-router-dom";
 
-const EditProfile = () => {
+const EditProfile = ({ companyInfo, setCurrentSection }) => {
+    const [formFields, setFormFields] = useState(companyInfo);
+    const [imgUrl, setImgUrl] = useState();
+    const profileImageRef = useRef();
+    const { updateCompany } = useContext(CompanyContext);
+    const navigate = useNavigate();
+    const toast = useToast();
+
+    const handleFileButtonClick = () => {
+        profileImageRef.current.click();
+    };
+
+    const handleOnInputChange = (e) => {
+        const field = e.target.name;
+        const value = e.target.value;
+        setFormFields({ ...formFields, [field]: value });
+        console.log(formFields);
+    };
+
+    const hanldeOnSocialsChange = (e) => {
+        const field = e.target.name;
+        const value = e.target.value;
+        setFormFields({
+            ...formFields,
+            contact: { ...formFields.contact, [field]: value },
+        });
+    };
+
+    const handleOnUpdateClick = async () => {
+        const result = await updateCompany(formFields, imgUrl);
+        // navigate again so the user info will be updated (fetch) and set current section to profile
+        navigate("/me");
+        setCurrentSection("newjob");
+        toast({
+            title: result.title,
+            description: result.description,
+            status: result.status,
+            duration: 3000,
+            isClosable: true,
+        });
+    };
     return (
         <Stack px={[4, 6]} py={4} mb={[8, 8, 8, 4]} minH={"90vh"} gap={6}>
             <Text
@@ -31,7 +75,21 @@ const EditProfile = () => {
                     width={["full", "full", "20%"]}
                     h={["150px", "150px", "full"]}
                 >
-                    <Image src={demoImg} h={"full"} opacity={0.4}></Image>
+                    <Input
+                        display={"none"}
+                        type="file"
+                        name="img"
+                        accept=".jpeg .jpg .png"
+                        ref={profileImageRef}
+                        onChange={(e) => {
+                            setImgUrl(e.target.files[0]);
+                        }}
+                    ></Input>
+                    <Image
+                        src={companyInfo.imgUrl ? companyInfo.imgUrl : demoImg}
+                        h={"full"}
+                        opacity={0.4}
+                    ></Image>
                     <HStack
                         position={"absolute"}
                         top={"50%"}
@@ -42,6 +100,7 @@ const EditProfile = () => {
                         borderRadius={"full"}
                         _hover={{ backgroundColor: "#CBD5E0" }}
                         transition={"all 0.3s linear"}
+                        onClick={handleFileButtonClick}
                     >
                         <FaPlus size={32} />
                     </HStack>
@@ -50,11 +109,23 @@ const EditProfile = () => {
                 <Stack gap={4}>
                     <Stack>
                         <Text as={"label"}>Company name</Text>
-                        <Input type="text" placeholder="Enter company name" />
+                        <Input
+                            type="text"
+                            placeholder="Enter company name"
+                            name="name"
+                            value={formFields.name}
+                            onChange={handleOnInputChange}
+                        />
                     </Stack>
                     <Stack>
                         <Text as={"label"}>Tagline</Text>
-                        <Input type="text" placeholder="Enter tagline" />
+                        <Input
+                            type="text"
+                            placeholder="Enter tagline"
+                            name="tagline"
+                            value={formFields.tagline}
+                            onChange={handleOnInputChange}
+                        />
                     </Stack>
                 </Stack>
             </Stack>
@@ -78,6 +149,9 @@ const EditProfile = () => {
                             border={"2px solid #E2E8F0"}
                             fontSize={["14px", "16px"]}
                             p={[2, 3]}
+                            name="twitter"
+                            value={formFields.contact.twitter}
+                            onChange={hanldeOnSocialsChange}
                         ></Input>
                     </HStack>
                 </Stack>
@@ -90,6 +164,9 @@ const EditProfile = () => {
                             border={"2px solid #E2E8F0"}
                             fontSize={["14px", "16px"]}
                             p={[2, 3]}
+                            name="linkedin"
+                            value={formFields.contact.linkedin}
+                            onChange={hanldeOnSocialsChange}
                         ></Input>
                     </HStack>
                 </Stack>
@@ -103,13 +180,20 @@ const EditProfile = () => {
                 <Textarea
                     rows={7}
                     placeholder="Write about company.."
+                    name="bio"
+                    value={formFields.bio}
+                    onChange={handleOnInputChange}
                 ></Textarea>
             </Stack>
 
             {/* button */}
             <HStack justifyContent={"flex-end"}>
                 <Button size={["sm", "sm", "md"]}>Clear</Button>
-                <Button size={["sm", "sm", "md"]} colorScheme="primary">
+                <Button
+                    size={["sm", "sm", "md"]}
+                    colorScheme="primary"
+                    onClick={handleOnUpdateClick}
+                >
                     Update
                 </Button>
             </HStack>

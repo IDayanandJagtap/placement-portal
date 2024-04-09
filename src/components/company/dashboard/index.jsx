@@ -1,11 +1,12 @@
-import { Stack } from "@chakra-ui/react";
-import React, { useState } from "react";
+import { Stack, useToast } from "@chakra-ui/react";
+import React, { useContext, useEffect, useState } from "react";
 import { FaGear, FaUserPen, FaSuitcase, FaPlus } from "react-icons/fa6";
 import { ChangeSectionSidebar, MobileSecondaryNav } from "../../utils";
 import NewJob from "./NewJob";
 import JobPosted from "./JobPosted";
 import EditProfile from "./EditProfile";
 import Settings from "./Settings";
+import { CompanyContext } from "../../../contextApi/CompanyContext";
 
 const list = [
     {
@@ -29,18 +30,37 @@ const list = [
 
 const Dashboard = () => {
     const [currentSection, setCurrentSection] = useState("newjob");
+    const { getMyInfo } = useContext(CompanyContext);
+    const [companyInfo, setCompanyInfo] = useState({
+        name: "",
+        imgUrl: "",
+        tagline: "",
+        bio: "",
+        contact: { linkedin: "", twitter: "" },
+    });
+    const toast = useToast();
+
     const changeSection = (section) => {
         setCurrentSection(section);
     };
 
     // Fetch from context
-    const studentInfo = {
-        id: 1,
-        name: "Dayanand Jagtap",
-        degree: "Bsc computer science",
-        year: "3rd",
-        skills: ["JavaScript", "Java", "C"],
-    };
+    useEffect(() => {
+        const getInfo = async () => {
+            let response = await getMyInfo();
+            if (response.error) {
+                toast({
+                    title: response.error,
+                    status: "error",
+                    duration: 3000,
+                });
+            }
+
+            setCompanyInfo(response);
+            console.log(companyInfo.imgUrl);
+        };
+        getInfo();
+    }, []);
 
     return (
         <Stack
@@ -55,9 +75,16 @@ const Dashboard = () => {
                 overflow={"scroll"}
                 px={[0, 2, 2, 3, 4]}
             >
-                {currentSection == "newjob" && <NewJob />}
+                {currentSection == "newjob" && (
+                    <NewJob setCurrentSection={setCurrentSection} />
+                )}
                 {currentSection == "jobs" && <JobPosted />}
-                {currentSection == "editprofile" && <EditProfile />}
+                {currentSection == "editprofile" && (
+                    <EditProfile
+                        companyInfo={companyInfo}
+                        setCurrentSection={setCurrentSection}
+                    />
+                )}
                 {currentSection == "settings" && <Settings />}
             </Stack>
 

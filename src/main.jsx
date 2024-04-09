@@ -5,6 +5,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { extendTheme } from "@chakra-ui/react";
 import { StudentProvider } from "./contextApi/StudentContext";
 import { UserProvider } from "./contextApi/UserContext";
+import { CompanyProvider } from "./contextApi/CompanyContext";
 
 // Extend chakra theme
 const theme = extendTheme({
@@ -33,9 +34,11 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
         <ChakraProvider theme={theme}>
             <UserProvider>
-                <StudentProvider>
-                    <App />
-                </StudentProvider>
+                <CompanyProvider>
+                    <StudentProvider>
+                        <App />
+                    </StudentProvider>
+                </CompanyProvider>
             </UserProvider>
         </ChakraProvider>
     </React.StrictMode>

@@ -14,6 +14,7 @@ import { IoLogoGithub, IoLogoLinkedin } from "react-icons/io";
 import avatarImg from "../../../assets/userAvatar.png";
 
 const Profile = ({ student }) => {
+    console.log(student.resumeUrl);
     const handleDownloadCv = () => {
         window.open(student.resumeUrl, "_blank");
     };
@@ -102,7 +103,7 @@ const Profile = ({ student }) => {
                         size={["sm", "md"]}
                         colorScheme="primary"
                         onClick={handleDownloadCv}
-                        isDisabled={!student.resumeUrl}
+                        // isDisabled={!student.resumeUrl}
                     >
                         Download CV
                     </Button>

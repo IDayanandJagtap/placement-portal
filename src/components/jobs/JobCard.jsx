@@ -6,6 +6,7 @@ import { IoArrowForward } from "react-icons/io5";
 
 const JobCard = ({ job }) => {
     const navigate = useNavigate();
+    const postedDate = new Date(job.postedDate).toLocaleDateString();
 
     return (
         <Stack
@@ -17,21 +18,20 @@ const JobCard = ({ job }) => {
             _hover={{ boxShadow: "md" }}
             onClick={() => {
                 // In mobile navigate button is not displayed, so navigation is used here
-                navigate("/job/" + job.jobId.toString());
+                navigate("/job/" + job._id.toString());
             }}
         >
             <Heading
                 as={"h3"}
                 fontSize={["16px", "18px", "18px", "20px", "22px"]}
             >
-                {job.companyName}
-                {/* Job title */}
+                {job.title}
             </Heading>
             <Text
                 fontSize={["12px", "12px", "14px", "14px", "14px"]}
                 fontWeight={"500"}
             >
-                CompanyName
+                {job.companyName}
             </Text>
 
             <Text
@@ -40,18 +40,21 @@ const JobCard = ({ job }) => {
                 mt={"2"}
                 fontWeight={"500"}
             >
-                Job type : <Text as={"span"}>Internship</Text>
+                Job type : <Text as={"span"}>{job.type}</Text>
+            </Text>
+            <Text as={"p"} fontSize={["12px", "12px", "14px", "16px"]} mt={"2"}>
+                {job.salaryRange.min} - {job.salaryRange.max}
             </Text>
 
             <Text as={"p"} fontSize={["12px", "12px", "14px", "14px", "14px"]}>
-                {job.jobDescription.substring(0, 200)} {"..."}
+                {job.description.substring(0, 200)} {"..."}
             </Text>
 
             <Text as={"p"} mt={[0, 1, 1, 1, 3]} fontSize={["14px", "16px"]}>
                 Expected Skills :
             </Text>
             <HStack flexWrap={"wrap"}>
-                {job.expectedSkills.map((skill, index) => {
+                {job.skills.map((skill, index) => {
                     return <Tag name={skill} key={index} />;
                 })}
             </HStack>
@@ -61,7 +64,7 @@ const JobCard = ({ job }) => {
                     color={"gray.500"}
                     fontSize={["12px", "12px", "14px", "14px", "14px"]}
                 >
-                    23/04/2024
+                    {postedDate}
                 </Text>
                 <Button
                     display={["none", "none", "none", "flex"]}
@@ -72,7 +75,7 @@ const JobCard = ({ job }) => {
                     borderRadius={"full"}
                     _hover={{ transform: "scale(1.1)" }}
                     onClick={() => {
-                        navigate("/job/" + job.jobId.toString());
+                        navigate("/job/" + job._id.toString());
                     }}
                 >
                     <IoArrowForward size={20} />

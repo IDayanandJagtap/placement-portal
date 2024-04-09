@@ -1,10 +1,12 @@
 import { Avatar, HStack, Heading, Text, VStack } from "@chakra-ui/react";
-import React, { useRef } from "react";
+import React, { useContext, useRef } from "react";
 import { FaHistory, FaSuitcase } from "react-icons/fa";
 import { VscOrganization } from "react-icons/vsc";
 import { PiStudentFill } from "react-icons/pi";
 import { BiMenuAltLeft } from "react-icons/bi";
+import { IoLogInOutline } from "react-icons/io5";
 import { useLocation, useNavigate } from "react-router-dom";
+import { UserContext } from "../../contextApi/UserContext";
 
 const links = [
     { name: "Jobs", link: "/jobs", icon: <FaSuitcase /> },
@@ -20,6 +22,7 @@ const MainNav = ({ outletRef }) => {
     const hamMenuRef = useRef(0);
     const mainHeadingRef = useRef(0);
     const mainNavRef = useRef(0);
+    const { isLoggedIn } = useContext(UserContext);
 
     const showMenu = () => {
         // Hide outlet component and ham-menu
@@ -131,28 +134,52 @@ const MainNav = ({ outletRef }) => {
             <HStack h={"20vh"}></HStack>
 
             {/* If logged in show this else show login button */}
-            <HStack>
-                <HStack
-                    width={"full"}
-                    gap={[3, 3, 1.5, 3]}
-                    color={"whiteAlpha.600"}
-                    _hover={{ color: "whiteAlpha.900" }}
-                    transition={"all 0.2s linear"}
-                    cursor={"pointer"}
-                    pb={[1, 0]}
-                    onClick={() => {
-                        handleOnLinkClick("me");
-                    }}
-                >
-                    <Avatar size={"sm"} name="Dayanand Jagtap"></Avatar>
-                    <Text
-                        display={["none", "none", "block"]}
-                        className={"navlabels"}
-                        fontSize={["16px", "16px", "14px", "16px", "18px"]}
+            <HStack w={"full"}>
+                {isLoggedIn ? (
+                    <HStack
+                        width={"full"}
+                        gap={[3, 3, 1.5, 3]}
+                        color={"whiteAlpha.600"}
+                        _hover={{ color: "whiteAlpha.900" }}
+                        transition={"all 0.2s linear"}
+                        cursor={"pointer"}
+                        pb={[1, 0]}
+                        onClick={() => {
+                            handleOnLinkClick("me");
+                        }}
                     >
-                        Profile
-                    </Text>
-                </HStack>
+                        <Avatar size={"sm"} name="Dayanand Jagtap"></Avatar>
+                        <Text
+                            display={["none", "none", "block"]}
+                            className={"navlabels"}
+                            fontSize={["16px", "16px", "14px", "16px", "18px"]}
+                        >
+                            Profile
+                        </Text>
+                    </HStack>
+                ) : (
+                    <HStack
+                        width={"full"}
+                        gap={[3, 3, 1.5, 3]}
+                        color={"whiteAlpha.600"}
+                        _hover={{ color: "whiteAlpha.900" }}
+                        transition={"all 0.2s linear"}
+                        cursor={"pointer"}
+                        pb={[1, 0]}
+                        onClick={() => {
+                            handleOnLinkClick("login");
+                        }}
+                    >
+                        <IoLogInOutline size={28} />
+                        <Text
+                            display={["none", "none", "block"]}
+                            className={"navlabels"}
+                            fontSize={["16px", "16px", "14px", "16px", "18px"]}
+                        >
+                            Login
+                        </Text>
+                    </HStack>
+                )}
             </HStack>
         </VStack>
     );
