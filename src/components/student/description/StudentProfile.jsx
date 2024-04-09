@@ -1,4 +1,11 @@
-import { Button, HStack, Stack, Text, VStack } from "@chakra-ui/react";
+import {
+    Button,
+    HStack,
+    Stack,
+    Text,
+    VStack,
+    useToast,
+} from "@chakra-ui/react";
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -19,10 +26,11 @@ const StudentProfile = ({ studentInfo }) => {
         contact: { github: "", linkedin: "", twitter: "" },
     });
     const { id } = useParams();
+    const toast = useToast();
 
-    // user type from context
+    // states and functions from context
     const { userType } = useContext(UserContext);
-    // const { fetchMyInfo, myInfo } = useContext(StudentContext);
+    const { getStudentById } = useContext(StudentContext);
 
     // fetch here from db
     useEffect(() => {
@@ -30,13 +38,27 @@ const StudentProfile = ({ studentInfo }) => {
         let stud;
         if (id) {
             // make a db call till then wait
-            // await fetchMyInfo(); ... here it is getOneStudent// getStudentByIds
-            // stud = myInfo;
-        } else {
-            stud = studentInfo; // from context
-        }
+            let response;
+            const getInfo = async () => {
+                response = await getStudentById(id);
+                console.log(response);
+                if (response.success === false) {
+                    toast({
+                        title: "Unable to fetch the info",
+                        duration: 3000,
+                        status: "error",
+                    });
 
-        setStudent(stud);
+                    stud = student;
+                } else {
+                    stud = response.data;
+                }
+                setStudent(stud);
+            };
+            getInfo();
+        } else {
+            setStudent(studentInfo);
+        }
     }, []);
 
     return (

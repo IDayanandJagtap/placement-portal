@@ -24,7 +24,7 @@ const Signup = () => {
     const navigate = useNavigate();
     const signupComponentRef = useRef(0); // ref to the main parent to change it's style
     const toast = useToast();
-    const { signup } = useContext(UserContext);
+    const { signup, isLoggedIn } = useContext(UserContext);
     const [formData, setFormData] = useState({
         email: "",
         password: "",

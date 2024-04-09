@@ -21,7 +21,19 @@ const StudentProvider = (props) => {
             throw new Error("Unable to fetch user info");
         } catch (err) {
             console.log(err.message);
+            return { error: err.message };
         }
+    };
+
+    const getStudentById = async (id) => {
+        try {
+            let response = await fetch(
+                `${import.meta.env.VITE_API_HOST_URL}api/students/getone/${id}`
+            );
+
+            response = response.json();
+            return response;
+        } catch (err) {}
     };
 
     const updateStudent = async (formFields, files) => {
@@ -71,7 +83,9 @@ const StudentProvider = (props) => {
         };
     };
     return (
-        <StudentContext.Provider value={{ myInfo, fetchMyInfo, updateStudent }}>
+        <StudentContext.Provider
+            value={{ myInfo, fetchMyInfo, getStudentById, updateStudent }}
+        >
             {props.children}
         </StudentContext.Provider>
     );

@@ -1,5 +1,5 @@
-import { Stack } from "@chakra-ui/react";
-import React, { useContext, useState } from "react";
+import { Stack, useToast } from "@chakra-ui/react";
+import React, { useContext, useEffect, useState } from "react";
 import ChangeSectionSidebar from "../../utils/ChangeSectionSidebar";
 import StudentProfile from "../description/StudentProfile";
 import UpdateStudent from "../update/UpdateStudent";
@@ -25,6 +25,7 @@ const Dashboard = () => {
     const changeSection = (section) => {
         setCurrentSection(section);
     };
+    const toast = useToast();
 
     // Fetch from context
     const demoStudent = {
@@ -38,6 +39,17 @@ const Dashboard = () => {
         academics: Array(6).fill(0),
     };
     const { myInfo } = useContext(UserContext);
+
+    useEffect(() => {
+        const getInfo = async () => {
+            const response = fetchMyInfo();
+            if (response.error) {
+                toast({ title: error, duration: 9000 });
+            }
+        };
+        getInfo();
+    }, []);
+
     return (
         <Stack
             flexDirection={"row"}
