@@ -37,6 +37,17 @@ const StudentProvider = (props) => {
         } catch (err) {}
     };
 
+    const getAllStudents = async () => {
+        try {
+            let response = await fetch(
+                `${import.meta.env.VITE_API_HOST_URL}api/students/getall`
+            );
+
+            response = response.json();
+            return response;
+        } catch (err) {}
+    };
+
     const updateStudent = async (formFields, files) => {
         // validate using own hook
         const errors = useUpdateStudentFormValidation(formFields, files);
@@ -103,7 +114,13 @@ const StudentProvider = (props) => {
     };
     return (
         <StudentContext.Provider
-            value={{ fetchMyInfo, getStudentById, updateStudent, applyToJob }}
+            value={{
+                fetchMyInfo,
+                getStudentById,
+                updateStudent,
+                getAllStudents,
+                applyToJob,
+            }}
         >
             {props.children}
         </StudentContext.Provider>

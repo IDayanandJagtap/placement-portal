@@ -59,8 +59,8 @@ menuLinks.map((e) => {
 
     
     * student :
-        todo:  1. getall students
-        2. Dashboard fixes  
+        done 1. getall students
+        todo :2. Dashboard fixes  
 
         later : 
             cancel application
