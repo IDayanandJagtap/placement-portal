@@ -42,52 +42,38 @@ menuLinks.map((e) => {
     User
 
 
-    ?Company dashboard 
-     -Job posting 
-     - Job listing
-     - delete job 
-
-    ?Faculty dashboard 
-
-
-    ?Backend 
-
-
-    ?Home page 
-
-
-    ?History 
-
-    
-    ?Responsiveness 
-
-    ----------------------------------------------------
-                |-----------------------------------------
-
-
-    Components : 
-        
-
-        history?
-
          
 
     ? studentProfile -> download CV not working 
     ? auth -> confirm password eye, check logout once
-    
-    ? company -> dashboard  ??? done 
-
-    ? fetch jobs done , fetch single job done ... 
-    !? show applied students! -> apply to job ,,, show students and don't let same student apply more ...and map description properly
-
-    /// just integration
-    ? fetch all students 
-    ? fetch all companies 
-
-
-    ? student apply to job 
     ? student dashboard show applied jobs
+    
 
-    ? faculty dashboard
 
+    * company : 
+        done 1. companyCard uniform size 
+        done 2. Load jobs posted by that company 
+
+        later : 
+            delete Job 
+
+    
+    * student :
+        todo:  1. getall students
+        2. Dashboard fixes  
+
+        later : 
+            cancel application
+    
+    * Faculty : 
+        1. Dashboard : 
+            a. insights 
+            b. Approval system (make changes everywhere show approved or not)
+            c. edit profile 
+            d. add new faculty 
+            e. notifications (add new notifications, show all, delete)
+            f. invalidate & delete company or student
+
+    
+    ? Above Fixes 
 */

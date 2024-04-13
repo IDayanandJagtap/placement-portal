@@ -7,6 +7,7 @@ import { CompanyContext } from "../../contextApi/CompanyContext";
 
 const CompanyProfile = () => {
     const [company, setCompany] = useState({});
+    const [jobs, setJobs] = useState([]);
     const { id } = useParams();
     const { getCompanyById } = useContext(CompanyContext);
 
@@ -15,7 +16,8 @@ const CompanyProfile = () => {
         if (result.error) {
             return toast({ title: result.error, status: "error" });
         }
-        setCompany(result);
+        setCompany(result.company);
+        setJobs(result.jobs);
     };
 
     useEffect(() => {
@@ -24,7 +26,7 @@ const CompanyProfile = () => {
     return (
         <Stack p={[2, 2, 4, 6]} gap={12}>
             <Profile company={company} />
-            <Jobs />
+            <Jobs jobs={jobs} />
         </Stack>
     );
 };

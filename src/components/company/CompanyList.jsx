@@ -74,6 +74,7 @@ const CompanyList = () => {
                         <Stack
                             key={i}
                             p={[3, 4, 4, 5, 6]}
+                            w={"full"}
                             flexDirection={["column", "column", "row"]}
                             alignItems={"center"}
                             justifyContent={"center"}
