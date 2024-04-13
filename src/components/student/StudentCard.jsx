@@ -21,7 +21,7 @@ const StudentCard = ({ student }) => {
             px={5}
             _hover={{ background: "secondary.50", boxShadow: "md" }}
             onClick={() => {
-                navigate(`/students/${student.id}`);
+                navigate(`/students/${student._id}`);
             }}
         >
             {/* Use some professional font */}
@@ -35,6 +35,17 @@ const StudentCard = ({ student }) => {
             <Text mt={-1.5} fontSize={["12px", "12px", "14px", "14px", "16px"]}>
                 {student.degree} , {student.year}
             </Text>
+
+            {/* Only in ShowAppliedStudents Component */}
+            {student.jobDescription && (
+                <Text
+                    fontSize={["12px", "12px", "14px", "14px", "16px"]}
+                    color={"gray.600"}
+                >
+                    About student :{" "}
+                    <Text as={"span"}>{student.jobDescription}</Text>
+                </Text>
+            )}
 
             <HStack mt={2}>
                 {student.skills.map((element, index) => {

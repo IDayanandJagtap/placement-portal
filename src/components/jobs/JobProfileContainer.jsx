@@ -14,6 +14,7 @@ const JobProfileContainer = () => {
         skills: [],
         salaryRange: { min: "", max: "" },
     });
+    const [appliedStudents, setAppliedStudents] = useState(null);
     const { id } = useParams();
     const { user, getJobById } = useContext(UserContext);
     const toast = useToast();
@@ -25,6 +26,7 @@ const JobProfileContainer = () => {
         }
 
         setJob(result.job);
+        setAppliedStudents(result.students);
     };
 
     useEffect(() => {
@@ -40,8 +42,12 @@ const JobProfileContainer = () => {
                 px={[0, 2, 2, 3, 4]}
             >
                 <ApplyToJob jobDetails={job} />
-                {(user.userType === "company" ||
-                    user.userType === "faculty") && <ShowAppliedStudents />}
+
+                {/* Show only when the user is faculty or when the company id == job.companyId */}
+                {((user.userType === "company" && user.id == job.companyId) ||
+                    user.userType === "faculty") && (
+                    <ShowAppliedStudents students={appliedStudents} />
+                )}
             </Stack>
 
             {/* Sidebar  -> show only in big screens*/}

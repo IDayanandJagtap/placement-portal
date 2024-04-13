@@ -13,6 +13,7 @@ import { Tag } from "../utils";
 import { useNavigate } from "react-router-dom";
 import { IoArrowBack } from "react-icons/io5";
 import { StudentContext } from "../../contextApi/StudentContext";
+import { UserContext } from "../../contextApi/UserContext";
 
 const ApplyToJob = ({ jobDetails }) => {
     const [showTextArea, setShowTextArea] = useState(0);
@@ -23,6 +24,7 @@ const ApplyToJob = ({ jobDetails }) => {
     const postedDate = new Date(jobDetails.postedDate).toLocaleDateString();
     const descRef = useRef(null);
     const { applyToJob } = useContext(StudentContext);
+    const { user } = useContext(UserContext);
     const toast = useToast();
 
     const handleOnClickApply = async () => {
@@ -130,42 +132,46 @@ const ApplyToJob = ({ jobDetails }) => {
                         })}
                     </HStack>
 
-                    {/* Textarea display on apply click */}
-                    {showTextArea && (
-                        <Stack mt={5}>
-                            <Text as={"h3"} fontSize={["16px", "18px"]}>
-                                Your bio :
-                            </Text>
-                            <Textarea
-                                rows={"10"}
-                                ref={descRef}
-                                border={"2px solid #E2E8F0"}
-                                fontSize={["12px", "14px", " 16px"]}
-                                placeholder="Explain why you are suitable for this job..."
-                            ></Textarea>
-                        </Stack>
+                    {/* Display only if the user is student */}
+                    {user.userType === "student" && (
+                        <>
+                            {/* Textarea display on apply click */}
+                            {showTextArea && (
+                                <Stack mt={5}>
+                                    <Text as={"h3"} fontSize={["16px", "18px"]}>
+                                        Your bio :
+                                    </Text>
+                                    <Textarea
+                                        rows={"10"}
+                                        ref={descRef}
+                                        border={"2px solid #E2E8F0"}
+                                        fontSize={["12px", "14px", " 16px"]}
+                                        placeholder="Explain why you are suitable for this job..."
+                                    ></Textarea>
+                                </Stack>
+                            )}
+                            <HStack justifyContent={"end"} mt={10}>
+                                {showTextArea && (
+                                    <Button
+                                        colorScheme="red"
+                                        px={[2, 4, 6]}
+                                        size={["sm", "sm", "sm", "md"]}
+                                        onClick={handleOnClickCancel}
+                                    >
+                                        Cancel
+                                    </Button>
+                                )}
+                                <Button
+                                    colorScheme="green"
+                                    px={[2, 4, 6]}
+                                    size={["sm", "sm", "sm", "md"]}
+                                    onClick={handleOnClickApply}
+                                >
+                                    {showTextArea ? "Submit" : "Apply"}
+                                </Button>
+                            </HStack>{" "}
+                        </>
                     )}
-
-                    <HStack justifyContent={"end"} mt={10}>
-                        {showTextArea && (
-                            <Button
-                                colorScheme="red"
-                                px={[2, 4, 6]}
-                                size={["sm", "sm", "sm", "md"]}
-                                onClick={handleOnClickCancel}
-                            >
-                                Cancel
-                            </Button>
-                        )}
-                        <Button
-                            colorScheme="green"
-                            px={[2, 4, 6]}
-                            size={["sm", "sm", "sm", "md"]}
-                            onClick={handleOnClickApply}
-                        >
-                            {showTextArea ? "Submit" : "Apply"}
-                        </Button>
-                    </HStack>
                 </Stack>
             </Box>
         </Stack>
