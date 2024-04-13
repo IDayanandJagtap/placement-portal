@@ -5,7 +5,7 @@ import Notifications from "./utils/Notifications";
 
 const JobOutlet = () => {
     return (
-        <Stack flexDirection={"row"} overflow={"auto"} gap={0}>
+        <Stack flexDirection={"row"} overflow={"auto"} gap={0} minH={"95vh"}>
             {/* Main component */}
             <Stack
                 w={["100%", "100%", "100%", "75%"]}

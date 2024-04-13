@@ -75,6 +75,19 @@ menuLinks.map((e) => {
     ? studentProfile -> download CV not working 
     ? auth -> confirm password eye, check logout once
     
-    ? company -> dashboard
+    ? company -> dashboard  ??? done 
+
+    ? fetch jobs done , fetch single job done ... 
+    !? show applied students! -> apply to job ,,, show students and don't let same student apply more ...and map description properly
+
+    /// just integration
+    ? fetch all students 
+    ? fetch all companies 
+
+
+    ? student apply to job 
+    ? student dashboard show applied jobs
+
+    ? faculty dashboard
 
 */

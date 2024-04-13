@@ -36,9 +36,11 @@ const CompanyProvider = (props) => {
                 `${import.meta.env.VITE_API_HOST_URL}api/company/getone/${id}`
             );
 
-            response = response.json();
-            return response;
-        } catch (err) {}
+            response = await response.json();
+            return response.data;
+        } catch (err) {
+            return { error: err.message };
+        }
     };
 
     const getMyJobs = async () => {
@@ -95,6 +97,28 @@ const CompanyProvider = (props) => {
             title: "Error",
             description: response.error,
         };
+    };
+
+    const getAll = async () => {
+        try {
+            let response = await fetch(
+                `${import.meta.env.VITE_API_HOST_URL}api/company/getall`,
+                {
+                    method: "GET",
+                    credentials: "include",
+                }
+            );
+
+            response = await response.json();
+            if (response.success) {
+                return response.data;
+            }
+
+            throw new Error("Unable to fetch all jobs");
+        } catch (err) {
+            console.log(err.message);
+            return { error: err.message };
+        }
     };
 
     const postJob = async (formFields) => {
@@ -155,6 +179,7 @@ const CompanyProvider = (props) => {
                 getCompanyById,
                 updateCompany,
                 postJob,
+                getAll,
             }}
         >
             {props.children}

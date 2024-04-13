@@ -1,10 +1,35 @@
-import { Stack } from "@chakra-ui/react";
-import React from "react";
+import { Stack, useToast } from "@chakra-ui/react";
+import React, { useContext, useEffect, useState } from "react";
 import { ApplyToJob, ShowAppliedStudents } from ".";
 import { Notifications } from "../utils";
+import { UserContext } from "../../contextApi/UserContext";
+import { useParams } from "react-router-dom";
 
 const JobProfileContainer = () => {
-    const userType = "faculty";
+    const [job, setJob] = useState({
+        title: "",
+        type: "",
+        postedDate: "",
+        description: "",
+        skills: [],
+        salaryRange: { min: "", max: "" },
+    });
+    const { id } = useParams();
+    const { user, getJobById } = useContext(UserContext);
+    const toast = useToast();
+
+    const getJobDetails = async (id) => {
+        let result = await getJobById(id);
+        if (result.status === "error") {
+            return toast({ title: result.error, status: "error" });
+        }
+
+        setJob(result.job);
+    };
+
+    useEffect(() => {
+        getJobDetails(id);
+    }, []);
 
     return (
         <Stack flexDirection={"row"} h={"full"} overflow={"auto"} gap={0}>
@@ -14,10 +39,9 @@ const JobProfileContainer = () => {
                 overflow={"scroll"}
                 px={[0, 2, 2, 3, 4]}
             >
-                <ApplyToJob demoJobs={demoJobs} />
-                {(userType === "company" || userType === "faculty") && (
-                    <ShowAppliedStudents />
-                )}
+                <ApplyToJob jobDetails={job} />
+                {(user.userType === "company" ||
+                    user.userType === "faculty") && <ShowAppliedStudents />}
             </Stack>
 
             {/* Sidebar  -> show only in big screens*/}

@@ -82,9 +82,28 @@ const StudentProvider = (props) => {
             description: response.error,
         };
     };
+
+    const applyToJob = async (jobId, description) => {
+        try {
+            let response = await fetch(
+                `${import.meta.env.VITE_API_HOST_URL}api/students/apply`,
+                {
+                    method: "POST",
+                    headers: { "Content-type": "application/json" },
+                    body: JSON.stringify({ jobId, description }),
+                    credentials: "include",
+                }
+            );
+
+            response = response.json();
+            return response;
+        } catch (err) {
+            console.log(err);
+        }
+    };
     return (
         <StudentContext.Provider
-            value={{ fetchMyInfo, getStudentById, updateStudent }}
+            value={{ fetchMyInfo, getStudentById, updateStudent, applyToJob }}
         >
             {props.children}
         </StudentContext.Provider>

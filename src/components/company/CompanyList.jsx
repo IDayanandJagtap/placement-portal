@@ -9,15 +9,18 @@ import {
     Stack,
     Text,
     VStack,
+    useToast,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { IoArrowForward, IoSearch } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
-import demoImg from "../../assets/jade.png";
+import { CompanyContext } from "../../contextApi/CompanyContext";
 
 const CompanyList = () => {
     const navigate = useNavigate();
     const [searchedCompany, setSearchedCompany] = useState(companyData);
+    const { getAll } = useContext(CompanyContext);
+    const toast = useToast();
 
     const handleOnSearchInputChange = (e) => {
         let searchable = e.target.value.toLowerCase();
@@ -32,6 +35,20 @@ const CompanyList = () => {
             setSearchedCompany(companyData);
         }
     };
+
+    const getCompanyData = async () => {
+        let result = await getAll();
+        if (result.error) {
+            return toast({ title: result.error, status: "error" });
+        }
+        companyData = result;
+        setSearchedCompany(result);
+    };
+    useEffect(() => {
+        // fetch from db
+        getCompanyData();
+    }, []);
+
     return (
         <Stack p={[3, 4, 4, 4, 6]}>
             {/* Search bar */}
@@ -66,12 +83,12 @@ const CompanyList = () => {
                             minH={["fit-content", "fit-content", "18%"]}
                             onClick={() => {
                                 // In mobile navigate button is not displayed, so navigation is used here
-                                navigate("/company/" + e.id.toString());
+                                navigate("/company/" + e._id.toString());
                             }}
                         >
                             <Stack w={"50%"}>
                                 <Image
-                                    src={demoImg}
+                                    src={e.imgUrl}
                                     height={"100px"}
                                     w={"auto"}
                                     objectFit={"contain"}
@@ -108,7 +125,7 @@ const CompanyList = () => {
                                         "16px",
                                     ]}
                                 >
-                                    {e.description}
+                                    {e.bio && e.bio.substring(0, 200)} {"..."}
                                 </Text>
                                 <Button
                                     display={["none", "none", "flex"]}
@@ -122,7 +139,9 @@ const CompanyList = () => {
                                     right={1}
                                     _hover={{ transform: "scale(1.1)" }}
                                     onClick={() => {
-                                        navigate("/company/" + e.id.toString());
+                                        navigate(
+                                            "/company/" + e._id.toString()
+                                        );
                                     }}
                                 >
                                     <IoArrowForward size={20} />
@@ -136,55 +155,5 @@ const CompanyList = () => {
     );
 };
 
-const companyData = [
-    {
-        id: 1,
-        name: "JadeGlobal",
-        description:
-            "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem corporis reiciendis qui quo eaque, unde voluptatum officiis nihil distinctio possimus?",
-    },
-    {
-        id: 12,
-        name: "BaramatiTech",
-        description:
-            "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem corporis reiciendis qui quo eaque, unde voluptatum officiis nihil distinctio possimus?",
-    },
-    {
-        id: 123,
-        name: "Persistant",
-        description:
-            "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem corporis reiciendis qui quo eaque, unde voluptatum officiis nihil distinctio possimus?",
-    },
-    {
-        id: 1234,
-        name: "Mastercard",
-        description:
-            "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem corporis reiciendis qui quo eaque, unde voluptatum officiis nihil distinctio possimus?",
-    },
-    {
-        id: 12345,
-        name: "Infotech",
-        description:
-            "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem corporis reiciendis qui quo eaque, unde voluptatum officiis nihil distinctio possimus?",
-    },
-    {
-        id: 12345,
-        name: "Infotech",
-        description:
-            "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem corporis reiciendis qui quo eaque, unde voluptatum officiis nihil distinctio possimus?",
-    },
-    {
-        id: 12345,
-        name: "Infotech",
-        description:
-            "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem corporis reiciendis qui quo eaque, unde voluptatum officiis nihil distinctio possimus?",
-    },
-    {
-        id: 12345,
-        name: "Infotech",
-        description:
-            "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem corporis reiciendis qui quo eaque, unde voluptatum officiis nihil distinctio possimus?",
-    },
-];
-
+let companyData = [];
 export default CompanyList;

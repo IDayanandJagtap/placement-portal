@@ -6,26 +6,46 @@ import {
     Stack,
     Text,
     Textarea,
+    useToast,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { Tag } from "../utils";
 import { useNavigate } from "react-router-dom";
 import { IoArrowBack } from "react-icons/io5";
+import { StudentContext } from "../../contextApi/StudentContext";
 
-const ApplyToJob = () => {
+const ApplyToJob = ({ jobDetails }) => {
     const [showTextArea, setShowTextArea] = useState(0);
     const navigate = useNavigate();
 
-    const handleOnClickApply = () => {
+    const { title, companyName, description, skills, type, salaryRange } =
+        jobDetails;
+    const postedDate = new Date(jobDetails.postedDate).toLocaleDateString();
+    const descRef = useRef(null);
+    const { applyToJob } = useContext(StudentContext);
+    const toast = useToast();
+
+    const handleOnClickApply = async () => {
         if (showTextArea == 0) {
             setShowTextArea(1);
         } else {
-            // submit;
+            const description = descRef.current.value;
+            const response = await applyToJob(jobDetails._id, description);
+            if (response.success) {
+                toast({ title: "Applied", status: "success", duration: 3000 });
+            } else {
+                toast({
+                    title: response.error,
+                    status: "warning",
+                    duration: 3000,
+                });
+            }
         }
     };
 
     const handleOnClickCancel = () => {
         setShowTextArea(0);
+        descRef.current.value = "";
     };
 
     return (
@@ -60,20 +80,20 @@ const ApplyToJob = () => {
                             as={"h2"}
                             fontSize={["18px", "20px", "20px", "22px", "24px"]}
                         >
-                            JobTitle
+                            {title}
                         </Text>
                         <Text
                             color={"gray.500"}
                             fontSize={["12px", "12px", "14px", "14px", "14px"]}
                         >
-                            23/04/2024
+                            {postedDate}
                         </Text>
                     </HStack>
                     <Text
                         fontSize={["12px", "12px", "14px", "14px", "14px"]}
                         fontWeight={"500"}
                     >
-                        CompanyName
+                        {companyName}
                     </Text>
                     <Text
                         as={"p"}
@@ -81,8 +101,14 @@ const ApplyToJob = () => {
                         mt={"2"}
                         fontWeight={"500"}
                     >
-                        Job type : <Text as={"span"}>Internship</Text>
+                        Job type : <Text as={"span"}>{type}</Text>
                     </Text>
+                    <Text as={"p"} fontSize={["10px", "10px", "12px", "14px"]}>
+                        {"₹"}
+                        {salaryRange.min} - {"₹"}
+                        {salaryRange.max}
+                    </Text>
+
                     <Text
                         as={"p"}
                         mt={3}
@@ -92,31 +118,16 @@ const ApplyToJob = () => {
                         <Text as={"span"} fontWeight={"500"}>
                             Description : <br></br>
                         </Text>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Numquam consequuntur pariatur, fugit rem perferendis ad
-                        placeat. Voluptatem nisi excepturi, architecto est illo
-                        perferendis error enim quam qui numquam aliquid ipsam
-                        minima explicabo natus eveniet et similique cumque id
-                        modi, dolores voluptatum! Quam explicabo voluptatum
-                        earum ipsum fugit et assumenda unde.
+                        {description}
                     </Text>
 
                     <Text as={"p"} mt={5} fontSize={["16px", "18px"]}>
                         Expected Skills :
                     </Text>
                     <HStack flexWrap={"wrap"}>
-                        <Tag name={"JavaScript"} />
-                        <Tag name={"JavaScript"} />
-                        <Tag name={"JavaScript"} />
-                        <Tag name={"JavaScript"} />
-                        <Tag name={"JavaScript"} />
-                        <Tag name={"JavaScript"} />
-                        <Tag name={"JavaScript"} />
-                        <Tag name={"JavaScript"} />
-                        <Tag name={"JavaScript"} />
-                        <Tag name={"JavaScript"} />
-                        <Tag name={"JavaScript"} />
-                        <Tag name={"JavaScript"} />
+                        {skills.map((e, i) => {
+                            return <Tag key={i} name={e} />;
+                        })}
                     </HStack>
 
                     {/* Textarea display on apply click */}
@@ -127,6 +138,7 @@ const ApplyToJob = () => {
                             </Text>
                             <Textarea
                                 rows={"10"}
+                                ref={descRef}
                                 border={"2px solid #E2E8F0"}
                                 fontSize={["12px", "14px", " 16px"]}
                                 placeholder="Explain why you are suitable for this job..."

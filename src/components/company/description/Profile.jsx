@@ -11,8 +11,9 @@ import React from "react";
 import { FaXTwitter } from "react-icons/fa6";
 import { IoLogoLinkedin, IoMail } from "react-icons/io5";
 import demoImg from "../../../assets/jade.png";
+import CompanyList from "../CompanyList";
 
-const Profile = () => {
+const Profile = ({ company }) => {
     return (
         <Stack
             minH={"90dvh"}
@@ -29,7 +30,7 @@ const Profile = () => {
                 gap={8}
             >
                 <Image
-                    src={demoImg}
+                    src={company.imgUrl}
                     w={200}
                     h={200}
                     p={1}
@@ -50,13 +51,13 @@ const Profile = () => {
                             as={"h1"}
                             fontSize={["22px", "24px", "28px", "32px"]}
                         >
-                            Jade Global
+                            {company.name}
                         </Heading>
                         <Text
                             fontSize={["14px", "16px", "16px", "18px"]}
                             pl={3}
                         >
-                            <q>We hire the besht</q>
+                            <q>{company.tagline}</q>
                         </Text>
                     </Stack>
 
@@ -95,32 +96,7 @@ const Profile = () => {
                     pl={[0, 0, 0, 6]}
                     fontSize={["12px", "14px", "14px", "16px"]}
                 >
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Reprehenderit dignissimos nihil itaque aliquam, nisi facere
-                    est nulla modi ducimus accusantium harum impedit, ad laborum
-                    porro perspiciatis perferendis. Explicabo, eaque, voluptate,
-                    architecto minus dolorum itaque consequatur fugiat qui
-                    doloremque reprehenderit mollitia atque dolor cupiditate
-                    similique rerum libero laboriosam quo provident impedit at
-                    nulla incidunt? Repellendus quidem excepturi, eligendi
-                    architecto quo consequuntur? Ipsum minus ex recusandae rem
-                    cum possimus ea architecto aliquam quas qui! Optio quaerat,
-                    perspiciatis, ab doloribus exercitationem eius, cum
-                    molestiae assumenda nisi corporis consectetur ut? Obcaecati,
-                    sequi! Eius qui dolor illum voluptate maxime ipsam
-                    reprehenderit fugit quasi, incidunt assumenda eos expedita
-                    delectus perferendis hic debitis. Voluptas, earum
-                    voluptatum. Porro nihil asperiores ducimus? Provident
-                    explicabo, omnis quam unde illo sint hic alias ducimus ipsa
-                    aliquam animi id harum eaque cumque quisquam esse
-                    repellendus autem aut pariatur. Omnis voluptates, at
-                    nesciunt, doloribus perferendis, libero non in neque rem
-                    quod quae aut molestiae voluptatem culpa quidem similique
-                    temporibus atque? Dignissimos eligendi ipsum nulla iste
-                    magni, eum reprehenderit ipsam magnam unde illum aperiam.
-                    Praesentium ullam consectetur nemo eveniet! Aliquid nemo sed
-                    ducimus obcaecati eius molestias labore cum ex minus
-                    voluptatibus?
+                    {company.bio}
                 </Text>
             </Stack>
         </Stack>

@@ -42,21 +42,19 @@ const JobCard = ({ job }) => {
             >
                 Job type : <Text as={"span"}>{job.type}</Text>
             </Text>
-            <Text as={"p"} fontSize={["12px", "12px", "14px", "16px"]} mt={"2"}>
-                {job.salaryRange.min} - {job.salaryRange.max}
-            </Text>
 
             <Text as={"p"} fontSize={["12px", "12px", "14px", "14px", "14px"]}>
-                {job.description.substring(0, 200)} {"..."}
+                {job.description && job.description.substring(0, 200)} {"..."}
             </Text>
 
             <Text as={"p"} mt={[0, 1, 1, 1, 3]} fontSize={["14px", "16px"]}>
                 Expected Skills :
             </Text>
             <HStack flexWrap={"wrap"}>
-                {job.skills.map((skill, index) => {
-                    return <Tag name={skill} key={index} />;
-                })}
+                {job.skills &&
+                    job.skills.map((skill, index) => {
+                        return <Tag name={skill} key={index} />;
+                    })}
             </HStack>
 
             <HStack justifyContent={"space-between"}>
